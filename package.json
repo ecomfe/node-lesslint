@@ -1,7 +1,7 @@
 {
   "name": "lesslint",
   "description": "Lesslint your less code",
-  "version": "0.1.0-beta.8",
+  "version": "0.1.0-beta.10",
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -13,6 +13,7 @@
     "edp-core": "^1.0.28",
     "less": "^1.7.4"
   },
+  "main": "./lib/checker.js",
   "bin": {
     "lesslint": "./bin/lesslint-cli"
   },

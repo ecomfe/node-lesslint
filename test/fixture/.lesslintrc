@@ -1,0 +1,16 @@
+{
+    "comment": true,
+    "zeroUnit": true,
+    "variableName": true,
+    "importRules": true,
+    "selectorVerify": true,
+    "omitZeroBeforeDecimalpoint": true,
+    "colorVerify": true,
+    "operatorVerify": true,
+
+    "spaceVerify": false,
+    "mixinVerify": false,
+    "privatePropertyPrefix": false,
+    "extendVerify": false
+}
+
