@@ -11,7 +11,8 @@
   "dependencies": {
     "chalk": "^0.5.1",
     "edp-core": "^1.0.28",
-    "less": "^1.7.5"
+    "less": "^1.7.5",
+    "q": "^1.1.2"
   },
   "main": "./lib/checker.js",
   "bin": {
