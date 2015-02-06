@@ -1,7 +1,7 @@
 Lesslint
 ===
-
-[![lesslint](https://d25lcipzij17d.cloudfront.net/badge.png?title=npm&type=3d&v=0.1.0)](https://www.npmjs.org/package/lesslint)
+[![lesslint](https://travis-ci.org/ielgnaw/node-lesslint.svg?branch=master)](https://travis-ci.org/ielgnaw/node-lesslint)
+[![lesslint](https://d25lcipzij17d.cloudfront.net/badge.png?title=npm&type=3d&v=0.1.1)](https://www.npmjs.org/package/lesslint)
 [![依赖模块状态](https://david-dm.org/ielgnaw/node-lesslint.png)](https://david-dm.org/ielgnaw/node-lesslint)
 
 

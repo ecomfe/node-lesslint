@@ -1,7 +1,7 @@
 {
   "name": "lesslint",
   "description": "Lesslint your less code",
-  "version": "0.1.0-beta.12",
+  "version": "0.1.1",
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -13,6 +13,18 @@
     "edp-core": "^1.0.28",
     "less": "^1.7.5",
     "q": "^1.1.2"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.2",
+    "jasmine-node": "^1.14.5",
+    "fecs": "*"
+  },
+  "scripts": {
+    "lint": "fecs lib test/**/*.spec.js --type=js",
+    "coverage": "istanbul cover jasmine-node --captureExceptions test/**/*.spec.js",
+    "test": "npm run lint && npm run coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "main": "./lib/checker.js",
   "bin": {
