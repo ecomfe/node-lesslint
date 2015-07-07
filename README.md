@@ -8,7 +8,7 @@ Lesslint
 
 Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可以 `lint` 你的 less code，目前的 lint 规则是基于 ecomfe 的[Less编码规范 [1.0]](https://github.com/ecomfe/spec/blob/master/less-code-style.md)。
 
-具体的配置参见 [config](https://github.com/ielgnaw/node-lesslint/blob/master/lib/config.js)
+具体的配置参见 [config](https://github.com/ecomfe/node-lesslint/blob/master/lib/config.js)
 
 已经实现的 lint 规则：
 

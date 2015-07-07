@@ -1,7 +1,7 @@
 {
   "name": "lesslint",
-  "description": "Lesslint your less code",
-  "version": "0.1.7",
+  "description": "lint your less code",
+  "version": "0.1.8-beta.1",
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -33,6 +33,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ielgnaw/node-lesslint"
+    "url": "git@github.com:ecomfe/node-lesslint"
   }
 }
