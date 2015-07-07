@@ -1,8 +1,9 @@
 Lesslint
 ===
-[![lesslint](https://travis-ci.org/ielgnaw/node-lesslint.svg?branch=master)](https://travis-ci.org/ielgnaw/node-lesslint)
-[![lesslint](https://d25lcipzij17d.cloudfront.net/badge.png?title=npm&type=3d&v=0.1.2)](https://www.npmjs.org/package/lesslint)
-[![依赖模块状态](https://david-dm.org/ielgnaw/node-lesslint.png)](https://david-dm.org/ielgnaw/node-lesslint)
+
+[![npm version](https://badge.fury.io/js/lesslint.svg)](http://badge.fury.io/js/lesslint)
+[![Dependency Status](https://david-dm.org/ecomfe/node-lesslint.png)](https://david-dm.org/ecomfe/node-lesslint)
+[![devDependency Status](https://david-dm.org/ecomfe/node-lesslint/dev-status.png)](https://david-dm.org/ecomfe/node-lesslint#info=devDependencies)
 
 
 Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可以 `lint` 你的 less code，目前的 lint 规则是基于 ecomfe 的[Less编码规范 [1.0]](https://github.com/ecomfe/spec/blob/master/less-code-style.md)。
