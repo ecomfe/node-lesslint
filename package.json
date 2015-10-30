@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "fecs": "*",
+    "fecs": "^0.4.7",
     "istanbul": "^0.3.2",
     "jasmine-node": "^1.14.5",
     "q": "^1.1.2"

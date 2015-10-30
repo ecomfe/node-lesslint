@@ -28,6 +28,8 @@ Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可�
 
 + [运算](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E8%BF%90%E7%AE%97)：+ / - / * / / 四个运算符两侧必须（MUST）保留一个空格。+ / - 两侧的操作数必须（MUST）有相同的单位，如果其中一个是变量，另一个数值必须（MUST）书写单位。`require-around-space`, `operate-unit`
 
++ [属性、变量](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E5%B1%9E%E6%80%A7%E5%8F%98%E9%87%8F)：选择器和 { 之间必须（MUST）保留一个空格。`require-before-space`
+
 
 安装与更新
 -------
