@@ -30,6 +30,8 @@ Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可�
 
 + [属性、变量](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E5%B1%9E%E6%80%A7%E5%8F%98%E9%87%8F)：选择器和 { 之间必须（MUST）保留一个空格。`require-before-space`
 
++ [缩进](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E5%B5%8C%E5%A5%97%E5%92%8C%E7%BC%A9%E8%BF%9B)：必须（MUST）采用 4 个空格为一次缩进， 不得（MUST NOT）采用 TAB 作为缩进。`block-indent`
+
 
 安装与更新
 -------
@@ -55,15 +57,9 @@ lesslint 目前就一条命令，后面带 `-v` 参数，会显示版本信息�
 TODO
 ------
 
-1. 提供行内注释，允许行内定义规则配置以及行内启用/禁用规则。
-    
-    `/** lesslint key1: value1, key2: value2 */`
-    `/** lesslint-disable key1, key2 */`
-    `/** lesslint-enable key1, key2 */`
+1. 覆盖更多的规则，现在还未实现的规则如下:
 
-2. 覆盖更多的规则，现在还未实现的规则如下:
-
-   `require-before-space`, `require-after-space`, `disallow-mixin-name-space`, `vendor-prefixes-sort`, `block-indent`, `extend-must-firstline`
+   `require-after-space`, `disallow-mixin-name-space`, `vendor-prefixes-sort`, `extend-must-firstline`
 
 
    
