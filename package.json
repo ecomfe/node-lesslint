@@ -1,7 +1,7 @@
 {
   "name": "lesslint",
   "description": "lint your less code",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "maintainers": [
     {
       "name": "ielgnaw",
