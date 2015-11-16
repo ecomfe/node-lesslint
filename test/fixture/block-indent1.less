@@ -1,0 +1,13 @@
+.linear-gradient-background-with-image (
+    @direction:top, @from-color, @to-color,
+    @image-url:"",
+    @s-x:0, @s-y:0,
+    @b-color:transparent,
+    @repeat-type:no-repeat
+) {
+    .background(@is-url-exp) when not (@is-url-exp) {
+        background:
+            url(@url),
+            -webkit-gradient(linear, @@direction, from(@from-color), to(@to-color));
+    }
+}
