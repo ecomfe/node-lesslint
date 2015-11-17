@@ -122,7 +122,7 @@ describe('getCandidates: ', function () {
             '!**/{output,node_modules,asset,dist,release,doc,dep,report,*.bak}/**'
         ];
         var candidates1 = util.getCandidates([], patterns1);
-        expect(49).toEqual(candidates1.length);
+        expect(50).toEqual(candidates1.length);
 
         var patterns2 = [
             '**/no-exist.less'

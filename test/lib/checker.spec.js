@@ -84,4 +84,28 @@ describe('check: ', function () {
             }
         );
     });
+
+    it('3. should return right length', function (done) {
+        var filePath = path.join(__dirname, '../fixture/blank-selector.less');
+        var fileContent = fs.readFileSync(
+            path.join(__dirname, '../fixture/blank-selector.less'),
+            'utf8'
+        ).replace(/\r\n?/g, '\n');
+
+        var f = {
+            path: filePath,
+            content: fileContent
+        };
+
+        var errors = [];
+
+        checker.check(
+            f,
+            errors,
+            function () {
+                expect(0).toEqual(errors.length);
+                done();
+            }
+        );
+    });
 });
