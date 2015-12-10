@@ -59,7 +59,7 @@ describe('block-indent: ', function () {
             f,
             errors,
             function () {
-                expect(25).toEqual(errors[0].messages.length);
+                expect(26).toEqual(errors[0].messages.length);
                 done();
             }
         );
