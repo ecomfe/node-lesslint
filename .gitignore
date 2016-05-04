@@ -1,8 +1,10 @@
-/node_modules/
-.idea/
+node_modules
+.idea
 npm-debug.log
 Thumbs.db
 .DS_Store
 *.swp
-.jshintrc
-*.bak
+*bak*
+lib
+coverage
+output

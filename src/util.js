@@ -5,19 +5,9 @@
 
 'use strict';
 
-exports.__esModule = true;
-exports.rmrfdirSync = rmrfdirSync;
-exports.extend = extend;
-exports.trim = trim;
-exports.times = times;
-exports.formatMsg = formatMsg;
-exports.getCandidates = getCandidates;
-
-var _path = require('path');
-
-var _fs = require('fs');
-
-var _edpCore = require('edp-core');
+import {sep} from 'path';
+import {statSync, readdirSync, unlinkSync, rmdirSync, existsSync} from 'fs';
+import {glob, log} from 'edp-core';
 
 /**
  * 获取目录中的文件
@@ -26,11 +16,11 @@ var _edpCore = require('edp-core');
  * @param {Array} dirs 目录数组
  */
 function innerDir(path, dirs) {
-    var files = (0, _fs.readdirSync)(path);
-    var i = -1;
-    var len = files.length;
+    let files = readdirSync(path);
+    let i = -1;
+    let len = files.length;
     while (++i < len) {
-        loopDir(path + _path.sep + files[i], dirs);
+        loopDir(path + sep + files[i], dirs);
     }
 }
 
@@ -41,7 +31,7 @@ function innerDir(path, dirs) {
  * @param {Array} dirs 目录数组
  */
 function loopDir(path, dirs) {
-    var stat = (0, _fs.statSync)(path);
+    let stat = statSync(path);
     if (stat.isDirectory()) {
         // 收集目录
         dirs.unshift(path);
@@ -49,9 +39,9 @@ function loopDir(path, dirs) {
     }
     /* istanbul ignore else */
     else if (stat.isFile()) {
-            // 删除文件
-            (0, _fs.unlinkSync)(path);
-        }
+        // 删除文件
+        unlinkSync(path);
+    }
 }
 
 /**
@@ -62,16 +52,16 @@ function loopDir(path, dirs) {
  *
  * @return {Promise} Promise 对象
  */
-function rmrfdirSync(dir) {
-    var dirs = [];
-    var removePromise = new Promise(function (resolve /*, reject*/) {
+export function rmrfdirSync(dir) {
+    let dirs = [];
+    let removePromise = new Promise((resolve/*, reject*/) => {
         try {
             loopDir(dir, dirs);
-            var i = -1;
-            var len = dirs.length;
-            while (++i < len) {
+            let i = -1;
+            let len = dirs.length;
+            while (++i < len)  {
                 // 删除收集到的目录
-                (0, _fs.rmdirSync)(dirs[i]);
+                rmdirSync(dirs[i]);
             }
             resolve();
         } catch (e) {
@@ -93,15 +83,15 @@ function rmrfdirSync(dir) {
  *
  * @return {Object} 返回目标对象
  */
-function extend(target) {
-    var i = -1;
-    var length = arguments.length;
+export function extend(target) {
+    let i = -1;
+    let length = arguments.length;
     while (++i < length) {
-        var src = arguments[i];
+        let src = arguments[i];
         if (src == null) {
             continue;
         }
-        for (var key in src) {
+        for (let key in src) {
             /* istanbul ignore else */
             if (src.hasOwnProperty(key)) {
                 target[key] = src[key];
@@ -118,9 +108,10 @@ function extend(target) {
  *
  * @return {string} 去除空格后的字符串
  */
-function trim(str) {
+export function trim(str) {
     return str.replace(/(^\s+)|(\s+$)/g, '');
 }
+
 
 /**
  * 调用给定的迭代函数 n 次,每一次传递 index 参数，调用迭代函数。
@@ -132,9 +123,9 @@ function trim(str) {
  *
  * @return {Array} 结果
  */
-function times(n, iterator, context) {
-    var accum = new Array(Math.max(0, n));
-    var i = -1;
+export function times(n, iterator, context) {
+    let accum = new Array(Math.max(0, n));
+    let i = -1;
     while (++i < n) {
         accum[i] = iterator.call(context, i);
     }
@@ -149,10 +140,10 @@ function times(n, iterator, context) {
  *
  * @return {string} 格式化后的信息
  */
-function formatMsg(msg, spaceCount) {
-    var space = '';
+export function formatMsg(msg, spaceCount) {
+    let space = '';
     spaceCount = spaceCount || 0;
-    times(spaceCount, function () {
+    times(spaceCount, () => {
         space += ' ';
     });
     return space + msg;
@@ -166,34 +157,38 @@ function formatMsg(msg, spaceCount) {
  *
  * @return {Array.<string>} 匹配的文件集合
  */
-function getCandidates(args, patterns) {
-    var candidates = [];
+export function getCandidates(args, patterns) {
+    let candidates = [];
 
-    args = args.filter(function (item) {
+    args = args.filter((item) => {
         return item !== '.';
     });
 
     if (!args.length) {
-        candidates = _edpCore.glob.sync(patterns);
-    } else {
-        var i = -1;
-        var len = args.length;
+        candidates = glob.sync(patterns);
+    }
+    else {
+        let i = -1;
+        let len = args.length;
         while (++i < len) {
-            var target = args[i];
-            if (!(0, _fs.existsSync)(target)) {
-                _edpCore.log.warn('No such file or directory %s', target);
+            let target = args[i];
+            if (!existsSync(target)) {
+                log.warn('No such file or directory %s', target);
                 continue;
             }
 
-            var stat = (0, _fs.statSync)(target);
+            let stat = statSync(target);
             if (stat.isDirectory()) {
                 target = target.replace(/[\/|\\]+$/, '');
-                candidates.push.apply(candidates, _edpCore.glob.sync(target + '/' + patterns[0]));
+                candidates.push.apply(
+                    candidates,
+                    glob.sync(target + '/' + patterns[0])
+                );
             }
             /* istanbul ignore else */
             else if (stat.isFile()) {
-                    candidates.push(target);
-                }
+                candidates.push(target);
+            }
         }
     }
 
