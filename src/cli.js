@@ -3,8 +3,6 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
-'use strict';
-
 import {createReadStream} from 'fs';
 import chalk from 'chalk';
 import Input from 'postcss/lib/input';
@@ -12,6 +10,9 @@ import safeStringify from 'json-stringify-safe';
 import sys from '../package';
 import {formatMsg, getCandidates} from './util';
 import LessParser from './parser';
+import {check} from './checker';
+
+'use strict';
 
 /**
  * 显示默认的信息
@@ -79,17 +80,16 @@ export function parse(args) {
                 content: chunk,
                 path: candidate
             };
-            let input = new Input(file.content, {from: file.path});
-            let parser = new LessParser(input);
+            // let input = new Input(file.content, {from: file.path});
+            // let parser = new LessParser(input);
+            // // console.warn(safeStringify(parser, null, 4));
+            // parser.tokenize();
+            // parser.loop();
+            // console.warn();
+            // console.warn();
             // console.warn(safeStringify(parser, null, 4));
-            parser.tokenize();
-            parser.loop();
-            console.warn();
-            console.warn();
-            console.warn(safeStringify(parser, null, 4));
-            // console.warn(parser);
-
-            // require('./checker').check(file, errors, callback);
+            // // console.warn(parser);
+            check(file, errors, callback);
         });
         readable.on('error', (err) => {
             throw err;

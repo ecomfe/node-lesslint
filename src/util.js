@@ -3,115 +3,10 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
+import {statSync, existsSync, readFileSync} from 'fs';
+import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
+
 'use strict';
-
-import {sep} from 'path';
-import {statSync, readdirSync, unlinkSync, rmdirSync, existsSync} from 'fs';
-import {glob, log} from 'edp-core';
-
-/**
- * 获取目录中的文件
- *
- * @param {string} path 目录路径
- * @param {Array} dirs 目录数组
- */
-function innerDir(path, dirs) {
-    let files = readdirSync(path);
-    let i = -1;
-    let len = files.length;
-    while (++i < len) {
-        loopDir(path + sep + files[i], dirs);
-    }
-}
-
-/**
- * 遍历目录
- *
- * @param {string} path 路径
- * @param {Array} dirs 目录数组
- */
-function loopDir(path, dirs) {
-    let stat = statSync(path);
-    if (stat.isDirectory()) {
-        // 收集目录
-        dirs.unshift(path);
-        innerDir(path, dirs);
-    }
-    /* istanbul ignore else */
-    else if (stat.isFile()) {
-        // 删除文件
-        unlinkSync(path);
-    }
-}
-
-/**
- * 递归删除目录以及目录里面的内容
- *
- * @param {string} dir 目录路径
- * @param {Function} cb 删除后的回调函数
- *
- * @return {Promise} Promise 对象
- */
-export function rmrfdirSync(dir) {
-    let dirs = [];
-    let removePromise = new Promise((resolve/*, reject*/) => {
-        try {
-            loopDir(dir, dirs);
-            let i = -1;
-            let len = dirs.length;
-            while (++i < len)  {
-                // 删除收集到的目录
-                rmdirSync(dirs[i]);
-            }
-            resolve();
-        } catch (e) {
-            // 如果文件或目录本来就不存在，fs.statSync 会报错，这里不处理了
-            // e.code === 'ENOENT' ? reject() : reject(e);
-            // e.code === 'ENOENT' ? resolve(e) : resolve(e);
-            resolve(e);
-        }
-    });
-
-    return removePromise;
-}
-
-/**
- * 对象属性拷贝
- *
- * @param {Object} target 目标对象
- * @param {...Object} source 源对象
- *
- * @return {Object} 返回目标对象
- */
-export function extend(target) {
-    let i = -1;
-    let length = arguments.length;
-    while (++i < length) {
-        let src = arguments[i];
-        if (src == null) {
-            continue;
-        }
-        for (let key in src) {
-            /* istanbul ignore else */
-            if (src.hasOwnProperty(key)) {
-                target[key] = src[key];
-            }
-        }
-    }
-    return target;
-}
-
-/**
- * 去除空格
- *
- * @param {string} str 待去除空格的字符串
- *
- * @return {string} 去除空格后的字符串
- */
-export function trim(str) {
-    return str.replace(/(^\s+)|(\s+$)/g, '');
-}
-
 
 /**
  * 调用给定的迭代函数 n 次,每一次传递 index 参数，调用迭代函数。
@@ -123,14 +18,14 @@ export function trim(str) {
  *
  * @return {Array} 结果
  */
-export function times(n, iterator, context) {
-    let accum = new Array(Math.max(0, n));
-    let i = -1;
-    while (++i < n) {
+function times(n, iterator, context) {
+    var accum = new Array(Math.max(0, n));
+    for (var i = 0; i < n; i++) {
         accum[i] = iterator.call(context, i);
     }
     return accum;
 }
+
 
 /**
  * 格式化信息
@@ -140,7 +35,7 @@ export function times(n, iterator, context) {
  *
  * @return {string} 格式化后的信息
  */
-export function formatMsg(msg, spaceCount) {
+function formatMsg(msg, spaceCount) {
     let space = '';
     spaceCount = spaceCount || 0;
     times(spaceCount, () => {
@@ -157,7 +52,7 @@ export function formatMsg(msg, spaceCount) {
  *
  * @return {Array.<string>} 匹配的文件集合
  */
-export function getCandidates(args, patterns) {
+function getCandidates(args, patterns) {
     let candidates = [];
 
     args = args.filter((item) => {
@@ -194,3 +89,119 @@ export function getCandidates(args, patterns) {
 
     return candidates;
 }
+
+/**
+ * 获取忽略的 pattern
+ *
+ * @param {string} file 文件路径
+ *
+ * @return {Array.<string>} 结果
+ */
+function getIgnorePatterns(file) {
+    if (!existsSync(file)) {
+        return [];
+    }
+
+    let patterns = readFileSync(file, 'utf-8').split(/\r?\n/g);
+    return patterns.filter((item) => {
+        return item.trim().length > 0 && item[0] !== '#';
+    });
+}
+
+var _IGNORE_CACHE = {};
+
+/**
+ * 判断一下是否应该忽略这个文件.
+ *
+ * @param {string} file 需要检查的文件路径.
+ * @param {string=} name ignore文件的名称.
+ * @return {boolean}
+ */
+function isIgnored(file, name) {
+    let ignorePatterns = null;
+
+    name = name || '.jshintignore';
+    file = edpPath.resolve(file);
+
+    let key = name + '@'  + edpPath.dirname(file);
+    if (_IGNORE_CACHE[key]) {
+        ignorePatterns = _IGNORE_CACHE[key];
+    }
+    else {
+        let options = {
+            name: name,
+            factory: (item) => {
+                let config = {};
+                getIgnorePatterns(item).forEach((line) => {
+                    config[line] = true;
+                });
+                return config;
+            }
+        };
+        ignorePatterns = edpUtil.getConfig(
+            edpPath.dirname(file),
+            options
+        );
+
+        _IGNORE_CACHE[key] = ignorePatterns;
+    }
+
+    let bizOrPkgRoot = process.cwd();
+
+    try {
+        bizOrPkgRoot = edpPath.getRootDirectory();
+    }
+    catch (ex) {
+    }
+
+    var dirname = edpPath.relative(bizOrPkgRoot, file);
+    var isMatch = glob.match(dirname, Object.keys(ignorePatterns));
+
+    return isMatch;
+}
+
+/**
+ * 目录配置信息的缓存数据
+ * @ignore
+ */
+var _CONFIG_CACHE = {};
+
+/**
+ * 读取默认的配置信息，可以缓存一下.
+ *
+ * @param {string} configName 配置文件的名称.
+ * @param {string} file 文件名称.
+ * @param {Object=} defaultConfig 默认的配置信息.
+ *
+ * @return {Object} 配置信息
+ */
+function getConfig(configName, file, defaultConfig) {
+    var dir = edpPath.dirname(edpPath.resolve(file));
+    var key = configName + '@' + dir;
+
+    if (_CONFIG_CACHE[key]) {
+        return _CONFIG_CACHE[key];
+    }
+
+    var options = {
+        name: configName,
+        defaultConfig: defaultConfig,
+        factory: function (item) {
+            /* istanbul ignore if */
+            if (!existsSync(item)) {
+                return null;
+            }
+
+            return JSON.parse(readFileSync(item, 'utf-8'));
+        }
+    };
+
+    var value = edpUtil.getConfig(dir, options);
+
+    _CONFIG_CACHE[key] = value;
+
+    return value;
+}
+
+
+export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig};
