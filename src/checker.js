@@ -3,9 +3,10 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
-'use strict';
-
 import {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig} from './util';
+
+
+'use strict';
 
 // var path = require('path');
 // var less = require('less');
@@ -233,60 +234,15 @@ import {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig} from 
 export function checkString(args) {
 }
 
-import Manis from 'manis';
-import {readFileSync} from 'fs';
-import {join} from 'path';
+import {loadConfig} from './config';
 
 export function check(file, errors, done) {
-    console.warn(file.path);
     if (isIgnored(file.path, '.lesslintignore')) {
         done();
         return;
     }
 
-    var JSON_YAML_REG = /(.+)\.(?:json|yml)$/i;
-
-    // var manis = new Manis('.config.yml', {
-    //     orphan: true
-    // });
-    var manis = new Manis({
-        files: [
-            'config.yml',
-            'custom.yml'
-        ]
-    });
-
-    // var givenFilePath = join(__dirname, './test/fixture/custom.yml');
-    var givenFilePath = './test/fixture/esui.less';
-    console.warn(givenFilePath);
-
-    manis.setDefault(join(__dirname, './config.yml'), {
-        // orphan: true
-    });
-    // manis.setUserConfig(givenFilePath, {
-    //     orphan: true
-    // });
-    console.warn(manis);
-    console.warn();
-    console.warn(manis.from(givenFilePath));
-
-    // var manis = new Manis({
-    //     files: [
-    //         join(__dirname, './config.yml'),
-    //         join(__dirname, './test/fixture/custom.yml')
-    //     ],
-    //     merge: true
-    // });
-    // manis.setDefault(join(__dirname, './config.yml'), {
-    //     orphan: true
-    // });
-    // manis.setUserConfig('./test/fixture/custom.yml', {
-    //     orphan: true
-    // });
-    // console.warn(manis);
-    // console.warn(manis.from(join(__dirname, './test/fixture/custom.yml')));
-
-    // console.log(Manis.loader(readFileSync(join(__dirname, './config.yml'), 'utf-8'), join(__dirname, './config.yml')));
+    var realConfig = loadConfig('./test/fixture/esui.less');
 
     // var rcConfig = getConfig('.lesslintrc', file.path, defaultConfig);
 

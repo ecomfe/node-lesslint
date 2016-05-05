@@ -11,8 +11,10 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "edp-core": "^1.0.32",
+    "js-yaml": "^3.6.0",
     "manis": "^0.3.0",
-    "postcss": "^5.0.21"
+    "postcss": "^5.0.21",
+    "strip-json-comments": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",
