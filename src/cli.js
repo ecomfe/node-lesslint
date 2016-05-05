@@ -5,11 +5,8 @@
 
 import {createReadStream} from 'fs';
 import chalk from 'chalk';
-import Input from 'postcss/lib/input';
-import safeStringify from 'json-stringify-safe';
 import sys from '../package';
 import {formatMsg, getCandidates} from './util';
-import LessParser from './parser';
 import {check} from './checker';
 
 'use strict';
@@ -24,12 +21,23 @@ function showDefaultInfo() {
     console.log(chalk.bold.green(formatMsg(sys.description)));
 }
 
+
+/**
+ * 校验结果报告
+ *
+ * @inner
+ * @param {Object} errors 按文件类型为 key，值为对应的校验错误信息列表的对象
+ */
+function report(errors) {
+    console.warn(errors);
+}
+
 /**
  * 解析参数。作为命令行执行的入口
  *
  * @param {Array} args 参数列表
  */
-export function parse(args) {
+function parse(args) {
     args = args.slice(2);
 
     // 不带参数时，默认检测当前目录下所有的 less 文件
@@ -66,7 +74,7 @@ export function parse(args) {
     let callback = () => {
         count--;
         if (!count) {
-            // report(errors);
+            report(errors);
         }
     };
 
@@ -80,15 +88,6 @@ export function parse(args) {
                 content: chunk,
                 path: candidate
             };
-            // let input = new Input(file.content, {from: file.path});
-            // let parser = new LessParser(input);
-            // // console.warn(safeStringify(parser, null, 4));
-            // parser.tokenize();
-            // parser.loop();
-            // console.warn();
-            // console.warn();
-            // console.warn(safeStringify(parser, null, 4));
-            // // console.warn(parser);
             check(file, errors, callback);
         });
         readable.on('error', (err) => {
@@ -96,3 +95,5 @@ export function parse(args) {
         });
     });
 }
+
+export {parse};

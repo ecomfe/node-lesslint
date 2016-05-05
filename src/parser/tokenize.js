@@ -300,7 +300,7 @@ export default function lessTokenize(input) {
                         nextOffset = offset;
                     }
 
-                    tokens.push(['comment', content,
+                    tokens.push(['mulit-comment', content,
                         line, pos  - offset,
                         nextLine, next - nextOffset
                     ]);
