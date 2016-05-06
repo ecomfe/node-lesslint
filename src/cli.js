@@ -29,7 +29,7 @@ function showDefaultInfo() {
  * @param {Object} errors 按文件类型为 key，值为对应的校验错误信息列表的对象
  */
 function report(errors) {
-    console.warn(errors);
+    // console.warn(errors);
 }
 
 /**

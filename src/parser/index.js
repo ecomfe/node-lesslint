@@ -41,6 +41,15 @@ export default class LessParser extends Parser {
      */
     tokenize() {
         this.tokens = lessTokenizer(this.input);
+        console.warn('---------------------------');
+        console.warn(this.tokens);
+        console.warn('---------------------------');
+    }
+
+    unknownWord(start) {
+        var token = this.tokens[start];
+        // console.warn(token);
+        throw this.input.error('Unknown word', token[2], token[3]);
     }
 
     /**
@@ -148,7 +157,7 @@ export default class LessParser extends Parser {
 
                 if (pos === blockEnd) {
                     pos = index;
-                    while ( pos < blockEnd ) {
+                    while (pos < blockEnd) {
                         t = token[pos];
 
                         if (t[0] === 'space') {

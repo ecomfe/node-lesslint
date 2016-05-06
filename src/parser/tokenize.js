@@ -249,10 +249,12 @@ export default function lessTokenize(input) {
                         pos = next;
                     }
                     else {
-                        // let prevToken = tokens[tokens.length - 1];
+                        // TODO: .mixin(...); .mixin(@a: 1; ...)
+                        let prevToken = tokens[tokens.length - 1];
                         let nParenStart = tokens.findIndex(t => t[0] === '(');
                         let nParenEnd = tokens.findIndex(t => t[0] === ')');
-                        let isMixinParam = nParenStart >= 0 && nParenEnd < 0;
+                        // let isMixinParam = nParenStart >= 0 && nParenEnd < 0;
+                        let isMixinParam = nParenStart >= 0 && (nParenEnd < 0 || prevToken[2] > tokens[nParenEnd][2]);
 
                         RE_AT_END.lastIndex = pos + 1;
                         RE_AT_END.test(css);
@@ -273,7 +275,7 @@ export default function lessTokenize(input) {
                         ]);
 
                         if (isMixinParam && content.indexOf('...') + 3 === content.length) {
-                            // 处理参数列表
+                            // 处理可变参数列表
                             tokens[tokens.length - 1].push('var-dict');
                         }
 
