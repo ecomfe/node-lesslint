@@ -13,7 +13,7 @@ import MulitComment from './mulit-comment';
 import lessTokenizer from './tokenize';
 
 /* eslint max-len: 0 */
-const RE_MIXIN_DEF = /^([#.](?:[\w-]|\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+)\s*\(/;
+const RE_MIXIN_DEF = /^([#.](?:[\w-]|\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+)\s*\(/im;
 
 /* jshint maxstatements: 40 */
 
@@ -42,14 +42,15 @@ export default class LessParser extends Parser {
     tokenize() {
         this.tokens = lessTokenizer(this.input);
         console.warn('---------------------------');
-        console.warn(this.tokens);
+        // console.warn(this.tokens);
         console.warn('---------------------------');
     }
 
     unknownWord(start) {
         var token = this.tokens[start];
-        // console.warn(token);
-        throw this.input.error('Unknown word', token[2], token[3]);
+        if (!this.mixins[token[1]]) {
+            throw this.input.error('Unknown word', token[2], token[3]);
+        }
     }
 
     /**
@@ -172,6 +173,13 @@ export default class LessParser extends Parser {
 
                 this.current.params.push(param);
             });
+
+
+            let curSelector = this.current.selector;
+            // 正则是为了 mixin 的 () 以及 () 中的参数去掉
+            // let removeParentheses = curSelector.replace(/(.*)(\(.*\))/, RegExp.$1);
+            let removeParentheses = curSelector.replace(/\(.*\)$/, '');
+            this.mixins[removeParentheses] = this.current;
         }
     }
 }

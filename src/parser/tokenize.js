@@ -28,10 +28,11 @@ const RE_WORD_END = /[ \n\t\r\(\)\{\}:;@!'"\\#]|\/(?=\*)/g;
 const RE_BAD_BRACKET = /.[\\\/\("'\n]/;
 
 /**
- * lessTokenize 类
- * 针对 less 重写 postcss/lib/parser
+ * lessTokenize 方法
+ * 针对 less 重写 postcss/lib/tokenize
  */
 export default function lessTokenize(input) {
+
     let tokens = [];
     let css = input.css.valueOf();
 
@@ -52,7 +53,7 @@ export default function lessTokenize(input) {
     let length = css.length;
     let offset = -1;
     let line =  1;
-    let pos =  0;
+    let pos = 0;
 
     function unclosed(what) {
         throw input.error('Unclosed ' + what, line, pos - offset);
