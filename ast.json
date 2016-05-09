@@ -1,13 +1,13 @@
 {
     "input": {
-        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
     },
-    "pos": 15,
+    "pos": 45,
     "root": {
         "raws": {
-            "semicolon": true,
-            "after": "\n\n"
+            "semicolon": false,
+            "after": ""
         },
         "type": "root",
         "nodes": [
@@ -18,22 +18,22 @@
                     "afterName": " "
                 },
                 "type": "atrule",
-                "name": "aa:",
+                "name": "import",
                 "source": {
                     "start": {
                         "line": 1,
                         "column": 1
                     },
                     "input": {
-                        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
                     },
                     "end": {
                         "line": 1,
-                        "column": 9
+                        "column": 14
                     }
                 },
-                "params": "1px"
+                "params": "'ccc'"
             },
             {
                 "raws": {
@@ -49,45 +49,149 @@
                         "column": 1
                     },
                     "input": {
-                        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
                     },
                     "end": {
                         "line": 3,
                         "column": 14
                     }
                 },
-                "params": "\"Tip\""
+                "params": "\"qqq\""
             },
             {
                 "raws": {
-                    "before": "\n\n\n",
-                    "between": "",
-                    "afterName": " "
+                    "before": "\n\n\n\n",
+                    "between": " ",
+                    "semicolon": true,
+                    "after": "\n"
                 },
-                "type": "atrule",
-                "name": "import",
+                "type": "mixin",
+                "nodes": [
+                    {
+                        "raws": {
+                            "before": "\n    ",
+                            "between": ": "
+                        },
+                        "type": "decl",
+                        "source": {
+                            "start": {
+                                "line": 8,
+                                "column": 5
+                            },
+                            "input": {
+                                "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                            },
+                            "end": {
+                                "line": 8,
+                                "column": 15
+                            }
+                        },
+                        "prop": "color",
+                        "value": "red"
+                    }
+                ],
                 "source": {
                     "start": {
-                        "line": 6,
+                        "line": 7,
                         "column": 1
                     },
                     "input": {
-                        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
                     },
                     "end": {
-                        "line": 6,
-                        "column": 16
+                        "line": 9,
+                        "column": 1
                     }
                 },
-                "params": "\"color\""
+                "selector": ".a()",
+                "definition": true,
+                "params": []
+            },
+            {
+                "raws": {
+                    "before": "\n\n",
+                    "between": " ",
+                    "semicolon": true,
+                    "after": "\n"
+                },
+                "type": "mixin",
+                "nodes": [
+                    {
+                        "raws": {
+                            "before": "\n    ",
+                            "between": ": "
+                        },
+                        "type": "decl",
+                        "source": {
+                            "start": {
+                                "line": 12,
+                                "column": 5
+                            },
+                            "input": {
+                                "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                            },
+                            "end": {
+                                "line": 12,
+                                "column": 17
+                            }
+                        },
+                        "prop": "width",
+                        "value": "100px"
+                    }
+                ],
+                "source": {
+                    "start": {
+                        "line": 11,
+                        "column": 1
+                    },
+                    "input": {
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                    },
+                    "end": {
+                        "line": 13,
+                        "column": 1
+                    }
+                },
+                "selector": ".b()",
+                "definition": true,
+                "params": []
+            },
+            {
+                "raws": {
+                    "before": "\n\n",
+                    "between": " ",
+                    "after": "\n    \n"
+                },
+                "type": "mixin",
+                "nodes": [],
+                "source": {
+                    "start": {
+                        "line": 15,
+                        "column": 1
+                    },
+                    "input": {
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                    },
+                    "end": {
+                        "line": 17,
+                        "column": 1
+                    }
+                },
+                "selector": "body",
+                "definition": true,
+                "params": []
             }
         ],
         "source": {
             "input": {
-                "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
             },
             "start": {
                 "line": 1,
@@ -97,8 +201,8 @@
     },
     "current": {
         "raws": {
-            "semicolon": true,
-            "after": "\n\n"
+            "semicolon": false,
+            "after": ""
         },
         "type": "root",
         "nodes": [
@@ -109,22 +213,22 @@
                     "afterName": " "
                 },
                 "type": "atrule",
-                "name": "aa:",
+                "name": "import",
                 "source": {
                     "start": {
                         "line": 1,
                         "column": 1
                     },
                     "input": {
-                        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
                     },
                     "end": {
                         "line": 1,
-                        "column": 9
+                        "column": 14
                     }
                 },
-                "params": "1px"
+                "params": "'ccc'"
             },
             {
                 "raws": {
@@ -140,45 +244,149 @@
                         "column": 1
                     },
                     "input": {
-                        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
                     },
                     "end": {
                         "line": 3,
                         "column": 14
                     }
                 },
-                "params": "\"Tip\""
+                "params": "\"qqq\""
             },
             {
                 "raws": {
-                    "before": "\n\n\n",
-                    "between": "",
-                    "afterName": " "
+                    "before": "\n\n\n\n",
+                    "between": " ",
+                    "semicolon": true,
+                    "after": "\n"
                 },
-                "type": "atrule",
-                "name": "import",
+                "type": "mixin",
+                "nodes": [
+                    {
+                        "raws": {
+                            "before": "\n    ",
+                            "between": ": "
+                        },
+                        "type": "decl",
+                        "source": {
+                            "start": {
+                                "line": 8,
+                                "column": 5
+                            },
+                            "input": {
+                                "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                            },
+                            "end": {
+                                "line": 8,
+                                "column": 15
+                            }
+                        },
+                        "prop": "color",
+                        "value": "red"
+                    }
+                ],
                 "source": {
                     "start": {
-                        "line": 6,
+                        "line": 7,
                         "column": 1
                     },
                     "input": {
-                        "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
                     },
                     "end": {
-                        "line": 6,
-                        "column": 16
+                        "line": 9,
+                        "column": 1
                     }
                 },
-                "params": "\"color\""
+                "selector": ".a()",
+                "definition": true,
+                "params": []
+            },
+            {
+                "raws": {
+                    "before": "\n\n",
+                    "between": " ",
+                    "semicolon": true,
+                    "after": "\n"
+                },
+                "type": "mixin",
+                "nodes": [
+                    {
+                        "raws": {
+                            "before": "\n    ",
+                            "between": ": "
+                        },
+                        "type": "decl",
+                        "source": {
+                            "start": {
+                                "line": 12,
+                                "column": 5
+                            },
+                            "input": {
+                                "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                            },
+                            "end": {
+                                "line": 12,
+                                "column": 17
+                            }
+                        },
+                        "prop": "width",
+                        "value": "100px"
+                    }
+                ],
+                "source": {
+                    "start": {
+                        "line": 11,
+                        "column": 1
+                    },
+                    "input": {
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                    },
+                    "end": {
+                        "line": 13,
+                        "column": 1
+                    }
+                },
+                "selector": ".b()",
+                "definition": true,
+                "params": []
+            },
+            {
+                "raws": {
+                    "before": "\n\n",
+                    "between": " ",
+                    "after": "\n    \n"
+                },
+                "type": "mixin",
+                "nodes": [],
+                "source": {
+                    "start": {
+                        "line": 15,
+                        "column": 1
+                    },
+                    "input": {
+                        "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                    },
+                    "end": {
+                        "line": 17,
+                        "column": 1
+                    }
+                },
+                "selector": "body",
+                "definition": true,
+                "params": []
             }
         ],
         "source": {
             "input": {
-                "css": "@aa: 1px;\n\n@import \"Tip\";\n\n\n@import \"color\";\n\n",
-                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/import.less"
+                "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
             },
             "start": {
                 "line": 1,
@@ -186,35 +394,164 @@
             }
         }
     },
-    "spaces": "\n\n",
-    "semicolon": true,
-    "mixins": {},
+    "spaces": "",
+    "semicolon": false,
+    "mixins": {
+        ".a": {
+            "raws": {
+                "before": "\n\n\n\n",
+                "between": " ",
+                "semicolon": true,
+                "after": "\n"
+            },
+            "type": "mixin",
+            "nodes": [
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 8,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                            "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                        },
+                        "end": {
+                            "line": 8,
+                            "column": 15
+                        }
+                    },
+                    "prop": "color",
+                    "value": "red"
+                }
+            ],
+            "source": {
+                "start": {
+                    "line": 7,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                    "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                },
+                "end": {
+                    "line": 9,
+                    "column": 1
+                }
+            },
+            "selector": ".a()",
+            "definition": true,
+            "params": []
+        },
+        ".b": {
+            "raws": {
+                "before": "\n\n",
+                "between": " ",
+                "semicolon": true,
+                "after": "\n"
+            },
+            "type": "mixin",
+            "nodes": [
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 12,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                            "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 17
+                        }
+                    },
+                    "prop": "width",
+                    "value": "100px"
+                }
+            ],
+            "source": {
+                "start": {
+                    "line": 11,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                    "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                },
+                "end": {
+                    "line": 13,
+                    "column": 1
+                }
+            },
+            "selector": ".b()",
+            "definition": true,
+            "params": []
+        },
+        "body": {
+            "raws": {
+                "before": "\n\n",
+                "between": " ",
+                "after": "\n    \n"
+            },
+            "type": "mixin",
+            "nodes": [],
+            "source": {
+                "start": {
+                    "line": 15,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@import 'ccc';\n\n@import \"qqq\";\n\n\n\n.a() {\n    color: red;\n}\n\n.b() {\n    width: 100px;\n}\n\nbody {\n    .a();\n}",
+                    "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color1.less"
+                },
+                "end": {
+                    "line": 17,
+                    "column": 1
+                }
+            },
+            "selector": "body",
+            "definition": true,
+            "params": []
+        }
+    },
     "tokens": [
         [
             "at-word",
-            "@aa:",
+            "@import",
             1,
             1,
             1,
-            4
+            7
         ],
         [
             "space",
             " "
         ],
         [
-            "word",
-            "1px",
+            "string",
+            "'ccc'",
             1,
-            6,
+            9,
             1,
-            8
+            13
         ],
         [
             ";",
             ";",
             1,
-            9
+            14
         ],
         [
             "space",
@@ -234,7 +571,7 @@
         ],
         [
             "string",
-            "\"Tip\"",
+            "\"qqq\"",
             3,
             9,
             3,
@@ -248,37 +585,213 @@
         ],
         [
             "space",
-            "\n\n\n"
+            "\n\n\n\n"
         ],
         [
-            "at-word",
-            "@import",
-            6,
+            "word",
+            ".a",
+            7,
             1,
-            6,
-            7
+            7,
+            2
+        ],
+        [
+            "brackets",
+            "()",
+            7,
+            3,
+            7,
+            4
         ],
         [
             "space",
             " "
         ],
         [
-            "string",
-            "\"color\"",
-            6,
-            9,
-            6,
-            15
+            "{",
+            "{",
+            7,
+            6
+        ],
+        [
+            "space",
+            "\n    "
+        ],
+        [
+            "word",
+            "color",
+            8,
+            5,
+            8,
+            9
+        ],
+        [
+            ":",
+            ":",
+            8,
+            10
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            "red",
+            8,
+            12,
+            8,
+            14
         ],
         [
             ";",
             ";",
-            6,
-            16
+            8,
+            15
+        ],
+        [
+            "space",
+            "\n"
+        ],
+        [
+            "}",
+            "}",
+            9,
+            1
         ],
         [
             "space",
             "\n\n"
+        ],
+        [
+            "word",
+            ".b",
+            11,
+            1,
+            11,
+            2
+        ],
+        [
+            "brackets",
+            "()",
+            11,
+            3,
+            11,
+            4
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "{",
+            "{",
+            11,
+            6
+        ],
+        [
+            "space",
+            "\n    "
+        ],
+        [
+            "word",
+            "width",
+            12,
+            5,
+            12,
+            9
+        ],
+        [
+            ":",
+            ":",
+            12,
+            10
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            "100px",
+            12,
+            12,
+            12,
+            16
+        ],
+        [
+            ";",
+            ";",
+            12,
+            17
+        ],
+        [
+            "space",
+            "\n"
+        ],
+        [
+            "}",
+            "}",
+            13,
+            1
+        ],
+        [
+            "space",
+            "\n\n"
+        ],
+        [
+            "word",
+            "body",
+            15,
+            1,
+            15,
+            4
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "{",
+            "{",
+            15,
+            6
+        ],
+        [
+            "space",
+            "\n    "
+        ],
+        [
+            "word",
+            ".a",
+            16,
+            5,
+            16,
+            6
+        ],
+        [
+            "brackets",
+            "()",
+            16,
+            7,
+            16,
+            8
+        ],
+        [
+            ";",
+            ";",
+            16,
+            9
+        ],
+        [
+            "space",
+            "\n"
+        ],
+        [
+            "}",
+            "}",
+            17,
+            1
         ]
     ]
 }

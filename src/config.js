@@ -12,7 +12,7 @@ import yaml from 'js-yaml';
 
 let STORAGE = null;
 
-let JSON_YAML_REG = /.+\.(json|yml)$/i;
+const JSON_YAML_REG = /.+\.(json|yml)$/i;
 
 /**
  * 获取 merge 后的配置文件

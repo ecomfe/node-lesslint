@@ -56,7 +56,6 @@ function report(errors) {
     }
 
     if (t12) {
-        console.warn(123);
         log.info('Congratulations! Everything gone well, you are T12!');
     }
     else {

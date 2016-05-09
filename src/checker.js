@@ -6,7 +6,7 @@
 import Input from 'postcss/lib/input';
 import safeStringify from 'json-stringify-safe';
 import chalk from 'chalk';
-import {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig} from './util';
+import {isIgnored} from './util';
 import {loadConfig} from './config';
 import LessParser from './parser';
 import {join} from 'path';
@@ -51,12 +51,15 @@ function checkString(fileContent, filePath, realConfig) {
 
     let errors = [];
 
-    let parsePromise = new Promise((resolve, reject) => {
+    var invalid = {
+        path: '',
+        messages: []
+    };
+    // TODO: 在 parser 之前，应该用 less 本身 parse 一次
+    let analyzePromise = new Promise((resolve, reject) => {
         try {
             parser.tokenize();
             parser.loop();
-
-            console.warn(parser.root);
 
             Object.getOwnPropertyNames(
                 realConfig
@@ -64,13 +67,21 @@ function checkString(fileContent, filePath, realConfig) {
                 let ruleFilePath = join(ruleDir, prop) + '.js';
                 if (existsSync(ruleFilePath)) {
                     require(join(ruleDir, prop)).rule({
+                        ast: parser.root,
+                        ruleName: prop,
                         ruleVal: realConfig[prop],
                         fileContent: fileContent,
                         filePath: filePath,
-                        errors: errors
+                        errors: invalid.messages
                     });
+
+                    if (invalid.messages.length) {
+                        invalid.path = filePath;
+                        errors.push(invalid);
+                    }
                 }
             });
+
             resolve(errors);
 
             let parserRet = safeStringify(parser, null, 4);
@@ -100,39 +111,7 @@ function checkString(fileContent, filePath, realConfig) {
         }
     });
 
-    return parsePromise;
-
-    // console.warn();
-    // console.warn();
-    // console.warn(parser.root);
-
-    // console.warn(realConfig);
-    // console.warn(parser);
-    // let thisPromiseCount = 0;
-    // let removePromise = new Promise((resolve, reject) => {
-    //     thisPromiseCount++;
-    //     resolve(thisPromiseCount);
-    //     // setTimeout(function () {
-    //     //     try {
-    //     //         resolve(thisPromiseCount);
-    //     //     }
-    //     //     catch (e) {
-    //     //         reject('rrrrrrr');
-    //     //     }
-    //     // }, Math.random() * 2000 + 1000);
-    // });
-
-    // return removePromise;
-
-    // removePromise.then(
-    //     function (val) {
-    //         console.warn(val);
-    //     }
-    // ).catch(
-    //     function (reason) {
-    //         console.log('Handle rejected promise (' + reason + ') here.');
-    //     }
-    // );
+    return analyzePromise;
 }
 
 /**
@@ -148,20 +127,26 @@ function check(file, errors, done) {
         return;
     }
 
-    checkString(file.content, file.path, loadConfig(file.path, true))
-        .then(done)
-        .catch(function (invalidList) {
-            if (invalidList.length) {
-                invalidList.forEach(function (invalid) {
-                    errors.push({
-                        path: invalid.path,
-                        messages: invalid.messages
-                    });
+    /**
+     * checkString 的 promise 的 reject 和 resolve 的返回值的结构以及处理方式都是一样的
+     * reject 指的是 parse 本身的错误以及 ast.toCSS({}) 的错误，这些代表程序的错误。
+     * resolve 代表的是 lesslint 检测出来的问题
+     *
+     * @param {Array.<Object>} invalidList 错误信息集合
+     */
+    function callback(invalidList) {
+        if (invalidList.length) {
+            invalidList.forEach((invalid) => {
+                errors.push({
+                    path: invalid.path,
+                    messages: invalid.messages
                 });
-                done();
-            }
+            });
         }
-    );
+        done();
+    }
+
+    checkString(file.content, file.path, loadConfig(file.path, true)).then(callback).catch(callback);
 }
 
 export {check, checkString};

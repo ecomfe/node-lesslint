@@ -229,5 +229,43 @@ function getConfig(configName, file, defaultConfig) {
     return value;
 }
 
+/**
+ * 根据行号获取当前行的内容
+ *
+ * @param {number} line 行号
+ * @param {string} fileData 文件内容
+ * @param {boolean} notRemoveSpace 不去掉前面的空格，为 true，则不去掉，为 false 则去掉
+ *                                 这是后加的参数，为了兼容之前的代码
+ *
+ * @return {string} 当前行内容
+ */
+function getLineContent(line, fileData, notRemoveSpace) {
+    if (notRemoveSpace) {
+        return fileData.split('\n')[line - 1];
+    }
+    // 去掉前面的缩进
+    return fileData.split('\n')[line - 1].replace(/^\s*/, '');
+}
 
-export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg};
+/**
+ * 把错误信息放入 errors 数组中
+ *
+ * @param {string} ruleName 规则名称
+ * @param {number} line 行号
+ * @param {number} col 列号
+ * @param {string} message 错误信息
+ * @param {string} colorMessage 彩色错误信息
+ */
+function addInvalidList(ruleName, line, col, message, colorMessage) {
+    this.push({
+        ruleName: ruleName,
+        line: line,
+        col: col,
+        message: message,
+        colorMessage: colorMessage
+    });
+}
+
+
+
+export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg, getLineContent, addInvalidList};
