@@ -35,8 +35,12 @@ function loadConfig(filePath, refresh) {
             'config.json'
         ],
         loader: function (content, filePath) {
+            if (!content) {
+                return '';
+            }
+
             if (basename(filePath) === '.lesslintrc') {
-                return content ? JSON.parse(stripJSONComments(content)) : '';
+                return JSON.parse(stripJSONComments(content));
             }
 
             let match = filePath.match(JSON_YAML_REG);

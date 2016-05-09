@@ -5,8 +5,9 @@
 
 import {createReadStream} from 'fs';
 import chalk from 'chalk';
+import {log} from 'edp-core';
 import sys from '../package';
-import {formatMsg, getCandidates} from './util';
+import {formatMsg, getCandidates, uniqueMsg} from './util';
 import {check} from './checker';
 
 'use strict';
@@ -29,8 +30,40 @@ function showDefaultInfo() {
  * @param {Object} errors 按文件类型为 key，值为对应的校验错误信息列表的对象
  */
 function report(errors) {
-    // console.warn(errors);
+    let t12 = true;
+
+    if (errors.length) {
+        errors.forEach((error) => {
+            log.info(error.path);
+            // error.messages = uniqueMsg(error.messages);
+            error.messages.forEach((message) => {
+                let ruleName = message.ruleName || '';
+                let msg = '→ ' + (ruleName ? chalk.bold(ruleName) + ': ' : '');
+                // 全局性的错误可能没有位置信息
+                if (typeof message.line === 'number') {
+                    msg += ('line ' + message.line);
+                    if (typeof message.col === 'number') {
+                        msg += (', col ' + message.col);
+                    }
+                    msg += ': ';
+                }
+
+                msg += message.colorMessage || message.message;
+                log.warn(msg);
+            });
+        });
+        t12 = false;
+    }
+
+    if (t12) {
+        console.warn(123);
+        log.info('Congratulations! Everything gone well, you are T12!');
+    }
+    else {
+        process.exit(1);
+    }
 }
+
 
 /**
  * 解析参数。作为命令行执行的入口

@@ -45,6 +45,32 @@ function formatMsg(msg, spaceCount) {
 }
 
 /**
+ * 去掉 error.messages 里面重复的信息
+ *
+ * @param {Array} msg error.messages
+ *
+ * @return {Array} 结果数组，是一个新数组
+ */
+function uniqueMsg(msg) {
+    let ret = [];
+    let tmp = [];
+    for (let i = 0, j = 1, len = msg.length; i < len; i++, j++) {
+        let cur = msg[i];
+        if (!cur.uniqueFlag) {
+            ret.push(cur);
+        }
+        else {
+            if (tmp.indexOf(cur.uniqueFlag) === -1) {
+                tmp.push(cur.uniqueFlag);
+                ret.push(cur);
+            }
+        }
+    }
+    return ret;
+}
+
+
+/**
  * 根据参数以及模式匹配相应的文件
  *
  * @param {Array} args 文件
@@ -204,4 +230,4 @@ function getConfig(configName, file, defaultConfig) {
 }
 
 
-export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig};
+export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg};

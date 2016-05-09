@@ -41,9 +41,9 @@ export default class LessParser extends Parser {
      */
     tokenize() {
         this.tokens = lessTokenizer(this.input);
-        console.warn('---------------------------');
+        // console.warn('---------------------------');
         // console.warn(this.tokens);
-        console.warn('---------------------------');
+        // console.warn('---------------------------');
     }
 
     unknownWord(start) {
