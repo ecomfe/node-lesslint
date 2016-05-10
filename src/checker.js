@@ -68,7 +68,7 @@ function checkString(fileContent, filePath, realConfig) {
                 let ruleFilePath = join(ruleDir, prop) + '.js';
                 if (existsSync(ruleFilePath)) {
                     require(join(ruleDir, prop)).rule({
-                        ast: parser.root,
+                        ast: parser,
                         ruleName: prop,
                         ruleVal: realConfig[prop],
                         fileContent: fileContent,

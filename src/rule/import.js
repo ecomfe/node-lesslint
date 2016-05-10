@@ -48,7 +48,7 @@ function rule(opts) {
         importQuote.quoteVal = null;
     }
 
-    let ast = opts.ast;
+    let ast = opts.ast.root;
     let errors = opts.errors;
     let nodes = ast.nodes;
 

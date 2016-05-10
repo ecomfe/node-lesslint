@@ -5,7 +5,6 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
-import safeStringify from 'json-stringify-safe';
 import chalk from 'chalk';
 import less from 'less';
 import {getLineContent, addInvalidList} from '../util';
@@ -67,7 +66,7 @@ let p1 = new RegExp('\\b\\s?\\s*(' + colors + ')\\b', 'ig');
  * @return {Array} 不符合规则检测的集合
  */
 function rule(opts) {
-    let ast = opts.ast;
+    let ast = opts.ast.root;
     let errors = opts.errors;
     let nodes = ast.nodes;
 
