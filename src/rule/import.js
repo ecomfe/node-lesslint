@@ -11,7 +11,6 @@ import {getLineContent, addInvalidList} from '../util';
 
 'use strict';
 
-
 /**
  * less 文件后缀正则
  *
@@ -50,8 +49,8 @@ function rule(opts) {
     }
 
     let ast = opts.ast;
-    let nodes = ast.nodes;
     let errors = opts.errors;
+    let nodes = ast.nodes;
 
     nodes.forEach((node) => {
         if (node.type !== 'atrule' || node.name !== 'import') {
@@ -61,18 +60,19 @@ function rule(opts) {
         let params = node.params;
         params = params.replace(/^(['"])/, '').replace(/(['"])$/, '');
 
-        let lineNum = node.source.start.line;
-
         let quote = RegExp.$1;
+
+        let lineNum = node.source.start.line;
+        let lineContent = getLineContent(lineNum, opts.fileContent);
 
         // @import 语句引用的文件必须（MUST）写在一对引号内
         if (!quote) {
             addInvalidList.call(errors,
                 opts.ruleName,
                 lineNum, node.source.end.column - node.params.length,
-                '`' + getLineContent(lineNum, opts.fileContent) + '` '
+                '`' + lineContent + '` '
                     + '@import statement must wrote a pair of quotation marks',
-                '`' + getLineContent(lineNum, opts.fileContent).replace(
+                '`' + lineContent.replace(
                         params,
                         chalk.magenta(params)
                     )
@@ -90,13 +90,13 @@ function rule(opts) {
                 addInvalidList.call(errors,
                     opts.ruleName,
                     lineNum, node.source.end.column - node.params.length,
-                    '`' + getLineContent(lineNum, opts.fileContent)
+                    '`' + lineContent
                         + '` '
                         + 'Quotes must be the same in the same file, Current file '
                         + 'the first quote is `'
                         + importQuote.quoteVal
                         + '`',
-                    '`' + getLineContent(lineNum, opts.fileContent).replace(
+                    '`' + lineContent.replace(
                             new RegExp(quote, 'g'),
                             chalk.magenta(quote)
                         )
@@ -114,10 +114,10 @@ function rule(opts) {
             addInvalidList.call(errors,
                 opts.ruleName,
                 lineNum, node.source.end.column - node.params.length,
-                '`' + getLineContent(lineNum, opts.fileContent)
+                '`' + lineContent
                     + '` '
                     + '.less suffix must not be omitted',
-                '`' + getLineContent(lineNum, opts.fileContent).replace(
+                '`' + lineContent.replace(
                         params,
                         chalk.magenta(params)
                     )

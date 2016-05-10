@@ -55,6 +55,7 @@ function checkString(fileContent, filePath, realConfig) {
         path: '',
         messages: []
     };
+
     // TODO: 在 parser 之前，应该用 less 本身 parse 一次
     let analyzePromise = new Promise((resolve, reject) => {
         try {
@@ -75,7 +76,7 @@ function checkString(fileContent, filePath, realConfig) {
                         errors: invalid.messages
                     });
 
-                    if (invalid.messages.length) {
+                    if (invalid.messages.length && invalid.path !== filePath) {
                         invalid.path = filePath;
                         errors.push(invalid);
                     }
