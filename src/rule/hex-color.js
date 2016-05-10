@@ -26,7 +26,7 @@ const msg = ''
  *
  * @type {Array}
  */
-const COLOR_FUNC_REG = /^\s*(rgb|hsv|hsl)(\(.*\))/g;
+const COLOR_FUNC_REG = /\s*(rgb|hsv|hsl)(\(.*\))\s*/;
 
 /**
  * less 支持的颜色名称
@@ -116,6 +116,34 @@ function rule(opts) {
                         + chalk.grey(msg)
                 );
             }
+        }
+
+        if (node.selector) {
+            let childNodes = node.nodes;
+            childNodes.forEach((childNode) => {
+                let lineNum = childNode.source.start.line;
+                let lineContent = getLineContent(lineNum, opts.fileContent);
+                let value = childNode.value;
+
+                // 匹配使用 rgb, hsl, hsv 表达式的情况
+                if (COLOR_FUNC_REG.test(value)) {
+                    addInvalidList.call(errors,
+                        opts.ruleName,
+                        lineNum, childNode.source.end.column - value.length,
+                        '`' + lineContent
+                            + '` '
+                            + msg,
+                        '`' + lineContent.replace(
+                                value,
+                                ($1) => {
+                                    return chalk.magenta($1);
+                                }
+                            )
+                            + '` '
+                            + chalk.grey(msg)
+                    );
+                }
+            });
         }
     });
 
