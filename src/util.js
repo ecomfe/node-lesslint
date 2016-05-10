@@ -266,6 +266,4 @@ function addInvalidList(ruleName, line, col, message, colorMessage) {
     });
 }
 
-
-
 export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg, getLineContent, addInvalidList};

@@ -17,12 +17,12 @@ Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可�
 
 + [颜色检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E9%A2%9C%E8%89%B2)：颜色定义必须（MUST）使用 #RRGGBB 格式定义，并在可能时尽量（SHOULD）缩写为 #RGB 形式，且避免直接使用颜色名称与 rgb() 表达式。`hex-color`, `shorthand`
 
-
-
-
 + [注释检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E6%B3%A8%E9%87%8A)：单行注释尽量使用 // 方式。`single-comment`
 
 + [数值检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E6%95%B0%E5%80%BC)：对于处于 (0, 1) 范围内的数值，小数点前的 0 可以（MAY）省略，同一项目中必须（MUST）保持一致。`leading-zero`
+
+
+
 
 + [选择器检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E9%80%89%E6%8B%A9%E5%99%A8)：当多个选择器共享一个声明块时，每个选择器声明必须（MUST）独占一行。`require-newline`
 
