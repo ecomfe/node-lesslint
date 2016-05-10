@@ -1,19 +1,274 @@
-.list,
-a,.f{
+@left-width: 80px; // 表单左侧label的宽度
+@form-input-width: 260px; // 表单内select和input元素的宽度
+@error-color: #ff7e69; // 错误信息文本颜色
+
+
+.list {
     padding: 10px 0;
     background: #eee;
 
-    .layout-wrapper, .cc {
+    .layout-wrapper,
+    .cc {
         padding: 22px 40px;
         width: 900px;
         background: #fff;
-        div,span {
-            clear: both;
+    }
 
-            a, p ,
-            h1 {
-                display: inline-block;
+    h3 {
+        border-bottom: solid 2px #eee;
+        padding: 10px 0 10px 20px;
+        color: #1f96ff;
+        font-size: 16px;
+        background: url(img/icon.png) no-repeat 0 18px;
+        _background: url(img/icon-ie6.png) no-repeat 0 18px;
+    }
+
+    .loading {
+        height: 180px;
+        background: url(img/loading.gif) no-repeat center 50px;
+    }
+}
+
+.query-list {
+    padding: 0 100px 0 60px;
+    color: #333;
+    line-height: 2;
+
+    li {
+        position: relative;
+        margin-left: 50px;
+        margin-top: -1px;
+        padding: 30px 0 10px;
+        border-top: dashed 1px #e1e0e0;
+
+        &:hover {
+            .edit {
+                display: inline;
             }
+        }
+
+        &.show-data-error {
+            margin-left: 0;
+            text-align: center;
+            color: red;
+        }
+    }
+
+    a, .rejreason {
+        margin-bottom: 10px;
+        background: #FFF8F0;
+        border: solid 1px #ff5744;
+        color: #ff5744;
+        padding: 5px 10px;
+        line-height: 1.5;
+
+        h4 {
+            font-weight: 700;
+        }
+    }
+
+    .source {
+        float: right;
+        color: #b5c8d7;
+    }
+
+    em {
+        display: inline-block;
+        position: absolute;
+        left: -60px;
+        line-height: 18px;
+        padding-left: 10px;
+        background: url(img/icon.png) 0 -32px;
+        _background: url(img/icon-ie6.png) 0 -32px;
+        color: #fff;
+        font-weight: 400;
+    }
+
+    .edit {
+        display: none;
+        _display: inline; // IE6不支持a以外的节点hover，降级处理
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .status {
+        position: absolute;
+        right: 120px;
+        top: 5px;
+        line-height: 40px;
+        padding-left: 45px;
+        background: url(img/icon.png) no-repeat;
+        _background: url(img/icon-ie6.png) no-repeat;
+        color: #b5b5b5;
+
+        &.audit-pass {
+            background-position: 0 -65px;
+            color: #6fb919;
+        }
+
+        &.audit-reject {
+            background-position: 0 -106px;
+            color: #ff5744;
+        }
+
+        &.audit-waiting {
+            background-position: -2px -149px;
+        }
+
+        &.audit-expired {
+            background-position: 0 -203px;
+        }
+    }
+
+    .list-left {
+        display: inline-block;
+        width: @left-width - 6;
+        padding-left: 6px;
+    }
+
+    .read-only {
+        position: relative;
+    }
+
+    .read-only-item {
+
+        .list-left {
+            float: left;
+        }
+
+        p {
+            float: left;
+            word-break: break-all;
+            width: 400px;
         }
     }
 }
+
+.btn-submit {
+    border: none;
+    background: #1f96ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    border: solid 1px #1f96ff;
+    background: #fff;
+    color: #1f96ff;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.apply-form {
+    .apply-form-item {
+        margin-bottom: 5px;
+    }
+
+    .btn-submit {
+        margin: 10px 5px 0 @left-width;
+    }
+
+    .btn-cancel {
+        margin-right: 5px;
+    }
+
+    .form-error,
+    .upload-error {
+        color: @error-color;
+    }
+
+    .upload-error {
+        position: absolute;
+        bottom: -7px;
+    }
+
+    .query-tip {
+        position: absolute;
+        width: 300px;
+        line-height: 1.5;
+        left: 346px;
+        top: 35px;
+        padding: 5px;
+        border: solid 1px #ff9e2b;
+        background: #fff8f0;
+        color: #ff9e2b;
+    }
+
+    .toggle {
+        margin-left: @left-width;
+    }
+
+    .form-brand {
+        margin-top: 10px;
+        padding-top: 10px;
+        border: solid 1px #e6e6e6;
+        background: #f5f8fb;
+
+        .rejreason {
+            margin-top: -10px;
+            border: none;
+            border-bottom: solid 1px #e6e6e6;
+        }
+    }
+
+    .form-brand-item {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 5px;
+
+        em {
+            position: absolute;
+            left: 0;
+            line-height: 2;
+            font-weight: 700;
+            background: transparent;
+            color: @error-color;
+        }
+    }
+
+    .brand-tip {
+        border-top: solid 1px #e7e7e7;
+        margin-top: 10px;
+        padding: 10px 10px 10px 20px;
+        background: #eff2f5;
+
+        h4 {
+            color: #516b86;
+        }
+
+        ul {
+            list-style: inside;
+            color: #929fac;
+
+            li {
+                margin: 0;
+                padding: 0;
+                border-top: none;
+
+                &:before,
+                &:after {
+                    display: block;
+                    content: none;
+                }
+            }
+        }
+    }
+
+    .input-text {
+        border: solid 1px #b1b1b1;
+        padding: 4px 5px;
+        margin-right: 5px;
+        vertical-align: top;
+    }
+
+    .submit-tip {
+        position: absolute;
+        margin-left: @left-width;
+        color: @error-color;
+        font-weight: 700;
+    }
+}
+
+
