@@ -52,6 +52,44 @@ let colors = (function () {
  */
 let p1 = new RegExp('\\b\\s?\\s*(' + colors + ')\\b', 'ig');
 
+
+/**
+ * 递归分析 ast node
+ *
+ * @param {Object} node 待分析的 ast 节点
+ * @param {Object} opts 当前规则检测的参数
+ */
+function recursionNodes(node, opts) {
+    let errors = opts.errors;
+    let childNodes = node.nodes || [];
+    childNodes.forEach((childNode) => {
+        let lineNum = childNode.source.start.line;
+        let lineContent = getLineContent(lineNum, opts.fileContent);
+        let value = childNode.value;
+
+        // 匹配使用 rgb, hsl, hsv 表达式的情况
+        if (COLOR_FUNC_REG.test(value)) {
+            addInvalidList.call(errors,
+                opts.ruleName,
+                lineNum, childNode.source.end.column - value.length,
+                '`' + lineContent
+                    + '` '
+                    + msg,
+                '`' + lineContent.replace(
+                        value,
+                        ($1) => {
+                            return chalk.magenta($1);
+                        }
+                    )
+                    + '` '
+                    + chalk.grey(msg)
+            );
+        }
+        recursionNodes(childNode, opts);
+    });
+}
+
+
 /**
  * 具体的检测逻辑
  *
@@ -118,36 +156,8 @@ function rule(opts) {
             }
         }
 
-        if (node.selector) {
-            let childNodes = node.nodes;
-            childNodes.forEach((childNode) => {
-                let lineNum = childNode.source.start.line;
-                let lineContent = getLineContent(lineNum, opts.fileContent);
-                let value = childNode.value;
-
-                // 匹配使用 rgb, hsl, hsv 表达式的情况
-                if (COLOR_FUNC_REG.test(value)) {
-                    addInvalidList.call(errors,
-                        opts.ruleName,
-                        lineNum, childNode.source.end.column - value.length,
-                        '`' + lineContent
-                            + '` '
-                            + msg,
-                        '`' + lineContent.replace(
-                                value,
-                                ($1) => {
-                                    return chalk.magenta($1);
-                                }
-                            )
-                            + '` '
-                            + chalk.grey(msg)
-                    );
-                }
-            });
-        }
+        recursionNodes(node, opts);
     });
-
-    // console.warn(safeStringify(ast, null, 4));
 }
 
 export {rule};

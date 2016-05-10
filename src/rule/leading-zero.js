@@ -26,6 +26,48 @@ let msg = 'When value is between 0 - 1 decimal, omitting the integer part of the
 const DECIMAL_REG = /(\d*)\.\d+[^\s);]*/;
 
 /**
+ * 递归分析 ast node
+ *
+ * @param {Object} node 待分析的 ast 节点
+ * @param {Object} opts 当前规则检测的参数
+ */
+function recursionNodes(node, opts) {
+    let errors = opts.errors;
+    let childNodes = node.nodes || [];
+    childNodes.forEach((childNode) => {
+        let lineNum = childNode.source.start.line;
+        let lineContent = getLineContent(lineNum, opts.fileContent);
+        let value = childNode.value;
+        var items = value ? value.split(' ') : [];
+        items.forEach((item) => {
+            if (DECIMAL_REG.test(item)) {
+                var match = RegExp.$1;
+
+                if (match === '0') {
+                    addInvalidList.call(errors,
+                        opts.ruleName,
+                        lineNum,
+                        null,
+                        '`' + lineContent
+                            + '` '
+                            + msg,
+                        '`' + lineContent.replace(
+                                item,
+                                ($1) => {
+                                    return chalk.magenta($1);
+                                }
+                            )
+                            + '` '
+                            + chalk.grey(msg)
+                    );
+                }
+            }
+        });
+        recursionNodes(childNode, opts);
+    });
+}
+
+/**
  * 具体的检测逻辑
  *
  * @param {Object} opts 参数
@@ -75,41 +117,7 @@ function rule(opts) {
             });
         }
 
-        if (node.selector) {
-            let childNodes = node.nodes;
-            childNodes.forEach((childNode) => {
-                let lineNum = childNode.source.start.line;
-                let lineContent = getLineContent(lineNum, opts.fileContent);
-                let value = childNode.value;
-
-                var items = value.split(' ');
-                items.forEach((item) => {
-                    if (DECIMAL_REG.test(item)) {
-                        var match = RegExp.$1;
-
-                        if (match === '0') {
-                            addInvalidList.call(errors,
-                                opts.ruleName,
-                                lineNum,
-                                null,
-                                '`' + lineContent
-                                    + '` '
-                                    + msg,
-                                '`' + lineContent.replace(
-                                        item,
-                                        ($1) => {
-                                            return chalk.magenta($1);
-                                        }
-                                    )
-                                    + '` '
-                                    + chalk.grey(msg)
-                            );
-                        }
-                    }
-                });
-            });
-        }
-
+        recursionNodes(node, opts);
     });
 }
 
