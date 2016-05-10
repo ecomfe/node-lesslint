@@ -18,6 +18,104 @@ import {getLineContent, addInvalidList} from '../util';
  */
 let msg = 'When multiple selectors share a statement block, each selector statement must be per line';
 
+
+/**
+ * 递归分析 ast node
+ *
+ * @param {Object} node 待分析的 ast 节点
+ * @param {Object} opts 当前规则检测的参数
+ */
+// function recursionNodes(node, opts) {
+//     let errors = opts.errors;
+//     let childNodes = node.nodes || [];
+//     // console.warn(safeStringify(node, null, 4));
+//     childNodes.forEach((childNode) => {
+//         let selector = childNode.selector;
+
+//         if (!selector) {
+//             return;
+//         }
+
+//         let items = selector.split(',');
+//         var itemsLen = items.length;
+//         // 说明没有逗号分隔
+//         if (itemsLen <= 1) {
+//             return;
+//         }
+
+//         // 有逗号分隔情况下，如果 \n 分隔的项的数量小于逗号分隔的项的数量，那么就认为是违反规则的
+//         if (selector.split('\n').length < itemsLen) {
+//             let lineNum = childNode.source.start.line;
+//             let lineContent = getLineContent(lineNum, opts.fileContent);
+//             addInvalidList.call(errors,
+//                 opts.ruleName,
+//                 lineNum,
+//                 null,
+//                 '`' + lineContent
+//                     + '` '
+//                     + msg,
+//                 '`' + lineContent.replace(
+//                         lineContent,
+//                         ($1) => {
+//                             return chalk.magenta($1);
+//                         }
+//                     )
+//                     + '` '
+//                     + chalk.grey(msg)
+//             );
+//         }
+
+//         recursionNodes(childNode, opts);
+//     });
+// }
+
+/**
+ * 递归分析 ast node 的集合
+ *
+ * @param {Array} node 待分析的 ast 节点集合
+ * @param {Object} opts 当前规则检测的参数
+ */
+function recursionNodes(nodes, opts) {
+    let errors = opts.errors;
+    nodes.forEach((node) => {
+        let selector = node.selector;
+        if (!selector) {
+            return;
+        }
+
+        let items = selector.split(',');
+        var itemsLen = items.length;
+        // 说明没有逗号分隔
+        if (itemsLen <= 1) {
+            return;
+        }
+
+        // 有逗号分隔情况下，如果 \n 分隔的项的数量小于逗号分隔的项的数量，那么就认为是违反规则的
+        if (selector.split('\n').length < itemsLen) {
+            let lineNum = node.source.start.line;
+            let lineContent = getLineContent(lineNum, opts.fileContent);
+            addInvalidList.call(errors,
+                opts.ruleName,
+                lineNum,
+                null,
+                '`' + lineContent
+                    + '` '
+                    + msg,
+                '`' + lineContent.replace(
+                        lineContent,
+                        ($1) => {
+                            return chalk.magenta($1);
+                        }
+                    )
+                    + '` '
+                    + chalk.grey(msg)
+            );
+        }
+
+        recursionNodes(node.nodes, opts);
+    });
+}
+
 /**
  * 具体的检测逻辑
  *
@@ -33,19 +131,8 @@ let msg = 'When multiple selectors share a statement block, each selector statem
  */
 function rule(opts) {
     let ast = opts.ast.root;
-    let errors = opts.errors;
     let nodes = ast.nodes;
-
-    nodes.forEach((node) => {
-        if (node.selector) {
-            // console.warn(node.selector);
-
-            let childNodes = node.nodes;
-            childNodes.forEach((childNode) => {
-               // console.warn(childNode);
-            });
-        }
-    });
+    recursionNodes(nodes, opts);
 }
 
 export {rule};

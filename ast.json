@@ -1,13 +1,13 @@
 {
     "input": {
-        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
     },
-    "pos": 97,
+    "pos": 79,
     "root": {
         "raws": {
-            "semicolon": true,
-            "after": ""
+            "semicolon": false,
+            "after": "\n"
         },
         "type": "root",
         "nodes": [
@@ -15,270 +15,6 @@
                 "raws": {
                     "before": "",
                     "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color1:",
-                "source": {
-                    "start": {
-                        "line": 1,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 1,
-                        "column": 15
-                    }
-                },
-                "params": "white"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color2:",
-                "source": {
-                    "start": {
-                        "line": 2,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 2,
-                        "column": 28
-                    }
-                },
-                "params": "rgb(255, 255, 255)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color3:",
-                "source": {
-                    "start": {
-                        "line": 3,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 3,
-                        "column": 32
-                    }
-                },
-                "params": "rgba(255, 255, 255, 1)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color4:",
-                "source": {
-                    "start": {
-                        "line": 4,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 4,
-                        "column": 17
-                    }
-                },
-                "params": "#ffffFf"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color5:",
-                "source": {
-                    "start": {
-                        "line": 5,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 5,
-                        "column": 28
-                    }
-                },
-                "params": "hsl(120, 65%, 75%)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color6:",
-                "source": {
-                    "start": {
-                        "line": 6,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 6,
-                        "column": 32
-                    }
-                },
-                "params": "hsla(120, 65%, 75%, 1)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color7:",
-                "source": {
-                    "start": {
-                        "line": 7,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 7,
-                        "column": 14
-                    }
-                },
-                "params": "#fff"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color8:",
-                "source": {
-                    "start": {
-                        "line": 8,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 8,
-                        "column": 15
-                    }
-                },
-                "params": "black"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "inline": true,
-                    "left": " ",
-                    "right": ""
-                },
-                "type": "comment",
-                "source": {
-                    "start": {
-                        "line": 9,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 9,
-                        "column": 18
-                    }
-                },
-                "text": "@color9: black;"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "no:",
-                "source": {
-                    "start": {
-                        "line": 11,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 11,
-                        "column": 9
-                    }
-                },
-                "params": "1px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "white-color:",
-                "source": {
-                    "start": {
-                        "line": 12,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 12,
-                        "column": 22
-                    }
-                },
-                "params": "#f3f3f3"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": " ",
                     "semicolon": false,
                     "after": "\n"
                 },
@@ -292,20 +28,20 @@
                         "type": "decl",
                         "source": {
                             "start": {
-                                "line": 15,
+                                "line": 3,
                                 "column": 5
                             },
                             "input": {
-                                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                             },
                             "end": {
-                                "line": 15,
-                                "column": 41
+                                "line": 3,
+                                "column": 20
                             }
                         },
-                        "prop": "border",
-                        "value": "1px solid hsl(120, 65%, 75%)"
+                        "prop": "padding",
+                        "value": "10px 0"
                     },
                     {
                         "raws": {
@@ -315,26 +51,26 @@
                         "type": "decl",
                         "source": {
                             "start": {
-                                "line": 16,
+                                "line": 4,
                                 "column": 5
                             },
                             "input": {
-                                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                             },
                             "end": {
-                                "line": 16,
-                                "column": 27
+                                "line": 4,
+                                "column": 21
                             }
                         },
-                        "prop": "color",
-                        "value": "hsl(10, 5%, 5%)"
+                        "prop": "background",
+                        "value": "#eee"
                     },
                     {
                         "raws": {
-                            "before": "\n    ",
+                            "before": "\n\n    ",
                             "between": " ",
-                            "semicolon": true,
+                            "semicolon": false,
                             "after": "\n    "
                         },
                         "type": "rule",
@@ -347,84 +83,204 @@
                                 "type": "decl",
                                 "source": {
                                     "start": {
-                                        "line": 18,
+                                        "line": 7,
                                         "column": 9
                                     },
                                     "input": {
-                                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                                     },
                                     "end": {
-                                        "line": 18,
-                                        "column": 34
+                                        "line": 7,
+                                        "column": 27
                                     }
                                 },
-                                "prop": "color",
-                                "value": "rgb(255, 255, 255)"
+                                "prop": "padding",
+                                "value": "22px 40px"
+                            },
+                            {
+                                "raws": {
+                                    "before": "\n        ",
+                                    "between": ": "
+                                },
+                                "type": "decl",
+                                "source": {
+                                    "start": {
+                                        "line": 8,
+                                        "column": 9
+                                    },
+                                    "input": {
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                    },
+                                    "end": {
+                                        "line": 8,
+                                        "column": 21
+                                    }
+                                },
+                                "prop": "width",
+                                "value": "900px"
+                            },
+                            {
+                                "raws": {
+                                    "before": "\n        ",
+                                    "between": ": "
+                                },
+                                "type": "decl",
+                                "source": {
+                                    "start": {
+                                        "line": 9,
+                                        "column": 9
+                                    },
+                                    "input": {
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                    },
+                                    "end": {
+                                        "line": 9,
+                                        "column": 25
+                                    }
+                                },
+                                "prop": "background",
+                                "value": "#fff"
+                            },
+                            {
+                                "raws": {
+                                    "before": "\n        ",
+                                    "between": " ",
+                                    "semicolon": false,
+                                    "after": "\n        "
+                                },
+                                "type": "rule",
+                                "nodes": [
+                                    {
+                                        "raws": {
+                                            "before": "\n            ",
+                                            "between": ": "
+                                        },
+                                        "type": "decl",
+                                        "source": {
+                                            "start": {
+                                                "line": 11,
+                                                "column": 13
+                                            },
+                                            "input": {
+                                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                            },
+                                            "end": {
+                                                "line": 11,
+                                                "column": 24
+                                            }
+                                        },
+                                        "prop": "clear",
+                                        "value": "both"
+                                    },
+                                    {
+                                        "raws": {
+                                            "before": "\n\n            ",
+                                            "between": " ",
+                                            "semicolon": true,
+                                            "after": "\n            "
+                                        },
+                                        "type": "rule",
+                                        "nodes": [
+                                            {
+                                                "raws": {
+                                                    "before": "\n                ",
+                                                    "between": ": "
+                                                },
+                                                "type": "decl",
+                                                "source": {
+                                                    "start": {
+                                                        "line": 15,
+                                                        "column": 17
+                                                    },
+                                                    "input": {
+                                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                                    },
+                                                    "end": {
+                                                        "line": 15,
+                                                        "column": 38
+                                                    }
+                                                },
+                                                "prop": "display",
+                                                "value": "inline-block"
+                                            }
+                                        ],
+                                        "source": {
+                                            "start": {
+                                                "line": 13,
+                                                "column": 13
+                                            },
+                                            "input": {
+                                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                            },
+                                            "end": {
+                                                "line": 16,
+                                                "column": 13
+                                            }
+                                        },
+                                        "selector": "a, p ,\n            h1"
+                                    }
+                                ],
+                                "source": {
+                                    "start": {
+                                        "line": 10,
+                                        "column": 9
+                                    },
+                                    "input": {
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                    },
+                                    "end": {
+                                        "line": 17,
+                                        "column": 9
+                                    }
+                                },
+                                "selector": "div,span"
                             }
                         ],
                         "source": {
                             "start": {
-                                "line": 17,
+                                "line": 6,
                                 "column": 5
                             },
                             "input": {
-                                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                             },
                             "end": {
-                                "line": 19,
+                                "line": 18,
                                 "column": 5
                             }
                         },
-                        "selector": "span"
+                        "selector": ".layout-wrapper, .cc"
                     }
                 ],
                 "source": {
                     "start": {
-                        "line": 14,
+                        "line": 1,
                         "column": 1
                     },
                     "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                     },
                     "end": {
-                        "line": 20,
+                        "line": 19,
                         "column": 1
                     }
                 },
-                "selector": "div"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "import",
-                "source": {
-                    "start": {
-                        "line": 22,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 22,
-                        "column": 17
-                    }
-                },
-                "params": "'./esui'"
+                "selector": ".list,\na,.f"
             }
         ],
         "source": {
             "input": {
-                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
             },
             "start": {
                 "line": 1,
@@ -434,8 +290,8 @@
     },
     "current": {
         "raws": {
-            "semicolon": true,
-            "after": ""
+            "semicolon": false,
+            "after": "\n"
         },
         "type": "root",
         "nodes": [
@@ -443,270 +299,6 @@
                 "raws": {
                     "before": "",
                     "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color1:",
-                "source": {
-                    "start": {
-                        "line": 1,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 1,
-                        "column": 15
-                    }
-                },
-                "params": "white"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color2:",
-                "source": {
-                    "start": {
-                        "line": 2,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 2,
-                        "column": 28
-                    }
-                },
-                "params": "rgb(255, 255, 255)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color3:",
-                "source": {
-                    "start": {
-                        "line": 3,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 3,
-                        "column": 32
-                    }
-                },
-                "params": "rgba(255, 255, 255, 1)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color4:",
-                "source": {
-                    "start": {
-                        "line": 4,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 4,
-                        "column": 17
-                    }
-                },
-                "params": "#ffffFf"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color5:",
-                "source": {
-                    "start": {
-                        "line": 5,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 5,
-                        "column": 28
-                    }
-                },
-                "params": "hsl(120, 65%, 75%)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color6:",
-                "source": {
-                    "start": {
-                        "line": 6,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 6,
-                        "column": 32
-                    }
-                },
-                "params": "hsla(120, 65%, 75%, 1)"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color7:",
-                "source": {
-                    "start": {
-                        "line": 7,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 7,
-                        "column": 14
-                    }
-                },
-                "params": "#fff"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "color8:",
-                "source": {
-                    "start": {
-                        "line": 8,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 8,
-                        "column": 15
-                    }
-                },
-                "params": "black"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "inline": true,
-                    "left": " ",
-                    "right": ""
-                },
-                "type": "comment",
-                "source": {
-                    "start": {
-                        "line": 9,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 9,
-                        "column": 18
-                    }
-                },
-                "text": "@color9: black;"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "no:",
-                "source": {
-                    "start": {
-                        "line": 11,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 11,
-                        "column": 9
-                    }
-                },
-                "params": "1px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "white-color:",
-                "source": {
-                    "start": {
-                        "line": 12,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 12,
-                        "column": 22
-                    }
-                },
-                "params": "#f3f3f3"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": " ",
                     "semicolon": false,
                     "after": "\n"
                 },
@@ -720,20 +312,20 @@
                         "type": "decl",
                         "source": {
                             "start": {
-                                "line": 15,
+                                "line": 3,
                                 "column": 5
                             },
                             "input": {
-                                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                             },
                             "end": {
-                                "line": 15,
-                                "column": 41
+                                "line": 3,
+                                "column": 20
                             }
                         },
-                        "prop": "border",
-                        "value": "1px solid hsl(120, 65%, 75%)"
+                        "prop": "padding",
+                        "value": "10px 0"
                     },
                     {
                         "raws": {
@@ -743,26 +335,26 @@
                         "type": "decl",
                         "source": {
                             "start": {
-                                "line": 16,
+                                "line": 4,
                                 "column": 5
                             },
                             "input": {
-                                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                             },
                             "end": {
-                                "line": 16,
-                                "column": 27
+                                "line": 4,
+                                "column": 21
                             }
                         },
-                        "prop": "color",
-                        "value": "hsl(10, 5%, 5%)"
+                        "prop": "background",
+                        "value": "#eee"
                     },
                     {
                         "raws": {
-                            "before": "\n    ",
+                            "before": "\n\n    ",
                             "between": " ",
-                            "semicolon": true,
+                            "semicolon": false,
                             "after": "\n    "
                         },
                         "type": "rule",
@@ -775,84 +367,204 @@
                                 "type": "decl",
                                 "source": {
                                     "start": {
-                                        "line": 18,
+                                        "line": 7,
                                         "column": 9
                                     },
                                     "input": {
-                                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                                     },
                                     "end": {
-                                        "line": 18,
-                                        "column": 34
+                                        "line": 7,
+                                        "column": 27
                                     }
                                 },
-                                "prop": "color",
-                                "value": "rgb(255, 255, 255)"
+                                "prop": "padding",
+                                "value": "22px 40px"
+                            },
+                            {
+                                "raws": {
+                                    "before": "\n        ",
+                                    "between": ": "
+                                },
+                                "type": "decl",
+                                "source": {
+                                    "start": {
+                                        "line": 8,
+                                        "column": 9
+                                    },
+                                    "input": {
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                    },
+                                    "end": {
+                                        "line": 8,
+                                        "column": 21
+                                    }
+                                },
+                                "prop": "width",
+                                "value": "900px"
+                            },
+                            {
+                                "raws": {
+                                    "before": "\n        ",
+                                    "between": ": "
+                                },
+                                "type": "decl",
+                                "source": {
+                                    "start": {
+                                        "line": 9,
+                                        "column": 9
+                                    },
+                                    "input": {
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                    },
+                                    "end": {
+                                        "line": 9,
+                                        "column": 25
+                                    }
+                                },
+                                "prop": "background",
+                                "value": "#fff"
+                            },
+                            {
+                                "raws": {
+                                    "before": "\n        ",
+                                    "between": " ",
+                                    "semicolon": false,
+                                    "after": "\n        "
+                                },
+                                "type": "rule",
+                                "nodes": [
+                                    {
+                                        "raws": {
+                                            "before": "\n            ",
+                                            "between": ": "
+                                        },
+                                        "type": "decl",
+                                        "source": {
+                                            "start": {
+                                                "line": 11,
+                                                "column": 13
+                                            },
+                                            "input": {
+                                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                            },
+                                            "end": {
+                                                "line": 11,
+                                                "column": 24
+                                            }
+                                        },
+                                        "prop": "clear",
+                                        "value": "both"
+                                    },
+                                    {
+                                        "raws": {
+                                            "before": "\n\n            ",
+                                            "between": " ",
+                                            "semicolon": true,
+                                            "after": "\n            "
+                                        },
+                                        "type": "rule",
+                                        "nodes": [
+                                            {
+                                                "raws": {
+                                                    "before": "\n                ",
+                                                    "between": ": "
+                                                },
+                                                "type": "decl",
+                                                "source": {
+                                                    "start": {
+                                                        "line": 15,
+                                                        "column": 17
+                                                    },
+                                                    "input": {
+                                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                                    },
+                                                    "end": {
+                                                        "line": 15,
+                                                        "column": 38
+                                                    }
+                                                },
+                                                "prop": "display",
+                                                "value": "inline-block"
+                                            }
+                                        ],
+                                        "source": {
+                                            "start": {
+                                                "line": 13,
+                                                "column": 13
+                                            },
+                                            "input": {
+                                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                            },
+                                            "end": {
+                                                "line": 16,
+                                                "column": 13
+                                            }
+                                        },
+                                        "selector": "a, p ,\n            h1"
+                                    }
+                                ],
+                                "source": {
+                                    "start": {
+                                        "line": 10,
+                                        "column": 9
+                                    },
+                                    "input": {
+                                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
+                                    },
+                                    "end": {
+                                        "line": 17,
+                                        "column": 9
+                                    }
+                                },
+                                "selector": "div,span"
                             }
                         ],
                         "source": {
                             "start": {
-                                "line": 17,
+                                "line": 6,
                                 "column": 5
                             },
                             "input": {
-                                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                             },
                             "end": {
-                                "line": 19,
+                                "line": 18,
                                 "column": 5
                             }
                         },
-                        "selector": "span"
+                        "selector": ".layout-wrapper, .cc"
                     }
                 ],
                 "source": {
                     "start": {
-                        "line": 14,
+                        "line": 1,
                         "column": 1
                     },
                     "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                        "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
                     },
                     "end": {
-                        "line": 20,
+                        "line": 19,
                         "column": 1
                     }
                 },
-                "selector": "div"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "import",
-                "source": {
-                    "start": {
-                        "line": 22,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
-                    },
-                    "end": {
-                        "line": 22,
-                        "column": 17
-                    }
-                },
-                "params": "'./esui'"
+                "selector": ".list,\na,.f"
             }
         ],
         "source": {
             "input": {
-                "css": "@color1: white;\n@color2: rgb(255, 255, 255);\n@color3: rgba(255, 255, 255, 1);\n@color4: #ffffFf;\n@color5: hsl(120, 65%, 75%);\n@color6: hsla(120, 65%, 75%, 1);\n@color7: #fff;\n@color8: black;\n// @color9: black;\n\n@no: 1px;\n@white-color: #f3f3f3;\n\ndiv {\n    border: 1px solid hsl(120, 65%, 75%);\n    color: hsl(10, 5%, 5%);\n    span {\n        color: rgb(255, 255, 255);\n    }\n}\n\n@import './esui';",
-                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/hex-color.less"
+                "css": ".list,\na,.f{\n    padding: 10px 0;\n    background: #eee;\n\n    .layout-wrapper, .cc {\n        padding: 22px 40px;\n        width: 900px;\n        background: #fff;\n        div,span {\n            clear: both;\n\n            a, p ,\n            h1 {\n                display: inline-block;\n            }\n        }\n    }\n}\n",
+                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/require-newline.less"
             },
             "start": {
                 "line": 1,
@@ -860,153 +572,101 @@
             }
         }
     },
-    "spaces": "",
-    "semicolon": true,
+    "spaces": "\n",
+    "semicolon": false,
     "mixins": {},
     "tokens": [
         [
-            "at-word",
-            "@color1:",
-            1,
-            1,
-            1,
-            8
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
             "word",
-            "white",
+            ".list,",
             1,
-            10,
             1,
-            14
-        ],
-        [
-            ";",
-            ";",
             1,
-            15
+            6
         ],
         [
             "space",
             "\n"
         ],
         [
-            "at-word",
-            "@color2:",
+            "word",
+            "a,.f",
             2,
             1,
             2,
-            8
+            4
+        ],
+        [
+            "{",
+            "{",
+            2,
+            5
         ],
         [
             "space",
-            " "
+            "\n    "
         ],
         [
             "word",
-            "rgb",
-            2,
-            10,
-            2,
+            "padding",
+            3,
+            5,
+            3,
+            11
+        ],
+        [
+            ":",
+            ":",
+            3,
             12
         ],
         [
-            "brackets",
-            "(255, 255, 255)",
-            2,
-            13,
-            2,
-            27
-        ],
-        [
-            ";",
-            ";",
-            2,
-            28
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@color3:",
-            3,
-            1,
-            3,
-            8
-        ],
-        [
             "space",
             " "
         ],
         [
             "word",
-            "rgba",
-            3,
-            10,
-            3,
-            13
-        ],
-        [
-            "brackets",
-            "(255, 255, 255, 1)",
+            "10px",
             3,
             14,
             3,
-            31
-        ],
-        [
-            ";",
-            ";",
-            3,
-            32
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@color4:",
-            4,
-            1,
-            4,
-            8
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "#ffffFf",
-            4,
-            10,
-            4,
-            16
-        ],
-        [
-            ";",
-            ";",
-            4,
             17
         ],
         [
             "space",
-            "\n"
+            " "
         ],
         [
-            "at-word",
-            "@color5:",
+            "word",
+            "0",
+            3,
+            19,
+            3,
+            19
+        ],
+        [
+            ";",
+            ";",
+            3,
+            20
+        ],
+        [
+            "space",
+            "\n    "
+        ],
+        [
+            "word",
+            "background",
+            4,
             5,
-            1,
-            5,
-            8
+            4,
+            14
+        ],
+        [
+            ":",
+            ":",
+            4,
+            15
         ],
         [
             "space",
@@ -1014,37 +674,117 @@
         ],
         [
             "word",
-            "hsl",
-            5,
-            10,
-            5,
-            12
+            "#eee",
+            4,
+            17,
+            4,
+            20
         ],
         [
-            "brackets",
-            "(120, 65%, 75%)",
+            ";",
+            ";",
+            4,
+            21
+        ],
+        [
+            "space",
+            "\n\n    "
+        ],
+        [
+            "word",
+            ".layout-wrapper,",
+            6,
             5,
-            13,
-            5,
+            6,
+            20
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            ".cc",
+            6,
+            22,
+            6,
+            24
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "{",
+            "{",
+            6,
+            26
+        ],
+        [
+            "space",
+            "\n        "
+        ],
+        [
+            "word",
+            "padding",
+            7,
+            9,
+            7,
+            15
+        ],
+        [
+            ":",
+            ":",
+            7,
+            16
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            "22px",
+            7,
+            18,
+            7,
+            21
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            "40px",
+            7,
+            23,
+            7,
+            26
+        ],
+        [
+            ";",
+            ";",
+            7,
             27
         ],
         [
-            ";",
-            ";",
-            5,
-            28
-        ],
-        [
             "space",
-            "\n"
+            "\n        "
         ],
         [
-            "at-word",
-            "@color6:",
-            6,
-            1,
-            6,
-            8
+            "word",
+            "width",
+            8,
+            9,
+            8,
+            13
+        ],
+        [
+            ":",
+            ":",
+            8,
+            14
         ],
         [
             "space",
@@ -1052,37 +792,35 @@
         ],
         [
             "word",
-            "hsla",
-            6,
-            10,
-            6,
-            13
-        ],
-        [
-            "brackets",
-            "(120, 65%, 75%, 1)",
-            6,
-            14,
-            6,
-            31
+            "900px",
+            8,
+            16,
+            8,
+            20
         ],
         [
             ";",
             ";",
-            6,
-            32
+            8,
+            21
         ],
         [
             "space",
-            "\n"
+            "\n        "
         ],
         [
-            "at-word",
-            "@color7:",
-            7,
-            1,
-            7,
-            8
+            "word",
+            "background",
+            9,
+            9,
+            9,
+            18
+        ],
+        [
+            ":",
+            ":",
+            9,
+            19
         ],
         [
             "space",
@@ -1091,275 +829,16 @@
         [
             "word",
             "#fff",
-            7,
-            10,
-            7,
-            13
-        ],
-        [
-            ";",
-            ";",
-            7,
-            14
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@color8:",
-            8,
-            1,
-            8,
-            8
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "black",
-            8,
-            10,
-            8,
-            14
-        ],
-        [
-            ";",
-            ";",
-            8,
-            15
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "comment",
-            "// @color9: black;",
             9,
-            1,
+            21,
             9,
-            18,
-            "inline"
-        ],
-        [
-            "space",
-            "\n\n"
-        ],
-        [
-            "at-word",
-            "@no:",
-            11,
-            1,
-            11,
-            4
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "1px",
-            11,
-            6,
-            11,
-            8
+            24
         ],
         [
             ";",
             ";",
-            11,
-            9
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@white-color:",
-            12,
-            1,
-            12,
-            13
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "#f3f3f3",
-            12,
-            15,
-            12,
-            21
-        ],
-        [
-            ";",
-            ";",
-            12,
-            22
-        ],
-        [
-            "space",
-            "\n\n"
-        ],
-        [
-            "word",
-            "div",
-            14,
-            1,
-            14,
-            3
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "{",
-            "{",
-            14,
-            5
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "word",
-            "border",
-            15,
-            5,
-            15,
-            10
-        ],
-        [
-            ":",
-            ":",
-            15,
-            11
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "1px",
-            15,
-            13,
-            15,
-            15
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "solid",
-            15,
-            17,
-            15,
-            21
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "hsl",
-            15,
-            23,
-            15,
+            9,
             25
-        ],
-        [
-            "brackets",
-            "(120, 65%, 75%)",
-            15,
-            26,
-            15,
-            40
-        ],
-        [
-            ";",
-            ";",
-            15,
-            41
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "word",
-            "color",
-            16,
-            5,
-            16,
-            9
-        ],
-        [
-            ":",
-            ":",
-            16,
-            10
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "hsl",
-            16,
-            12,
-            16,
-            14
-        ],
-        [
-            "brackets",
-            "(10, 5%, 5%)",
-            16,
-            15,
-            16,
-            26
-        ],
-        [
-            ";",
-            ";",
-            16,
-            27
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "word",
-            "span",
-            17,
-            5,
-            17,
-            8
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "{",
-            "{",
-            17,
-            10
         ],
         [
             "space",
@@ -1367,16 +846,68 @@
         ],
         [
             "word",
-            "color",
-            18,
+            "div,span",
+            10,
             9,
-            18,
-            13
+            10,
+            16
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "{",
+            "{",
+            10,
+            18
+        ],
+        [
+            "space",
+            "\n            "
+        ],
+        [
+            "word",
+            "clear",
+            11,
+            13,
+            11,
+            17
         ],
         [
             ":",
             ":",
-            18,
+            11,
+            18
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            "both",
+            11,
+            20,
+            11,
+            23
+        ],
+        [
+            ";",
+            ";",
+            11,
+            24
+        ],
+        [
+            "space",
+            "\n\n            "
+        ],
+        [
+            "word",
+            "a,",
+            13,
+            13,
+            13,
             14
         ],
         [
@@ -1385,25 +916,101 @@
         ],
         [
             "word",
-            "rgb",
-            18,
+            "p",
+            13,
             16,
-            18,
-            18
+            13,
+            16
         ],
         [
-            "brackets",
-            "(255, 255, 255)",
+            "space",
+            " "
+        ],
+        [
+            "word",
+            ",",
+            13,
             18,
-            19,
-            18,
-            33
+            13,
+            19
+        ],
+        [
+            "space",
+            "\n            "
+        ],
+        [
+            "word",
+            "h1",
+            14,
+            13,
+            14,
+            14
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "{",
+            "{",
+            14,
+            16
+        ],
+        [
+            "space",
+            "\n                "
+        ],
+        [
+            "word",
+            "display",
+            15,
+            17,
+            15,
+            23
+        ],
+        [
+            ":",
+            ":",
+            15,
+            24
+        ],
+        [
+            "space",
+            " "
+        ],
+        [
+            "word",
+            "inline-block",
+            15,
+            26,
+            15,
+            37
         ],
         [
             ";",
             ";",
-            18,
-            34
+            15,
+            38
+        ],
+        [
+            "space",
+            "\n            "
+        ],
+        [
+            "}",
+            "}",
+            16,
+            13
+        ],
+        [
+            "space",
+            "\n        "
+        ],
+        [
+            "}",
+            "}",
+            17,
+            9
         ],
         [
             "space",
@@ -1412,7 +1019,7 @@
         [
             "}",
             "}",
-            19,
+            18,
             5
         ],
         [
@@ -1422,38 +1029,12 @@
         [
             "}",
             "}",
-            20,
+            19,
             1
         ],
         [
             "space",
-            "\n\n"
-        ],
-        [
-            "at-word",
-            "@import",
-            22,
-            1,
-            22,
-            7
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "string",
-            "'./esui'",
-            22,
-            9,
-            22,
-            16
-        ],
-        [
-            ";",
-            ";",
-            22,
-            17
+            "\n"
         ]
     ]
 }
