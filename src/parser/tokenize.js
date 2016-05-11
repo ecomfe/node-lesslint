@@ -8,24 +8,25 @@
 const SINGLE_QUOTE = '\''.charCodeAt(0);
 const DOUBLE_QUOTE =  '"'.charCodeAt(0);
 const BACKSLASH = '\\'.charCodeAt(0);
-const SLASH =  '/'.charCodeAt(0);
+const SLASH = '/'.charCodeAt(0);
 const NEWLINE = '\n'.charCodeAt(0);
-const SPACE =  ' '.charCodeAt(0);
+const SPACE = ' '.charCodeAt(0);
 const FEED = '\f'.charCodeAt(0);
 const TAB = '\t'.charCodeAt(0);
 const CR = '\r'.charCodeAt(0);
-const OPEN_PARENTHESES  =  '('.charCodeAt(0);
-const CLOSE_PARENTHESES =  ')'.charCodeAt(0);
-const OPEN_CURLY =  '{'.charCodeAt(0);
-const CLOSE_CURLY =  '}'.charCodeAt(0);
-const SEMICOLON =  ';'.charCodeAt(0);
-const ASTERICK =  '*'.charCodeAt(0);
-const COLON =  ':'.charCodeAt(0);
-const COMMA =  ','.charCodeAt(0);
-const AT =  '@'.charCodeAt(0);
+const OPEN_PARENTHESES = '('.charCodeAt(0);
+const CLOSE_PARENTHESES = ')'.charCodeAt(0);
+const OPEN_CURLY = '{'.charCodeAt(0);
+const CLOSE_CURLY = '}'.charCodeAt(0);
+const SEMICOLON = ';'.charCodeAt(0);
+const ASTERICK = '*'.charCodeAt(0);
+const COLON = ':'.charCodeAt(0);
+const COMMA = ','.charCodeAt(0);
+const AT = '@'.charCodeAt(0);
 const RE_AT_END = /[ \n\t\r\{\(\)'"\\;/]/g;
 const RE_WORD_END = /[ \n\t\r\(\)\{\}:;@!'"\\#]|\/(?=\*)/g;
 const RE_BAD_BRACKET = /.[\\\/\("'\n]/;
+// const WAVE = '~'.charCodeAt(0);
 
 /**
  * lessTokenize 方法
@@ -145,9 +146,10 @@ export default function lessTokenize(input) {
 
                     if (!content.length || content === '...' || foundParam) {
                         // 处理 mixin 参数块
-                        if ( next === -1 || badBracket) {
-                            unclosed('bracket');
-                        }
+                        // @is-url-exp: ~`/^url\([^()]+\)$/i.test("@{url}") ? 'true' : 'false'`; 这种会报错
+                        // if (next === -1 || badBracket) {
+                        //     unclosed('bracket');
+                        // }
                         tokens.push(['(', '(', line, pos - offset]);
                     }
                     else if (next === -1 || badBracket) {

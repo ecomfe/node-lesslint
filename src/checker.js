@@ -3,14 +3,16 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
-import Input from 'postcss/lib/input';
 import safeStringify from 'json-stringify-safe';
+import Input from 'postcss/lib/input';
+import less from 'less';
 import chalk from 'chalk';
 import {isIgnored} from './util';
 import {loadConfig} from './config';
 import LessParser from './parser';
-import {join} from 'path';
+import {join,dirname,relative,resolve} from 'path';
 import {writeFileSync, existsSync} from 'fs';
+import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
 
 'use strict';
 
@@ -19,17 +21,16 @@ import {writeFileSync, existsSync} from 'fs';
  */
 const ruleDir = join(__dirname, './rule');
 
-// /**
-//  * less parser 参数
-//  *
-//  * @type {Object}
-//  */
-// var parseOptions = {
-//     paths: [path.dirname('.')],
-//     includePath: [],
-//     relativeUrls: true
-//     // paths: [path.dirname(this.path)].concat(this.options.includePath)
-// };
+/**
+ * less option
+ *
+ * @type {Object}
+ */
+let lessOption = {
+    // paths: ['.', join(__dirname, '../test/fixture')],
+    paths: ['.'],
+    relativeUrls: true
+};
 
 // var parser;
 

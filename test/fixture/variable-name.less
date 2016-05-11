@@ -1,4 +1,4 @@
-@img-url: './test.png';
+@img-url:           './test.png';
 @url: '';
 @fooBar: 10px;
 @fooBar1: 10px;
@@ -7,10 +7,12 @@
 @urlA: ~"@{img-url}";
 @is-url-exp: ~`/^url\([^()]+\)$/i.test("@{url}") ? 'true' : 'false'`;
 
+@import 'sds';
+
 div{
     @cc-aa: 1px;
     @ccAA: 2px;
-    @CCCC: 1px;
+                @CCCC: 1px;
     color: @fooBar;
     background-color: @fooBar1;
 }
