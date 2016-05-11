@@ -81,6 +81,10 @@ function recursionNodes(node, opts) {
  * @return {Array} 不符合规则检测的集合
  */
 function rule(opts) {
+    if (!opts.ruleVal) {
+        return;
+    }
+
     let ast = opts.ast.root;
     let errors = opts.errors;
     let nodes = ast.nodes;

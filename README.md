@@ -21,12 +21,13 @@ Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可�
 
 + [数值检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E6%95%B0%E5%80%BC)：对于处于 (0, 1) 范围内的数值，小数点前的 0 可以（MAY）省略，同一项目中必须（MUST）保持一致。`leading-zero`
 
-
-
-
 + [选择器检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E9%80%89%E6%8B%A9%E5%99%A8)：当多个选择器共享一个声明块时，每个选择器声明必须（MUST）独占一行。`require-newline`
 
 + [变量检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E5%8F%98%E9%87%8F)：变量命名必须（MUST）采用 @foo-bar 形式，不得（MUST NOT）使用 @fooBar 形式。`variable-name`
+
+
+
+
 
 + [0 值检验](https://github.com/ecomfe/spec/blob/master/less-code-style.md#0-%E5%80%BC)：属性值为 0 时，必须省略可省的单位（长度单位如 px、em，不包括时间、角度等如 s、deg）。`zero-unit`
 

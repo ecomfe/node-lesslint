@@ -48,9 +48,7 @@ function recursionNodes(nodes, opts) {
                 opts.ruleName,
                 lineNum,
                 null,
-                '`' + lineContent
-                    + '` '
-                    + msg,
+                '`' + lineContent + '` ' + msg,
                 '`' + lineContent.replace(
                         lineContent,
                         ($1) => {
@@ -78,6 +76,14 @@ function recursionNodes(nodes, opts) {
  * @return {Array} 不符合规则检测的集合
  */
 function rule(opts) {
+    if (!Array.isArray(opts.ruleVal)) {
+        opts.ruleVal = [opts.ruleVal];
+    }
+
+    if (opts.ruleVal.indexOf('selector') < 0) {
+        return;
+    }
+
     let ast = opts.ast.root;
     let nodes = ast.nodes;
     recursionNodes(nodes, opts);

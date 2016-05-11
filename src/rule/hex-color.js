@@ -108,6 +108,10 @@ function rule(opts) {
     let errors = opts.errors;
     let nodes = ast.nodes;
 
+    if (!opts.ruleVal) {
+        return;
+    }
+
     nodes.forEach((node) => {
         // console.warn(safeStringify(node, null, 4));
         // TODO: 这里仅仅用 type 来判断够么？
