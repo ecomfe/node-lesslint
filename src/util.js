@@ -256,14 +256,14 @@ function getLineContent(line, fileData, notRemoveSpace) {
  * @param {string} message 错误信息
  * @param {string} colorMessage 彩色错误信息
  */
-function addInvalidList(ruleName, line, col, message, colorMessage) {
-    this.push({
-        ruleName: ruleName,
-        line: line,
-        col: col,
-        message: message,
-        colorMessage: colorMessage
-    });
-}
+// function addInvalidList(ruleName, line, col, message, colorMessage) {
+//     this.push({
+//         ruleName: ruleName,
+//         line: line,
+//         col: col,
+//         message: message,
+//         colorMessage: colorMessage
+//     });
+// }
 
-export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg, getLineContent, addInvalidList};
+export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg, getLineContent/*, addInvalidList*/};

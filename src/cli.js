@@ -15,12 +15,12 @@ import {check} from './checker';
 /**
  * 显示默认的信息
  */
-function showDefaultInfo() {
+const showDefaultInfo = () => {
     console.warn(sys);
     console.log('');
     console.log((sys.name + ' v' + sys.version));
     console.log(chalk.bold.green(formatMsg(sys.description)));
-}
+};
 
 
 /**
@@ -29,7 +29,7 @@ function showDefaultInfo() {
  * @inner
  * @param {Object} errors 按文件类型为 key，值为对应的校验错误信息列表的对象
  */
-function report(errors) {
+const report = (errors) => {
     let t12 = true;
 
     if (errors.length) {
@@ -37,7 +37,7 @@ function report(errors) {
             log.info(error.path);
             // error.messages = uniqueMsg(error.messages);
             error.messages.forEach((message) => {
-                let ruleName = message.ruleName || '';
+                const ruleName = message.ruleName || '';
                 let msg = '→ ' + (ruleName ? chalk.bold(ruleName) + ': ' : '');
                 // 全局性的错误可能没有位置信息
                 if (typeof message.line === 'number') {
@@ -61,7 +61,7 @@ function report(errors) {
     else {
         process.exit(1);
     }
-}
+};
 
 
 /**
@@ -69,7 +69,7 @@ function report(errors) {
  *
  * @param {Array} args 参数列表
  */
-function parse(args) {
+const parse = (args) => {
     args = args.slice(2);
 
     // 不带参数时，默认检测当前目录下所有的 less 文件
@@ -82,12 +82,12 @@ function parse(args) {
         return;
     }
 
-    let patterns = [
+    const patterns = [
         '**/*.less',
         '!**/{output,test,node_modules,asset,dist,release,doc,dep,report}/**'
     ];
 
-    let candidates = getCandidates(args, patterns);
+    const candidates = getCandidates(args, patterns);
 
     let count = candidates.length;
 
@@ -96,14 +96,14 @@ function parse(args) {
     }
 
     // 错误信息的集合
-    let errors = [];
+    const errors = [];
 
     /**
      * 每个文件的校验结果回调，主要用于统计校验完成情况
      *
      * @inner
      */
-    let callback = () => {
+    const callback = () => {
         count--;
         if (!count) {
             report(errors);
@@ -112,11 +112,11 @@ function parse(args) {
 
     // 遍历每个需要检测的 less 文件
     candidates.forEach((candidate) => {
-        let readable = createReadStream(candidate, {
+        const readable = createReadStream(candidate, {
             encoding: 'utf8'
         });
         readable.on('data', (chunk) => {
-            let file = {
+            const file = {
                 content: chunk,
                 path: candidate
             };

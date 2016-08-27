@@ -3,16 +3,15 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
+import {join} from 'path';
+import {writeFileSync, existsSync} from 'fs';
 import safeStringify from 'json-stringify-safe';
-import Input from 'postcss/lib/input';
-import less from 'less';
 import chalk from 'chalk';
+import postcssLess from 'postcss-less';
+import postcss from 'postcss';
+
 import {isIgnored} from './util';
 import {loadConfig} from './config';
-import LessParser from './parser';
-import {join,dirname,relative,resolve} from 'path';
-import {writeFileSync, existsSync} from 'fs';
-import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
 
 'use strict';
 
@@ -20,19 +19,6 @@ import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
  * rule 逻辑实现的文件夹路径
  */
 const ruleDir = join(__dirname, './rule');
-
-/**
- * less option
- *
- * @type {Object}
- */
-let lessOption = {
-    // paths: ['.', join(__dirname, '../test/fixture')],
-    paths: ['.'],
-    relativeUrls: true
-};
-
-// var parser;
 
 /**
  * 检测 css 文件内容
@@ -43,78 +29,82 @@ let lessOption = {
  *
  * @return {Promise} Promise 对象
  */
-function checkString(fileContent, filePath, realConfig) {
+const checkString = (fileContent, filePath, realConfig) => {
     // 这里把文件内容的 \r\n 统一替换成 \n，便于之后获取行号
     fileContent = fileContent.replace(/\r\n?/g, '\n');
 
-    let input = new Input(fileContent, {from: filePath});
-    let parser = new LessParser(input);
+    // postcss 插件集合即规则检测的文件集合
+    const plugins = [];
 
-    let errors = [];
+    Object.getOwnPropertyNames(
+        realConfig
+    ).forEach(
+        function (prop) {
+            const ruleFilePath = join(ruleDir, prop) + '.js';
+            if (existsSync(ruleFilePath)) {
+                plugins.push(
+                    require(join(ruleDir, prop)).check({
+                        ruleVal: realConfig[prop],
+                        // 实际上在 postcss 的 plugin 里面通过 node.source.input.css 也可以拿到文件内容
+                        // 但是通过这种方式拿到的内容是去掉 BOM 的，因此在检测 no-bom 规则时候会有问题
+                        // 所以这里把文件的原内容传入进去
+                        fileContent: fileContent,
+                        filePath: filePath
+                    })
+                );
+            }
+        }
+    );
 
-    var invalid = {
+    // 不合法的信息集合
+    const invalidList = [];
+
+    const invalid = {
         path: '',
         messages: []
     };
 
-    // TODO: 在 parser 之前，应该用 less 本身 parse 一次
-    let analyzePromise = new Promise((resolve, reject) => {
-        try {
-            parser.tokenize();
-            parser.loop();
-
-            Object.getOwnPropertyNames(
-                realConfig
-            ).forEach((prop) => {
-                let ruleFilePath = join(ruleDir, prop) + '.js';
-                if (existsSync(ruleFilePath)) {
-                    require(join(ruleDir, prop)).rule({
-                        ast: parser,
-                        ruleName: prop,
-                        ruleVal: realConfig[prop],
-                        fileContent: fileContent,
-                        filePath: filePath,
-                        errors: invalid.messages
-                    });
-
-                    if (invalid.messages.length && invalid.path !== filePath) {
-                        invalid.path = filePath;
-                        errors.push(invalid);
-                    }
+    const checkPromise = new Promise((resolve, reject) => {
+        postcss(plugins).process(fileContent, {
+            syntax: postcssLess
+        }).then((result) => {
+            result.warnings().forEach((data) => {
+                invalid.messages.push({
+                    ruleName: data.ruleName,
+                    line: data.line,
+                    col: data.col,
+                    errorChar: data.errorChar || '',
+                    message: data.message,
+                    colorMessage: data.colorMessage
+                });
+                if (invalid.path !== filePath) {
+                    invalid.path = filePath;
+                    invalidList.push(invalid);
                 }
             });
+            resolve(invalidList);
 
-            resolve(errors);
-
-            let parserRet = safeStringify(parser, null, 4);
-            let outputFile = join(__dirname, '../ast.json');
+            const parserRet = safeStringify(result.root.toResult().root, null, 4);
+            const outputFile = join(__dirname, '../ast.json');
             writeFileSync(outputFile, parserRet);
-        }
-        catch (e) {
-            let errMsg = e.message;
-            errors.push({
-                path: filePath,
-                messages: [
-                    {
-                        line: e.line,
-                        col: e.column,
-                        message: ''
-                            + e.name
-                            + ', '
-                            + errMsg,
-                        colorMessage: ''
-                            + chalk.red(
-                                e.name + ', ' + errMsg
-                            )
-                    }
-                ]
+        }).catch((e) => {
+            // 这里 catch 的是代码中的错误
+            const str = e.toString();
+            invalid.messages.push({
+                message: str,
+                colorMessage: chalk.red(str)
             });
-            reject(errors);
-        }
+
+            if (invalid.path !== filePath) {
+                invalid.path = filePath;
+                invalidList.push(invalid);
+            }
+            reject(invalidList);
+        });
     });
 
-    return analyzePromise;
-}
+    return checkPromise;
+};
 
 /**
  * 校验文件
@@ -123,11 +113,12 @@ function checkString(fileContent, filePath, realConfig) {
  * @param {Array} errors 本分类的错误信息数组
  * @param {Function} done 校验完成的通知回调
  */
-function check(file, errors, done) {
+const check = (file, errors, done) => {
     if (isIgnored(file.path, '.lesslintignore')) {
         done();
         return;
     }
+
 
     /**
      * checkString 的 promise 的 reject 和 resolve 的返回值的结构以及处理方式都是一样的
@@ -136,7 +127,7 @@ function check(file, errors, done) {
      *
      * @param {Array.<Object>} invalidList 错误信息集合
      */
-    function callback(invalidList) {
+    const callback = (invalidList) => {
         if (invalidList.length) {
             invalidList.forEach((invalid) => {
                 errors.push({

@@ -23,7 +23,8 @@ const ASTERICK = '*'.charCodeAt(0);
 const COLON = ':'.charCodeAt(0);
 const COMMA = ','.charCodeAt(0);
 const AT = '@'.charCodeAt(0);
-const RE_AT_END = /[ \n\t\r\{\(\)'"\\;/]/g;
+// const RE_AT_END = /[ \n\t\r\{\(\)'"\\;/]/g;
+const RE_AT_END = /[ \n\t\r\{\(\)'"\\;\\:/]/g;
 const RE_WORD_END = /[ \n\t\r\(\)\{\}:;@!'"\\#]|\/(?=\*)/g;
 const RE_BAD_BRACKET = /.[\\\/\("'\n]/;
 // const WAVE = '~'.charCodeAt(0);
@@ -84,7 +85,7 @@ export default function lessTokenize(input) {
                         offset = next;
                         line  += 1;
                     }
-                } while (code === SPACE || code === NEWLINE || code === TAB || code === CR || code === FEED );
+                } while (code === SPACE || code === NEWLINE || code === TAB || code === CR || code === FEED);
 
                 tokens.push(['space', css.slice(pos, next)]);
                 pos = next - 1;
@@ -224,8 +225,9 @@ export default function lessTokenize(input) {
 
                 if (code === AT) {
                     if (n === OPEN_CURLY) {
+                        // 从第二个字符开始，抛弃前面的 @ 和 {
                         next = css.indexOf('}', pos + 2);
-                        if ( next === -1 ) {
+                        if (next === -1) {
                             unclosed('interpolation');
                         }
 

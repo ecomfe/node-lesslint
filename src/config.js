@@ -23,7 +23,7 @@ const JSON_YAML_REG = /.+\.(json|yml)$/i;
  *
  * @return {Object} merge 后的配置对象
  */
-function loadConfig(filePath, refresh) {
+const loadConfig = (filePath, refresh) => {
     if (refresh && STORAGE) {
         return STORAGE;
     }

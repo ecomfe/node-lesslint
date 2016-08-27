@@ -1,1356 +1,286 @@
 {
-    "input": {
-        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
+    "raws": {
+        "semicolon": false,
+        "after": ""
     },
-    "pos": 95,
-    "root": {
-        "raws": {
-            "semicolon": false,
-            "after": ""
+    "type": "root",
+    "nodes": [
+        {
+            "raws": {
+                "before": "",
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 1,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 1,
+                    "column": 9
+                }
+            },
+            "prop": "@aa",
+            "value": "1px"
         },
-        "type": "root",
-        "nodes": [
-            {
-                "raws": {
-                    "before": "",
-                    "between": "",
-                    "afterName": "           "
-                },
-                "type": "atrule",
-                "name": "img-url:",
-                "source": {
-                    "start": {
-                        "line": 1,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 1,
-                        "column": 33
-                    }
-                },
-                "params": "'./test.png'"
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": "",
+                "afterName": " "
             },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
+            "type": "atrule",
+            "name": "import",
+            "source": {
+                "start": {
+                    "line": 3,
+                    "column": 1
                 },
-                "type": "atrule",
-                "name": "url:",
-                "source": {
-                    "start": {
-                        "line": 2,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 2,
-                        "column": 9
-                    }
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
                 },
-                "params": "''"
+                "end": {
+                    "line": 3,
+                    "column": 17
+                }
             },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "fooBar:",
-                "source": {
-                    "start": {
-                        "line": 3,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 3,
-                        "column": 14
-                    }
-                },
-                "params": "10px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "fooBar1:",
-                "source": {
-                    "start": {
-                        "line": 4,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 4,
-                        "column": 15
-                    }
-                },
-                "params": "10px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "foo-bar:",
-                "source": {
-                    "start": {
-                        "line": 5,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 5,
-                        "column": 15
-                    }
-                },
-                "params": "20px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "barFoo:",
-                "source": {
-                    "start": {
-                        "line": 6,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 6,
-                        "column": 14
-                    }
-                },
-                "params": "12px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "urlA:",
-                "source": {
-                    "start": {
-                        "line": 7,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 7,
-                        "column": 21
-                    }
-                },
-                "params": "~\"@{img-url}\""
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "is-url-exp:",
-                "source": {
-                    "start": {
-                        "line": 8,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 8,
-                        "column": 69
-                    }
-                },
-                "params": "~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "import",
-                "source": {
-                    "start": {
-                        "line": 10,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 10,
-                        "column": 14
-                    }
-                },
-                "params": "'sds'"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "semicolon": true,
-                    "after": "\n"
-                },
-                "type": "rule",
-                "nodes": [
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": "",
-                            "afterName": " "
-                        },
-                        "type": "atrule",
-                        "name": "cc-aa:",
-                        "source": {
-                            "start": {
-                                "line": 13,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 13,
-                                "column": 16
-                            }
-                        },
-                        "params": "1px"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": "",
-                            "afterName": " "
-                        },
-                        "type": "atrule",
-                        "name": "ccAA:",
-                        "source": {
-                            "start": {
-                                "line": 14,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 14,
-                                "column": 15
-                            }
-                        },
-                        "params": "2px"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n                ",
-                            "between": "",
-                            "afterName": " "
-                        },
-                        "type": "atrule",
-                        "name": "CCCC:",
-                        "source": {
-                            "start": {
-                                "line": 15,
-                                "column": 17
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 15,
-                                "column": 27
-                            }
-                        },
-                        "params": "1px"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": ": "
-                        },
-                        "type": "decl",
-                        "source": {
-                            "start": {
-                                "line": 16,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 16,
-                                "column": 19
-                            }
-                        },
-                        "prop": "color",
-                        "value": "@fooBar"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": ": "
-                        },
-                        "type": "decl",
-                        "source": {
-                            "start": {
-                                "line": 17,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 17,
-                                "column": 31
-                            }
-                        },
-                        "prop": "background-color",
-                        "value": "@fooBar1"
-                    }
-                ],
-                "source": {
-                    "start": {
-                        "line": 12,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 18,
-                        "column": 1
-                    }
-                },
-                "selector": "div"
+            "params": "\"   Tip\"",
+            "lastEach": 3,
+            "indexes": {
+                "1": 0,
+                "2": 0,
+                "3": 0
             }
-        ],
-        "source": {
-            "input": {
-                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
+        },
+        {
+            "raws": {
+                "before": "\n\n\n",
+                "between": "",
+                "afterName": " "
             },
-            "start": {
-                "line": 1,
-                "column": 1
+            "type": "atrule",
+            "name": "import",
+            "source": {
+                "start": {
+                    "line": 6,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 6,
+                    "column": 16
+                }
+            },
+            "params": "'color'",
+            "lastEach": 3,
+            "indexes": {
+                "1": 0,
+                "2": 0,
+                "3": 0
             }
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": "",
+                "afterName": " "
+            },
+            "type": "atrule",
+            "name": "import",
+            "source": {
+                "start": {
+                    "line": 8,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 8,
+                    "column": 21
+                }
+            },
+            "params": "\"color.less\"",
+            "lastEach": 3,
+            "indexes": {
+                "1": 0,
+                "2": 0,
+                "3": 0
+            }
+        },
+        {
+            "raws": {
+                "before": "\n\n    ",
+                "between": "",
+                "afterName": " "
+            },
+            "type": "atrule",
+            "name": "import",
+            "source": {
+                "start": {
+                    "line": 10,
+                    "column": 5
+                },
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 10,
+                    "column": 16
+                }
+            },
+            "params": "aaa",
+            "lastEach": 3,
+            "indexes": {
+                "1": 0,
+                "2": 0,
+                "3": 0
+            }
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 11,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 11,
+                    "column": 15
+                }
+            },
+            "prop": "@color1",
+            "value": "white"
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": " ",
+                "afterName": "",
+                "semicolon": true,
+                "after": "\n"
+            },
+            "type": "atrule",
+            "name": "font-face",
+            "source": {
+                "start": {
+                    "line": 13,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 20,
+                    "column": 1
+                }
+            },
+            "params": "",
+            "nodes": [
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 14,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 14,
+                            "column": 28
+                        }
+                    },
+                    "prop": "font-family",
+                    "value": "'iconfont'"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 15,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 15,
+                            "column": 50
+                        }
+                    },
+                    "prop": "src",
+                    "value": "url('../font/iconfont.eot?t=1459183273')"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 16,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 19,
+                            "column": 72
+                        }
+                    },
+                    "prop": "src",
+                    "value": "url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg')"
+                }
+            ],
+            "lastEach": 3,
+            "indexes": {}
+        }
+    ],
+    "source": {
+        "input": {
+            "css": "@aa: 1px;\n\n@import \"   Tip\";\n\n\n@import 'color';\n\n@import \"color.less\";\n\n    @import aaa;\n@color1: white;\n\n@font-face {\n    font-family: 'iconfont';\n    src: url('../font/iconfont.eot?t=1459183273');\n    src: url('../font/iconfont.eot?t=1459183273#iefix') format('embedded-opentype'),\n        url('../font/iconfont.woff?t=1459183273') format('woff'),\n        url('../font/iconfont.ttf?t=1459183273') format('truetype'),\n        url('../font/iconfont.svg?t=1459183273#iconfont') format('svg');\n}",
+            "id": "<input css 1>"
+        },
+        "start": {
+            "line": 1,
+            "column": 1
         }
     },
-    "current": {
-        "raws": {
-            "semicolon": false,
-            "after": ""
-        },
-        "type": "root",
-        "nodes": [
-            {
-                "raws": {
-                    "before": "",
-                    "between": "",
-                    "afterName": "           "
-                },
-                "type": "atrule",
-                "name": "img-url:",
-                "source": {
-                    "start": {
-                        "line": 1,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 1,
-                        "column": 33
-                    }
-                },
-                "params": "'./test.png'"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "url:",
-                "source": {
-                    "start": {
-                        "line": 2,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 2,
-                        "column": 9
-                    }
-                },
-                "params": "''"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "fooBar:",
-                "source": {
-                    "start": {
-                        "line": 3,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 3,
-                        "column": 14
-                    }
-                },
-                "params": "10px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "fooBar1:",
-                "source": {
-                    "start": {
-                        "line": 4,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 4,
-                        "column": 15
-                    }
-                },
-                "params": "10px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "foo-bar:",
-                "source": {
-                    "start": {
-                        "line": 5,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 5,
-                        "column": 15
-                    }
-                },
-                "params": "20px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "barFoo:",
-                "source": {
-                    "start": {
-                        "line": 6,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 6,
-                        "column": 14
-                    }
-                },
-                "params": "12px"
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "urlA:",
-                "source": {
-                    "start": {
-                        "line": 7,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 7,
-                        "column": 21
-                    }
-                },
-                "params": "~\"@{img-url}\""
-            },
-            {
-                "raws": {
-                    "before": "\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "is-url-exp:",
-                "source": {
-                    "start": {
-                        "line": 8,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 8,
-                        "column": 69
-                    }
-                },
-                "params": "~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "afterName": " "
-                },
-                "type": "atrule",
-                "name": "import",
-                "source": {
-                    "start": {
-                        "line": 10,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 10,
-                        "column": 14
-                    }
-                },
-                "params": "'sds'"
-            },
-            {
-                "raws": {
-                    "before": "\n\n",
-                    "between": "",
-                    "semicolon": true,
-                    "after": "\n"
-                },
-                "type": "rule",
-                "nodes": [
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": "",
-                            "afterName": " "
-                        },
-                        "type": "atrule",
-                        "name": "cc-aa:",
-                        "source": {
-                            "start": {
-                                "line": 13,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 13,
-                                "column": 16
-                            }
-                        },
-                        "params": "1px"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": "",
-                            "afterName": " "
-                        },
-                        "type": "atrule",
-                        "name": "ccAA:",
-                        "source": {
-                            "start": {
-                                "line": 14,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 14,
-                                "column": 15
-                            }
-                        },
-                        "params": "2px"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n                ",
-                            "between": "",
-                            "afterName": " "
-                        },
-                        "type": "atrule",
-                        "name": "CCCC:",
-                        "source": {
-                            "start": {
-                                "line": 15,
-                                "column": 17
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 15,
-                                "column": 27
-                            }
-                        },
-                        "params": "1px"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": ": "
-                        },
-                        "type": "decl",
-                        "source": {
-                            "start": {
-                                "line": 16,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 16,
-                                "column": 19
-                            }
-                        },
-                        "prop": "color",
-                        "value": "@fooBar"
-                    },
-                    {
-                        "raws": {
-                            "before": "\n    ",
-                            "between": ": "
-                        },
-                        "type": "decl",
-                        "source": {
-                            "start": {
-                                "line": 17,
-                                "column": 5
-                            },
-                            "input": {
-                                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                            },
-                            "end": {
-                                "line": 17,
-                                "column": 31
-                            }
-                        },
-                        "prop": "background-color",
-                        "value": "@fooBar1"
-                    }
-                ],
-                "source": {
-                    "start": {
-                        "line": 12,
-                        "column": 1
-                    },
-                    "input": {
-                        "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                        "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-                    },
-                    "end": {
-                        "line": 18,
-                        "column": 1
-                    }
-                },
-                "selector": "div"
-            }
-        ],
-        "source": {
-            "input": {
-                "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
-                "file": "/Users/ielgnaw/Workspace/git/node-lesslint/test/fixture/variable-name.less"
-            },
-            "start": {
-                "line": 1,
-                "column": 1
-            }
-        }
-    },
-    "spaces": "",
-    "semicolon": false,
-    "mixins": {},
-    "tokens": [
-        [
-            "at-word",
-            "@img-url:",
-            1,
-            1,
-            1,
-            9
-        ],
-        [
-            "space",
-            "           "
-        ],
-        [
-            "string",
-            "'./test.png'",
-            1,
-            21,
-            1,
-            32
-        ],
-        [
-            ";",
-            ";",
-            1,
-            33
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@url:",
-            2,
-            1,
-            2,
-            5
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "string",
-            "''",
-            2,
-            7,
-            2,
-            8
-        ],
-        [
-            ";",
-            ";",
-            2,
-            9
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@fooBar:",
-            3,
-            1,
-            3,
-            8
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "10px",
-            3,
-            10,
-            3,
-            13
-        ],
-        [
-            ";",
-            ";",
-            3,
-            14
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@fooBar1:",
-            4,
-            1,
-            4,
-            9
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "10px",
-            4,
-            11,
-            4,
-            14
-        ],
-        [
-            ";",
-            ";",
-            4,
-            15
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@foo-bar:",
-            5,
-            1,
-            5,
-            9
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "20px",
-            5,
-            11,
-            5,
-            14
-        ],
-        [
-            ";",
-            ";",
-            5,
-            15
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@barFoo:",
-            6,
-            1,
-            6,
-            8
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "12px",
-            6,
-            10,
-            6,
-            13
-        ],
-        [
-            ";",
-            ";",
-            6,
-            14
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@urlA:",
-            7,
-            1,
-            7,
-            6
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "~",
-            7,
-            8,
-            7,
-            8
-        ],
-        [
-            "string",
-            "\"@{img-url}\"",
-            7,
-            9,
-            7,
-            20
-        ],
-        [
-            ";",
-            ";",
-            7,
-            21
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "at-word",
-            "@is-url-exp:",
-            8,
-            1,
-            8,
-            12
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "~`/^url",
-            8,
-            14,
-            8,
-            20
-        ],
-        [
-            "word",
-            "\\(",
-            8,
-            21,
-            8,
-            22
-        ],
-        [
-            "word",
-            "[^",
-            8,
-            23,
-            8,
-            24
-        ],
-        [
-            "brackets",
-            "()",
-            8,
-            25,
-            8,
-            26
-        ],
-        [
-            "word",
-            "]+",
-            8,
-            27,
-            8,
-            28
-        ],
-        [
-            "word",
-            "\\)",
-            8,
-            29,
-            8,
-            30
-        ],
-        [
-            "word",
-            "$/i.test",
-            8,
-            31,
-            8,
-            38
-        ],
-        [
-            "(",
-            "(",
-            8,
-            39
-        ],
-        [
-            "string",
-            "\"@{url}\"",
-            8,
-            40,
-            8,
-            47
-        ],
-        [
-            ")",
-            ")",
-            8,
-            48
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "?",
-            8,
-            50,
-            8,
-            50
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "string",
-            "'true'",
-            8,
-            52,
-            8,
-            57
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            ":",
-            ":",
-            8,
-            59
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "string",
-            "'false'",
-            8,
-            61,
-            8,
-            67
-        ],
-        [
-            "word",
-            "`",
-            8,
-            68,
-            8,
-            68
-        ],
-        [
-            ";",
-            ";",
-            8,
-            69
-        ],
-        [
-            "space",
-            "\n\n"
-        ],
-        [
-            "at-word",
-            "@import",
-            10,
-            1,
-            10,
-            7
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "string",
-            "'sds'",
-            10,
-            9,
-            10,
-            13
-        ],
-        [
-            ";",
-            ";",
-            10,
-            14
-        ],
-        [
-            "space",
-            "\n\n"
-        ],
-        [
-            "word",
-            "div",
-            12,
-            1,
-            12,
-            3
-        ],
-        [
-            "{",
-            "{",
-            12,
-            4
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "at-word",
-            "@cc-aa:",
-            13,
-            5,
-            13,
-            11
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "1px",
-            13,
-            13,
-            13,
-            15
-        ],
-        [
-            ";",
-            ";",
-            13,
-            16
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "at-word",
-            "@ccAA:",
-            14,
-            5,
-            14,
-            10
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "2px",
-            14,
-            12,
-            14,
-            14
-        ],
-        [
-            ";",
-            ";",
-            14,
-            15
-        ],
-        [
-            "space",
-            "\n                "
-        ],
-        [
-            "at-word",
-            "@CCCC:",
-            15,
-            17,
-            15,
-            22
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "word",
-            "1px",
-            15,
-            24,
-            15,
-            26
-        ],
-        [
-            ";",
-            ";",
-            15,
-            27
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "word",
-            "color",
-            16,
-            5,
-            16,
-            9
-        ],
-        [
-            ":",
-            ":",
-            16,
-            10
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "at-word",
-            "@fooBar",
-            16,
-            12,
-            16,
-            18
-        ],
-        [
-            ";",
-            ";",
-            16,
-            19
-        ],
-        [
-            "space",
-            "\n    "
-        ],
-        [
-            "word",
-            "background-color",
-            17,
-            5,
-            17,
-            20
-        ],
-        [
-            ":",
-            ":",
-            17,
-            21
-        ],
-        [
-            "space",
-            " "
-        ],
-        [
-            "at-word",
-            "@fooBar1",
-            17,
-            23,
-            17,
-            30
-        ],
-        [
-            ";",
-            ";",
-            17,
-            31
-        ],
-        [
-            "space",
-            "\n"
-        ],
-        [
-            "}",
-            "}",
-            18,
-            1
-        ]
-    ]
+    "lastEach": 3,
+    "indexes": {}
 }
