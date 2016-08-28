@@ -137,9 +137,9 @@ const check = (file, errors, done) => {
             });
         }
         done();
-    }
+    };
 
     checkString(file.content, file.path, loadConfig(file.path, true)).then(callback).catch(callback);
-}
+};
 
 export {check, checkString};
