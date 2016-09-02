@@ -1,40 +1,59 @@
 {
     "raws": {
         "semicolon": false,
-        "after": ";\n\n"
+        "after": "\n"
     },
     "type": "root",
     "nodes": [
         {
             "raws": {
                 "before": "",
-                "content": "// @import './comment.less';",
-                "begin": "//",
-                "left": " ",
-                "right": " "
+                "between": ": "
             },
-            "type": "comment",
+            "type": "decl",
             "source": {
                 "start": {
                     "line": 1,
                     "column": 1
                 },
                 "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+                    "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 1,
-                    "column": 28
+                    "column": 12
                 }
             },
-            "inline": true,
-            "block": false,
-            "text": "@import './comment.less';"
+            "prop": "@a",
+            "value": "12px+ 1"
         },
         {
             "raws": {
-                "before": "\n\n",
+                "before": "\n",
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 2,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 2,
+                    "column": 10
+                }
+            },
+            "prop": "@b",
+            "value": "12 *5"
+        },
+        {
+            "raws": {
+                "before": "\n",
                 "between": ": "
             },
             "type": "decl",
@@ -44,16 +63,16 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+                    "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 3,
-                    "column": 17
+                    "column": 9
                 }
             },
-            "prop": "@right-unit",
-            "value": "1px"
+            "prop": "@c",
+            "value": "12-1"
         },
         {
             "raws": {
@@ -67,195 +86,22 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+                    "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 4,
-                    "column": 19
+                    "column": 9
                 }
             },
-            "prop": "@right-unit1",
-            "value": "12px"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 5,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 5,
-                    "column": 19
-                }
-            },
-            "prop": "@right-unit2",
-            "value": "0deg"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 6,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 6,
-                    "column": 17
-                }
-            },
-            "prop": "@right-unit3",
-            "value": "0s"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 7,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 7,
-                    "column": 18
-                }
-            },
-            "prop": "@right-unit4",
-            "value": "0ms"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 8,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 8,
-                    "column": 17
-                }
-            },
-            "prop": "@wrong-unit",
-            "value": "0px"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 9,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 9,
-                    "column": 18
-                }
-            },
-            "prop": "@wrong-unit1",
-            "value": "0em"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 10,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 10,
-                    "column": 14
-                }
-            },
-            "prop": "@color",
-            "value": "green"
+            "prop": "@d",
+            "value": "12/4"
         },
         {
             "raws": {
                 "before": "\n\n",
-                "between": "",
-                "afterName": " "
-            },
-            "type": "atrule",
-            "name": "import",
-            "source": {
-                "start": {
-                    "line": 12,
-                    "column": 1
-                },
-                "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 12,
-                    "column": 21
-                }
-            },
-            "params": "'./variable'",
-            "lastEach": 8,
-            "indexes": {
-                "1": 0,
-                "2": 0,
-                "3": 0,
-                "4": 0,
-                "5": 0,
-                "6": 0,
-                "7": 0,
-                "8": 0
-            }
-        },
-        {
-            "raws": {
-                "before": "\n\n\n",
-                "between": "",
-                "semicolon": false,
+                "between": " ",
+                "semicolon": true,
                 "after": "\n"
             },
             "type": "rule",
@@ -268,20 +114,20 @@
                     "type": "decl",
                     "source": {
                         "start": {
-                            "line": 16,
+                            "line": 7,
                             "column": 5
                         },
                         "input": {
-                            "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+                            "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
                             "id": "<input css 1>"
                         },
                         "end": {
-                            "line": 16,
-                            "column": 40
+                            "line": 7,
+                            "column": 49
                         }
                     },
-                    "prop": "background-color",
-                    "value": "darken(#fff, 0px)"
+                    "prop": "font",
+                    "value": "italic bold 12px/20px arial,sans-serif"
                 },
                 {
                     "raws": {
@@ -291,169 +137,118 @@
                     "type": "decl",
                     "source": {
                         "start": {
-                            "line": 17,
+                            "line": 8,
                             "column": 5
                         },
                         "input": {
-                            "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+                            "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
                             "id": "<input css 1>"
                         },
                         "end": {
-                            "line": 17,
-                            "column": 28
+                            "line": 8,
+                            "column": 19
                         }
                     },
-                    "prop": "margin",
-                    "value": "0px @right-unit"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": " ",
-                        "semicolon": false,
-                        "after": "\n    "
-                    },
-                    "type": "rule",
-                    "nodes": [
-                        {
-                            "raws": {
-                                "before": "\n        ",
-                                "between": ": "
-                            },
-                            "type": "decl",
-                            "source": {
-                                "start": {
-                                    "line": 19,
-                                    "column": 9
-                                },
-                                "input": {
-                                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                                    "id": "<input css 1>"
-                                },
-                                "end": {
-                                    "line": 19,
-                                    "column": 28
-                                }
-                            },
-                            "prop": "height",
-                            "value": "@wrong-unit"
-                        },
-                        {
-                            "raws": {
-                                "before": "\n        ",
-                                "between": " ",
-                                "semicolon": true,
-                                "after": "\n        "
-                            },
-                            "type": "rule",
-                            "nodes": [
-                                {
-                                    "raws": {
-                                        "before": "\n            ",
-                                        "between": ": "
-                                    },
-                                    "type": "decl",
-                                    "source": {
-                                        "start": {
-                                            "line": 21,
-                                            "column": 13
-                                        },
-                                        "input": {
-                                            "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                                            "id": "<input css 1>"
-                                        },
-                                        "end": {
-                                            "line": 21,
-                                            "column": 32
-                                        }
-                                    },
-                                    "prop": "height",
-                                    "value": "@wrong-unit"
-                                },
-                                {
-                                    "raws": {
-                                        "before": "\n            ",
-                                        "between": ": "
-                                    },
-                                    "type": "decl",
-                                    "source": {
-                                        "start": {
-                                            "line": 22,
-                                            "column": 13
-                                        },
-                                        "input": {
-                                            "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                                            "id": "<input css 1>"
-                                        },
-                                        "end": {
-                                            "line": 22,
-                                            "column": 55
-                                        }
-                                    },
-                                    "prop": "box-shadow",
-                                    "value": "0 0px 2px lighten(@color, 0px)"
-                                }
-                            ],
-                            "source": {
-                                "start": {
-                                    "line": 20,
-                                    "column": 9
-                                },
-                                "input": {
-                                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                                    "id": "<input css 1>"
-                                },
-                                "end": {
-                                    "line": 23,
-                                    "column": 9
-                                }
-                            },
-                            "selector": "h2",
-                            "lastEach": 8,
-                            "indexes": {}
-                        }
-                    ],
-                    "source": {
-                        "start": {
-                            "line": 18,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 24,
-                            "column": 5
-                        }
-                    },
-                    "selector": "h1",
-                    "lastEach": 8,
-                    "indexes": {}
+                    "prop": "height",
+                    "value": "33 +33"
                 }
             ],
             "source": {
                 "start": {
-                    "line": 15,
+                    "line": 6,
                     "column": 1
                 },
                 "input": {
-                    "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+                    "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
                     "id": "<input css 1>"
                 },
                 "end": {
-                    "line": 25,
+                    "line": 9,
+                    "column": 1
+                }
+            },
+            "selector": "body",
+            "lastEach": 9,
+            "indexes": {}
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": " ",
+                "semicolon": true,
+                "after": "\n"
+            },
+            "type": "rule",
+            "nodes": [
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 12,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 28
+                        }
+                    },
+                    "prop": "font",
+                    "value": "bold 13px/30px ''"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 13,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 13,
+                            "column": 30
+                        }
+                    },
+                    "prop": "font",
+                    "value": "bold 13px/30px '宋体'"
+                }
+            ],
+            "source": {
+                "start": {
+                    "line": 11,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 14,
                     "column": 1
                 }
             },
             "selector": "div",
-            "lastEach": 8,
+            "lastEach": 9,
             "indexes": {}
         }
     ],
     "source": {
         "input": {
-            "css": "// @import './comment.less';\n\n@right-unit: 1px;\n@right-unit1: 12px;\n@right-unit2: 0deg;\n@right-unit3: 0s;\n@right-unit4: 0ms;\n@wrong-unit: 0px;\n@wrong-unit1: 0em;\n@color: green;\n\n@import './variable';\n\n\ndiv{\n    background-color: darken(#fff, 0px);\n    margin: 0px @right-unit;\n    h1 {\n        height: @wrong-unit;\n        h2 {\n            height: @wrong-unit;\n            box-shadow: 0 0px 2px lighten(@color, 0px);\n        }\n    }\n};\n\n",
+            "css": "@a: 12px+ 1;\n@b: 12 *5;\n@c: 12-1;\n@d: 12/4;\n\nbody {\n    font: italic bold 12px/20px arial,sans-serif;\n    height: 33 +33;\n}\n\ndiv {\n    font: bold 13px/30px '';\n    font: bold 13px/30px '宋体';\n}\n",
             "id": "<input css 1>"
         },
         "start": {
@@ -461,6 +256,6 @@
             "column": 1
         }
     },
-    "lastEach": 8,
+    "lastEach": 9,
     "indexes": {}
 }

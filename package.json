@@ -16,6 +16,7 @@
     "manis": "^0.3.0",
     "postcss": "^5.1.2",
     "postcss-less": "^0.14.0",
+    "postcss-values-parser": "^0.1.7",
     "strip-json-comments": "^2.0.1"
   },
   "devDependencies": {

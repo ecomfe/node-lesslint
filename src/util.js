@@ -272,7 +272,7 @@ export function changeColorByIndex(source, startIndex, colorStr) {
 }
 
 /**
- * 根据开始和结束的索引来高亮字符串的字串
+ * 根据开始和结束的索引来高亮字符串的子串
  *
  * @param {string} source 源字符串
  * @param {number} startIndex 开始的索引
