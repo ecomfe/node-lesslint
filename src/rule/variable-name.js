@@ -47,9 +47,9 @@ const check = postcss.plugin(RULENAME, (opts) => {
         }
 
         css.walkDecls((decl) => {
-            let lineNum = decl.source.start.line;
-            let lineContent = getLineContent(lineNum, opts.fileContent);
-            let prop = decl.prop;
+            const lineNum = decl.source.start.line;
+            const lineContent = getLineContent(lineNum, opts.fileContent);
+            const prop = decl.prop;
 
             if (prop.startsWith('@')
                 && !VARIABLE_NAME_REG.test(prop)
