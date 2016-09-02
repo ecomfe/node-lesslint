@@ -1,12 +1,35 @@
 {
     "raws": {
         "semicolon": false,
-        "after": ";\n\n"
+        "after": ""
     },
     "type": "root",
     "nodes": [
         {
             "raws": {
+                "before": "",
+                "between": ":           "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 1,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 1,
+                    "column": 33
+                }
+            },
+            "prop": "@img-url",
+            "value": "'./test.png'"
+        },
+        {
+            "raws": {
                 "before": "\n",
                 "between": ": "
             },
@@ -17,16 +40,16 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 2,
-                    "column": 16
+                    "column": 9
                 }
             },
-            "prop": "@number1",
-            "value": "0.2px"
+            "prop": "@url",
+            "value": "''"
         },
         {
             "raws": {
@@ -40,39 +63,39 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 3,
+                    "column": 14
+                }
+            },
+            "prop": "@fooBar",
+            "value": "10px"
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 4,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 4,
                     "column": 15
                 }
             },
-            "prop": "@number2",
-            "value": ".6px"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 4,
-                    "column": 1
-                },
-                "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 4,
-                    "column": 17
-                }
-            },
-            "prop": "@number2",
-            "value": "10.3px"
+            "prop": "@fooBar1",
+            "value": "10px"
         },
         {
             "raws": {
@@ -86,39 +109,39 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 5,
-                    "column": 16
+                    "column": 15
                 }
             },
-            "prop": "@number3",
-            "value": "1.3px"
+            "prop": "@foo-bar",
+            "value": "20px"
         },
         {
             "raws": {
-                "before": "\n    ",
+                "before": "\n",
                 "between": ": "
             },
             "type": "decl",
             "source": {
                 "start": {
                     "line": 6,
-                    "column": 5
+                    "column": 1
                 },
                 "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 6,
-                    "column": 51
+                    "column": 14
                 }
             },
-            "prop": "@margin",
-            "value": "0.33em         0.1em           0.5rem"
+            "prop": "@barFoo",
+            "value": "12px"
         },
         {
             "raws": {
@@ -132,22 +155,78 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 7,
-                    "column": 13
+                    "column": 21
                 }
             },
-            "prop": "@color",
-            "value": "#fff"
+            "prop": "@urlA",
+            "value": "~\"@{img-url}\""
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 8,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 8,
+                    "column": 69
+                }
+            },
+            "prop": "@is-url-exp",
+            "value": "~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`"
         },
         {
             "raws": {
                 "before": "\n\n",
                 "between": "",
-                "semicolon": false,
+                "afterName": " "
+            },
+            "type": "atrule",
+            "name": "import",
+            "source": {
+                "start": {
+                    "line": 10,
+                    "column": 1
+                },
+                "input": {
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 10,
+                    "column": 14
+                }
+            },
+            "params": "'sds'",
+            "lastEach": 6,
+            "indexes": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0
+            }
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": "",
+                "semicolon": true,
                 "after": "\n"
             },
             "type": "rule",
@@ -160,141 +239,136 @@
                     "type": "decl",
                     "source": {
                         "start": {
-                            "line": 10,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 10,
-                            "column": 17
-                        }
-                    },
-                    "prop": "height",
-                    "value": ".2px"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": ": "
-                    },
-                    "type": "decl",
-                    "source": {
-                        "start": {
-                            "line": 11,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 11,
-                            "column": 17
-                        }
-                    },
-                    "prop": "width",
-                    "value": "0.3px"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": ": "
-                    },
-                    "type": "decl",
-                    "source": {
-                        "start": {
-                            "line": 12,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 12,
-                            "column": 36
-                        }
-                    },
-                    "prop": "transition-duration",
-                    "value": "0.5s, 0.7s"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": " ",
-                        "semicolon": true,
-                        "after": "\n    "
-                    },
-                    "type": "rule",
-                    "nodes": [
-                        {
-                            "raws": {
-                                "before": "\n        ",
-                                "between": ": "
-                            },
-                            "type": "decl",
-                            "source": {
-                                "start": {
-                                    "line": 14,
-                                    "column": 9
-                                },
-                                "input": {
-                                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
-                                    "id": "<input css 1>"
-                                },
-                                "end": {
-                                    "line": 14,
-                                    "column": 22
-                                }
-                            },
-                            "prop": "width",
-                            "value": "0.99px"
-                        }
-                    ],
-                    "source": {
-                        "start": {
                             "line": 13,
                             "column": 5
                         },
                         "input": {
-                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                            "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 13,
+                            "column": 16
+                        }
+                    },
+                    "prop": "@cc-aa",
+                    "value": "1px"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 14,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 14,
+                            "column": 15
+                        }
+                    },
+                    "prop": "@ccAA",
+                    "value": "2px"
+                },
+                {
+                    "raws": {
+                        "before": "\n                ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 15,
+                            "column": 17
+                        },
+                        "input": {
+                            "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                             "id": "<input css 1>"
                         },
                         "end": {
                             "line": 15,
-                            "column": 5
+                            "column": 27
                         }
                     },
-                    "selector": "span",
-                    "lastEach": 5,
-                    "indexes": {}
+                    "prop": "@CCCC",
+                    "value": "1px"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 16,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 16,
+                            "column": 19
+                        }
+                    },
+                    "prop": "color",
+                    "value": "@fooBar"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 17,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 17,
+                            "column": 31
+                        }
+                    },
+                    "prop": "background-color",
+                    "value": "@fooBar1"
                 }
             ],
             "source": {
                 "start": {
-                    "line": 9,
+                    "line": 12,
                     "column": 1
                 },
                 "input": {
-                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
                     "id": "<input css 1>"
                 },
                 "end": {
-                    "line": 16,
+                    "line": 18,
                     "column": 1
                 }
             },
             "selector": "div",
-            "lastEach": 5,
+            "lastEach": 6,
             "indexes": {}
         }
     ],
     "source": {
         "input": {
-            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+            "css": "@img-url:           './test.png';\n@url: '';\n@fooBar: 10px;\n@fooBar1: 10px;\n@foo-bar: 20px;\n@barFoo: 12px;\n@urlA: ~\"@{img-url}\";\n@is-url-exp: ~`/^url\\([^()]+\\)$/i.test(\"@{url}\") ? 'true' : 'false'`;\n\n@import 'sds';\n\ndiv{\n    @cc-aa: 1px;\n    @ccAA: 2px;\n                @CCCC: 1px;\n    color: @fooBar;\n    background-color: @fooBar1;\n}",
             "id": "<input css 1>"
         },
         "start": {
@@ -302,6 +376,6 @@
             "column": 1
         }
     },
-    "lastEach": 5,
+    "lastEach": 6,
     "indexes": {}
 }

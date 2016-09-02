@@ -11,6 +11,11 @@ import {getLineContent} from '../util';
 
 'use strict';
 
+/**
+ * 规则名称
+ *
+ * @type {string}
+ */
 const RULENAME = 'single-comment';
 
 /**

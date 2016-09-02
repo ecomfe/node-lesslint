@@ -11,8 +11,18 @@ import {getLineContent, changeColorByIndex} from '../util';
 
 'use strict';
 
+/**
+ * 规则名称
+ *
+ * @type {string}
+ */
 const RULENAME = 'leading-zero';
 
+/**
+ * 错误信息
+ *
+ * @type {string}
+ */
 const MSG = 'When value is between 0 - 1 decimal, omitting the integer part of the `0`';
 
 /**
@@ -23,7 +33,6 @@ const MSG = 'When value is between 0 - 1 decimal, omitting the integer part of t
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-
 const check = postcss.plugin(RULENAME, (opts) => {
     return (css, result) => {
         if (!opts.ruleVal) {
@@ -33,17 +42,17 @@ const check = postcss.plugin(RULENAME, (opts) => {
         css.walkDecls((decl) => {
             const parts = postcss.list.space(decl.value);
             const source = decl.source;
-            const line = source.start.line;
+            const lineNum = source.start.line;
             for (let i = 0, len = parts.length; i < len; i++) {
                 const part = parts[i];
                 const numericVal = parseFloat(part);
                 if (numericVal < 1 && numericVal > 0) {
                     if (part.slice(0, 2) === '0.') {
-                        const lineContent = getLineContent(line, source.input.css, true);
+                        const lineContent = getLineContent(lineNum, source.input.css, true);
                         result.warn(RULENAME, {
                             node: decl,
                             ruleName: RULENAME,
-                            line: line,
+                            line: lineNum,
                             col: lineContent.indexOf(part) + 1,
                             message: MSG,
                             colorMessage: '`'
