@@ -24,8 +24,6 @@ const RULENAME = 'single-comment';
 
 const check = postcss.plugin(RULENAME, (opts) => {
     return (css, result) => {
-
-
         if (!opts.ruleVal) {
             return;
         }

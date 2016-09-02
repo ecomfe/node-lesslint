@@ -3,6 +3,7 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
+import chalk from 'chalk';
 import {statSync, existsSync, readFileSync} from 'fs';
 import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
 
@@ -35,7 +36,7 @@ function times(n, iterator, context) {
  *
  * @return {string} 格式化后的信息
  */
-function formatMsg(msg, spaceCount) {
+export function formatMsg(msg, spaceCount) {
     let space = '';
     spaceCount = spaceCount || 0;
     times(spaceCount, () => {
@@ -51,7 +52,7 @@ function formatMsg(msg, spaceCount) {
  *
  * @return {Array} 结果数组，是一个新数组
  */
-function uniqueMsg(msg) {
+export function uniqueMsg(msg) {
     let ret = [];
     let tmp = [];
     for (let i = 0, j = 1, len = msg.length; i < len; i++, j++) {
@@ -78,7 +79,7 @@ function uniqueMsg(msg) {
  *
  * @return {Array.<string>} 匹配的文件集合
  */
-function getCandidates(args, patterns) {
+export function getCandidates(args, patterns) {
     let candidates = [];
 
     args = args.filter((item) => {
@@ -123,7 +124,7 @@ function getCandidates(args, patterns) {
  *
  * @return {Array.<string>} 结果
  */
-function getIgnorePatterns(file) {
+export function getIgnorePatterns(file) {
     if (!existsSync(file)) {
         return [];
     }
@@ -143,7 +144,7 @@ var _IGNORE_CACHE = {};
  * @param {string=} name ignore文件的名称.
  * @return {boolean}
  */
-function isIgnored(file, name) {
+export function isIgnored(file, name) {
     let ignorePatterns = null;
 
     name = name || '.jshintignore';
@@ -201,7 +202,7 @@ var _CONFIG_CACHE = {};
  *
  * @return {Object} 配置信息
  */
-function getConfig(configName, file, defaultConfig) {
+export function getConfig(configName, file, defaultConfig) {
     var dir = edpPath.dirname(edpPath.resolve(file));
     var key = configName + '@' + dir;
 
@@ -239,13 +240,37 @@ function getConfig(configName, file, defaultConfig) {
  *
  * @return {string} 当前行内容
  */
-function getLineContent(line, fileData, notRemoveSpace) {
+export function getLineContent(line, fileData, notRemoveSpace) {
     if (notRemoveSpace) {
         return fileData.split('\n')[line - 1];
     }
     // 去掉前面的缩进
     return fileData.split('\n')[line - 1].replace(/^\s*/, '');
 }
+
+/**
+ * 根据索引把一行内容中的某个子串变色
+ * 直接用正则匹配的话，可能会把这一行所有的 colorStr 给变色，所以要通过索引来判断
+ *
+ * @param {string} source 源字符串
+ * @param {number} startIndex 开始的索引，通常是 col
+ * @param {string} colorStr 要变色的字符串
+ *
+ * @return {string} 改变颜色后的字符串
+ */
+export function changeColorByIndex(source, startIndex, colorStr) {
+    let ret = '';
+    if (source) {
+        const colorStrLen = colorStr.length;
+        const endIndex = startIndex + colorStrLen;
+        ret = ''
+            + source.slice(0, startIndex) // colorStr 前面的部分
+            + chalk.magenta(source.slice(startIndex, endIndex)) // colorStr 的部分
+            + source.slice(endIndex, source.length); // colorStr 后面的部分
+    }
+    return ret;
+}
+
 
 /**
  * 把错误信息放入 errors 数组中
@@ -265,5 +290,3 @@ function getLineContent(line, fileData, notRemoveSpace) {
 //         colorMessage: colorMessage
 //     });
 // }
-
-export {formatMsg, getCandidates, getIgnorePatterns, isIgnored, getConfig, uniqueMsg, getLineContent/*, addInvalidList*/};

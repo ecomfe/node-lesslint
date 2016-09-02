@@ -1,44 +1,36 @@
 {
     "raws": {
         "semicolon": false,
-        "after": ""
+        "after": ";\n\n"
     },
     "type": "root",
     "nodes": [
         {
             "raws": {
-                "before": "",
-                "between": "",
-                "afterName": " "
+                "before": "\n",
+                "between": ": "
             },
-            "type": "atrule",
-            "name": "import",
+            "type": "decl",
             "source": {
                 "start": {
-                    "line": 1,
+                    "line": 2,
                     "column": 1
                 },
                 "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
                     "id": "<input css 1>"
                 },
                 "end": {
-                    "line": 1,
-                    "column": 25
+                    "line": 2,
+                    "column": 16
                 }
             },
-            "params": "'./leading-zero'",
-            "lastEach": 4,
-            "indexes": {
-                "1": 0,
-                "2": 0,
-                "3": 0,
-                "4": 0
-            }
+            "prop": "@number1",
+            "value": "0.2px"
         },
         {
             "raws": {
-                "before": "\n\n",
+                "before": "\n",
                 "between": ": "
             },
             "type": "decl",
@@ -48,49 +40,114 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 3,
-                    "column": 10
+                    "column": 15
                 }
             },
-            "prop": "@hhh",
-            "value": "0px"
+            "prop": "@number2",
+            "value": ".6px"
         },
         {
             "raws": {
-                "before": "\n\n",
-                "content": "/**\n * 合法多行注释\n * sadsadsadsada\n */",
-                "begin": "/*",
-                "left": " ",
-                "right": "\n "
+                "before": "\n",
+                "between": ": "
             },
-            "type": "comment",
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 4,
+                    "column": 1
+                },
+                "input": {
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 4,
+                    "column": 17
+                }
+            },
+            "prop": "@number2",
+            "value": "10.3px"
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "between": ": "
+            },
+            "type": "decl",
             "source": {
                 "start": {
                     "line": 5,
                     "column": 1
                 },
                 "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
                     "id": "<input css 1>"
                 },
                 "end": {
-                    "line": 8,
-                    "column": 3
+                    "line": 5,
+                    "column": 16
                 }
             },
-            "inline": false,
-            "block": true,
-            "text": "*\n * 合法多行注释\n * sadsadsadsada"
+            "prop": "@number3",
+            "value": "1.3px"
+        },
+        {
+            "raws": {
+                "before": "\n    ",
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 6,
+                    "column": 5
+                },
+                "input": {
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 6,
+                    "column": 51
+                }
+            },
+            "prop": "@margin",
+            "value": "0.33em         0.1em           0.5rem"
         },
         {
             "raws": {
                 "before": "\n",
-                "between": " ",
-                "semicolon": true,
+                "between": ": "
+            },
+            "type": "decl",
+            "source": {
+                "start": {
+                    "line": 7,
+                    "column": 1
+                },
+                "input": {
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 7,
+                    "column": 13
+                }
+            },
+            "prop": "@color",
+            "value": "#fff"
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": "",
+                "semicolon": false,
                 "after": "\n"
             },
             "type": "rule",
@@ -107,16 +164,113 @@
                             "column": 5
                         },
                         "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
+                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
                             "id": "<input css 1>"
                         },
                         "end": {
                             "line": 10,
-                            "column": 15
+                            "column": 17
                         }
                     },
-                    "prop": "color",
-                    "value": "red"
+                    "prop": "height",
+                    "value": ".2px"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 11,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 11,
+                            "column": 17
+                        }
+                    },
+                    "prop": "width",
+                    "value": "0.3px"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 12,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 36
+                        }
+                    },
+                    "prop": "transition-duration",
+                    "value": "0.5s, 0.7s"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": " ",
+                        "semicolon": true,
+                        "after": "\n    "
+                    },
+                    "type": "rule",
+                    "nodes": [
+                        {
+                            "raws": {
+                                "before": "\n        ",
+                                "between": ": "
+                            },
+                            "type": "decl",
+                            "source": {
+                                "start": {
+                                    "line": 14,
+                                    "column": 9
+                                },
+                                "input": {
+                                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                                    "id": "<input css 1>"
+                                },
+                                "end": {
+                                    "line": 14,
+                                    "column": 22
+                                }
+                            },
+                            "prop": "width",
+                            "value": "0.99px"
+                        }
+                    ],
+                    "source": {
+                        "start": {
+                            "line": 13,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 15,
+                            "column": 5
+                        }
+                    },
+                    "selector": "span",
+                    "lastEach": 5,
+                    "indexes": {}
                 }
             ],
             "source": {
@@ -125,277 +279,22 @@
                     "column": 1
                 },
                 "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
+                    "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
                     "id": "<input css 1>"
                 },
                 "end": {
-                    "line": 11,
-                    "column": 1
-                }
-            },
-            "selector": "a",
-            "lastEach": 4,
-            "indexes": {}
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "content": "/* *12312312**/",
-                "begin": "/*",
-                "left": " ",
-                "right": " "
-            },
-            "type": "comment",
-            "source": {
-                "start": {
-                    "line": 12,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 12,
-                    "column": 15
-                }
-            },
-            "inline": false,
-            "block": true,
-            "text": "*12312312*"
-        },
-        {
-            "raws": {
-                "before": "\n\n",
-                "content": "// aaaaa",
-                "begin": "//",
-                "left": " ",
-                "right": " "
-            },
-            "type": "comment",
-            "source": {
-                "start": {
-                    "line": 14,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 14,
-                    "column": 8
-                }
-            },
-            "inline": true,
-            "block": false,
-            "text": "aaaaa"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "content": "// bbbbb",
-                "begin": "//",
-                "left": " ",
-                "right": " "
-            },
-            "type": "comment",
-            "source": {
-                "start": {
-                    "line": 15,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 15,
-                    "column": 8
-                }
-            },
-            "inline": true,
-            "block": false,
-            "text": "bbbbb"
-        },
-        {
-            "raws": {
-                "before": "\n\n",
-                "between": "",
-                "semicolon": true,
-                "after": "\n"
-            },
-            "type": "rule",
-            "nodes": [
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "content": "// 合法单行注释",
-                        "begin": "//",
-                        "left": " ",
-                        "right": " "
-                    },
-                    "type": "comment",
-                    "source": {
-                        "start": {
-                            "line": 18,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 18,
-                            "column": 13
-                        }
-                    },
-                    "inline": true,
-                    "block": false,
-                    "text": "合法单行注释"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": ": "
-                    },
-                    "type": "decl",
-                    "source": {
-                        "start": {
-                            "line": 19,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 19,
-                            "column": 27
-                        }
-                    },
-                    "prop": "border",
-                    "value": "0px solid #fff"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": ": "
-                    },
-                    "type": "decl",
-                    "source": {
-                        "start": {
-                            "line": 20,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 20,
-                            "column": 16
-                        }
-                    },
-                    "prop": "height",
-                    "value": "0px"
-                },
-                {
-                    "raws": {
-                        "before": "\n\n    ",
-                        "between": ": "
-                    },
-                    "type": "decl",
-                    "source": {
-                        "start": {
-                            "line": 22,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 22,
-                            "column": 15
-                        }
-                    },
-                    "prop": "width",
-                    "value": "0px"
-                },
-                {
-                    "raws": {
-                        "before": "\n\n    ",
-                        "content": "/** invalid single comment **/",
-                        "begin": "/*",
-                        "left": " ",
-                        "right": " "
-                    },
-                    "type": "comment",
-                    "source": {
-                        "start": {
-                            "line": 24,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 24,
-                            "column": 34
-                        }
-                    },
-                    "inline": false,
-                    "block": true,
-                    "text": "* invalid single comment *"
-                },
-                {
-                    "raws": {
-                        "before": "\n    ",
-                        "between": ": "
-                    },
-                    "type": "decl",
-                    "source": {
-                        "start": {
-                            "line": 25,
-                            "column": 5
-                        },
-                        "input": {
-                            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                            "id": "<input css 1>"
-                        },
-                        "end": {
-                            "line": 25,
-                            "column": 16
-                        }
-                    },
-                    "prop": "color",
-                    "value": "#f00"
-                }
-            ],
-            "source": {
-                "start": {
-                    "line": 17,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 26,
+                    "line": 16,
                     "column": 1
                 }
             },
             "selector": "div",
-            "lastEach": 4,
+            "lastEach": 5,
             "indexes": {}
         }
     ],
     "source": {
         "input": {
-            "css": "@import './leading-zero';\n\n@hhh: 0px;\n\n/**\n * 合法多行注释\n * sadsadsadsada\n */\na {\n    color: red;\n}\n/* *12312312**/\n\n// aaaaa\n// bbbbb\n\ndiv{\n    // 合法单行注释\n    border: 0px solid #fff;\n    height: 0px;\n\n    width: 0px;\n\n    /** invalid single comment **/\n    color: #f00;\n}",
+            "css": "\n@number1: 0.2px;\n@number2: .6px;\n@number2: 10.3px;\n@number3: 1.3px;\n    @margin: 0.33em         0.1em           0.5rem;\n@color: #fff;\n\ndiv{\n    height: .2px;\n    width: 0.3px;\n    transition-duration: 0.5s, 0.7s;\n    span {\n        width: 0.99px;\n    }\n};\n\n",
             "id": "<input css 1>"
         },
         "start": {
@@ -403,6 +302,6 @@
             "column": 1
         }
     },
-    "lastEach": 4,
+    "lastEach": 5,
     "indexes": {}
 }
