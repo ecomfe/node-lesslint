@@ -1,6 +1,6 @@
 /**
  * @file 运算符检验
- *       + / - / * / / 四个运算符两侧必须（MUST）保留一个空格。
+ *       + / - 两侧的操作数必须（MUST）有相同的单位，如果其中一个是变量，另一个数值必须（MUST）书写单位。
  *       https://github.com/ecomfe/spec/blob/master/less-code-style.md#%E8%BF%90%E7%AE%97
  * @author ielgnaw(wuji0223@gmail.com)
  */
@@ -18,14 +18,16 @@ import {getLineContent, changeColorByStartAndEndIndex} from '../util';
  *
  * @type {string}
  */
-const RULENAME = 'require-around-space';
+const RULENAME = 'operate-unit';
 
 /**
  * 错误信息
  *
  * @type {string}
  */
-const MSG = '`+`、`-`、`*`、`/` four operators on both sides must keep a space';
+const MSG = ''
+    + '`+`、`-` on both sides of the operand must have the same unit, '
+    + 'if one side has unit, the other side must has unit';
 
 /**
  * 具体的检测逻辑
@@ -41,12 +43,16 @@ const check = postcss.plugin(RULENAME, (opts) => {
             return;
         }
 
+        // TODO:
+        // `@a: 1 + 2;` is walkDecls
+        // `@a : 1 + 2;` is walkAtRules 这种情况还未处理
+
         /* jshint maxcomplexity:false */
         css.walkDecls((decl) => {
             const valueAst = parser(decl.value).parse();
 
             valueAst.walk(child => {
-                if (child.type !== 'operator') {
+                if (child.type !== 'operator' || (child.value !== '+' && child.value !== '-')) {
                     return;
                 }
 
@@ -59,48 +65,28 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 // child 的前一个元素
                 const prevElem = child.parent.nodes[index - 1];
 
-                // 忽略负数 -1
-                if (child.value === '-'
-                    && (child.raws.before || decl.raws.between)
-                    && nextElem.type === 'number'
-                    && !nextElem.raws.before
-                ) {
-                    return;
+                let problemElem = null;
+
+                // 后一个是变量
+                if (nextElem.type === 'atword' && prevElem.type !== 'atword') {
+                    if (!prevElem.unit) {
+                        problemElem = prevElem;
+                    }
                 }
 
-                // 忽略变量 -@foo
-                if (child.value === '-'
-                    && (child.raws.before || decl.raws.between)
-                    && nextElem.type === 'atword'
-                    && !nextElem.raws.before
-                ) {
-                    return;
+                // 前一个是变量
+                if (prevElem.type === 'atword' && nextElem.type !== 'atword') {
+                    if (!nextElem.unit) {
+                        problemElem = nextElem;
+                    }
                 }
 
-                // 忽略 font-size/line-height 简写定义
-                if (decl.prop === 'font'
-                    && child.value === '/'
-                    && prevElem.type === 'number'
-                    && nextElem.type === 'number'
-                ) {
-                    return;
-                }
-
-                // 判断 operator 前面是否有空格
-                const isBeforeValid = child.raws.before === ' ' || /^\s/.test(child.raws.before);
-
-                // 判断 operator 后面是否有空格
-                const isAfterValid = nextElem.raws.before === ' ' || /\s$/.test(nextElem.raws.before);
-
-                if (!isBeforeValid || !isAfterValid) {
-                    const problemElem = !/\s$/.test(child.raws.before) ? child : nextElem;
+                if (problemElem) {
                     const {source, prop, raws} = decl;
                     const line = source.start.line;
                     const lineContent = getLineContent(line, source.input.css, true);
-                    const col = 0
-                        + source.start.column + prop.length + raws.between.length + problemElem.source.start.column
-                        - 1
-                        - (isBeforeValid ? child.value.length: 0);
+                    const col =
+                        source.start.column + prop.length + raws.between.length + problemElem.source.start.column - 1;
 
                     result.warn(RULENAME, {
                         node: decl,
@@ -109,7 +95,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
                         col: col,
                         message: '`' + lineContent + '` ' + MSG,
                         colorMessage: '`'
-                            + changeColorByStartAndEndIndex(lineContent, col, col + child.value.length)
+                            + changeColorByStartAndEndIndex(lineContent, col, col + problemElem.value.length)
                             + '` '
                             + chalk.grey(MSG)
                     });
