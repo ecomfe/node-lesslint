@@ -16,6 +16,7 @@
     "manis": "^0.3.0",
     "postcss": "^5.1.2",
     "postcss-less": "^0.14.0",
+    "postcss-selector-parser": "^2.2.1",
     "postcss-values-parser": "^0.1.7",
     "strip-json-comments": "^2.0.1"
   },
@@ -35,7 +36,7 @@
   },
   "scripts": {
     "lint": "fecs lib test/**/*.spec.js --type=js",
-    "compile": "./node_modules/.bin/babel src -d lib --source-maps inline --copy-files",
+    "compile": "rm -rf lib && ./node_modules/.bin/babel src -d lib --source-maps inline --copy-files",
     "start": "npm run compile && node lib/index.js",
     "debug": "npm run compile && ./node_modules/.bin/babel-node-debug lib/index.js",
     "test": "npm run start && ./node_modules/.bin/_mocha --compilers js:babel-core/register --recursive",

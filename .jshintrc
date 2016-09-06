@@ -23,6 +23,8 @@
     "maxdepth": 5,
     "maxstatements": 25,
     "maxcomplexity": 10,
+    "laxbreak": true,
+    "node": true,
     "predef": [
         "System"
     ]

@@ -1,106 +1,270 @@
 {
     "raws": {
-        "semicolon": true,
-        "after": "\n"
+        "semicolon": false,
+        "after": ""
     },
     "type": "root",
     "nodes": [
         {
             "raws": {
                 "before": "",
-                "between": ": "
+                "between": " ",
+                "semicolon": true,
+                "after": "\n"
             },
-            "type": "decl",
+            "type": "rule",
+            "nodes": [
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 2,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 19
+                        }
+                    },
+                    "prop": "color",
+                    "value": "#ffffff"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 3,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 26
+                        }
+                    },
+                    "prop": "border-color",
+                    "value": "#ffaabb"
+                }
+            ],
             "source": {
                 "start": {
                     "line": 1,
                     "column": 1
                 },
                 "input": {
-                    "css": "@d: 0;\n@b: 1px + @d;\n@c: @b +     13;\n@a:     12 + @c;\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 1,
-                    "column": 6
-                }
-            },
-            "prop": "@d",
-            "value": "0"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 2,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@d: 0;\n@b: 1px + @d;\n@c: @b +     13;\n@a:     12 + @c;\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 2,
-                    "column": 13
-                }
-            },
-            "prop": "@b",
-            "value": "1px + @d"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ": "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 3,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@d: 0;\n@b: 1px + @d;\n@c: @b +     13;\n@a:     12 + @c;\n",
-                    "id": "<input css 1>"
-                },
-                "end": {
-                    "line": 3,
-                    "column": 16
-                }
-            },
-            "prop": "@c",
-            "value": "@b +     13"
-        },
-        {
-            "raws": {
-                "before": "\n",
-                "between": ":     "
-            },
-            "type": "decl",
-            "source": {
-                "start": {
-                    "line": 4,
-                    "column": 1
-                },
-                "input": {
-                    "css": "@d: 0;\n@b: 1px + @d;\n@c: @b +     13;\n@a:     12 + @c;\n",
+                    "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
                     "id": "<input css 1>"
                 },
                 "end": {
                     "line": 4,
-                    "column": 16
+                    "column": 1
                 }
             },
-            "prop": "@a",
-            "value": "12 + @c"
+            "selector": "body",
+            "lastEach": 11,
+            "indexes": {}
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "between": " ",
+                "semicolon": true,
+                "after": "\n"
+            },
+            "type": "rule",
+            "nodes": [
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 7,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 7,
+                            "column": 17
+                        }
+                    },
+                    "prop": "color",
+                    "value": "white"
+                },
+                {
+                    "raws": {
+                        "before": "\n    ",
+                        "between": ": "
+                    },
+                    "type": "decl",
+                    "source": {
+                        "start": {
+                            "line": 8,
+                            "column": 5
+                        },
+                        "input": {
+                            "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                            "id": "<input css 1>"
+                        },
+                        "end": {
+                            "line": 8,
+                            "column": 38
+                        }
+                    },
+                    "prop": "border",
+                    "value": "1px solid #ffffff #ccddcc"
+                }
+            ],
+            "source": {
+                "start": {
+                    "line": 6,
+                    "column": 1
+                },
+                "input": {
+                    "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 9,
+                    "column": 1
+                }
+            },
+            "selector": ".c",
+            "lastEach": 11,
+            "indexes": {}
+        },
+        {
+            "raws": {
+                "before": "\n\n",
+                "content": "// .right {",
+                "begin": "//",
+                "left": " ",
+                "right": " "
+            },
+            "type": "comment",
+            "source": {
+                "start": {
+                    "line": 11,
+                    "column": 1
+                },
+                "input": {
+                    "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 11,
+                    "column": 11
+                }
+            },
+            "inline": true,
+            "block": false,
+            "text": ".right {"
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "content": "//     color: #fff;",
+                "begin": "//",
+                "left": "     ",
+                "right": " "
+            },
+            "type": "comment",
+            "source": {
+                "start": {
+                    "line": 12,
+                    "column": 1
+                },
+                "input": {
+                    "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 12,
+                    "column": 19
+                }
+            },
+            "inline": true,
+            "block": false,
+            "text": "color: #fff;"
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "content": "//     border-color: 2px solid #abc;",
+                "begin": "//",
+                "left": "     ",
+                "right": " "
+            },
+            "type": "comment",
+            "source": {
+                "start": {
+                    "line": 13,
+                    "column": 1
+                },
+                "input": {
+                    "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 13,
+                    "column": 36
+                }
+            },
+            "inline": true,
+            "block": false,
+            "text": "border-color: 2px solid #abc;"
+        },
+        {
+            "raws": {
+                "before": "\n",
+                "content": "// }",
+                "begin": "//",
+                "left": " ",
+                "right": " "
+            },
+            "type": "comment",
+            "source": {
+                "start": {
+                    "line": 14,
+                    "column": 1
+                },
+                "input": {
+                    "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
+                    "id": "<input css 1>"
+                },
+                "end": {
+                    "line": 14,
+                    "column": 4
+                }
+            },
+            "inline": true,
+            "block": false,
+            "text": "}"
         }
     ],
     "source": {
         "input": {
-            "css": "@d: 0;\n@b: 1px + @d;\n@c: @b +     13;\n@a:     12 + @c;\n",
+            "css": "body {\n    color: #ffffff;\n    border-color: #ffaabb;\n}\n\n.c {\n    color: white;\n    border: 1px solid #ffffff #ccddcc;\n}\n\n// .right {\n//     color: #fff;\n//     border-color: 2px solid #abc;\n// }",
             "id": "<input css 1>"
         },
         "start": {
@@ -108,6 +272,6 @@
             "column": 1
         }
     },
-    "lastEach": 10,
+    "lastEach": 11,
     "indexes": {}
 }
