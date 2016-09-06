@@ -71,7 +71,7 @@ const COMMA_MSG = 'Must contain spaces after `,` in `attr-value`';
  * @param {string} opts.filePath 文件路径
  */
 const check = postcss.plugin(RULENAME, (opts) => {
-    return function (css, result) {
+    return (css, result) => {
         const ruleVal = opts.ruleVal;
         const realRuleVal = [];
         Array.prototype.push[Array.isArray(ruleVal) ? 'apply' : 'call'](realRuleVal, ruleVal);
@@ -135,7 +135,6 @@ const check = postcss.plugin(RULENAME, (opts) => {
                                         + '` '
                                         + chalk.grey(COMMA_MSG)
                                 });
-                                global.CSSHINT_INVALID_ALL_COUNT++;
                             }
                         }
                     }
