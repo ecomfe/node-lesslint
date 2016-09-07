@@ -20,8 +20,8 @@ import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
  * @return {Array} 结果
  */
 function times(n, iterator, context) {
-    var accum = new Array(Math.max(0, n));
-    for (var i = 0; i < n; i++) {
+    const accum = new Array(Math.max(0, n));
+    for (let i = 0; i < n; i++) {
         accum[i] = iterator.call(context, i);
     }
     return accum;
@@ -135,7 +135,7 @@ export function getIgnorePatterns(file) {
     });
 }
 
-var _IGNORE_CACHE = {};
+const _IGNORE_CACHE = {};
 
 /**
  * 判断一下是否应该忽略这个文件.
@@ -181,8 +181,8 @@ export function isIgnored(file, name) {
     catch (ex) {
     }
 
-    var dirname = edpPath.relative(bizOrPkgRoot, file);
-    var isMatch = glob.match(dirname, Object.keys(ignorePatterns));
+    const dirname = edpPath.relative(bizOrPkgRoot, file);
+    const isMatch = glob.match(dirname, Object.keys(ignorePatterns));
 
     return isMatch;
 }
@@ -191,7 +191,7 @@ export function isIgnored(file, name) {
  * 目录配置信息的缓存数据
  * @ignore
  */
-var _CONFIG_CACHE = {};
+const _CONFIG_CACHE = {};
 
 /**
  * 读取默认的配置信息，可以缓存一下.
@@ -203,14 +203,14 @@ var _CONFIG_CACHE = {};
  * @return {Object} 配置信息
  */
 export function getConfig(configName, file, defaultConfig) {
-    var dir = edpPath.dirname(edpPath.resolve(file));
-    var key = configName + '@' + dir;
+    const dir = edpPath.dirname(edpPath.resolve(file));
+    const key = configName + '@' + dir;
 
     if (_CONFIG_CACHE[key]) {
         return _CONFIG_CACHE[key];
     }
 
-    var options = {
+    const options = {
         name: configName,
         defaultConfig: defaultConfig,
         factory: function (item) {
@@ -223,7 +223,7 @@ export function getConfig(configName, file, defaultConfig) {
         }
     };
 
-    var value = edpUtil.getConfig(dir, options);
+    const value = edpUtil.getConfig(dir, options);
 
     _CONFIG_CACHE[key] = value;
 
