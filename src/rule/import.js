@@ -15,6 +15,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'import';
@@ -22,6 +23,7 @@ const RULENAME = 'import';
 /**
  * less 文件后缀正则
  *
+ * @const
  * @type {RegExp}
  */
 const LESS_SUFFIX_REG = /\.less$/;
@@ -45,9 +47,8 @@ const importQuote = {
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
 
         if (!opts.ruleVal) {
             return;
@@ -58,7 +59,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
             importQuote.quoteVal = null;
         }
 
-        css.walkAtRules((rule) => {
+        css.walkAtRules(rule => {
             if (rule.name !== 'import') {
                 return;
             }
@@ -98,7 +99,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
                         ruleName: RULENAME,
                         line: lineNum,
                         col: rule.source.end.column - rule.params.length,
-                        message: ``
+                        message: ''
                             + `\`${lineContent}\` Quotes must be the same in the same file,`
                             + `Current file the first quote is \`${importQuote.quoteVal}\``,
                         colorMessage: '`'
@@ -133,7 +134,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 });
             }
         });
-    };
-});
-
-export {check};
+    }
+);

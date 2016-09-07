@@ -14,6 +14,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'variable-name';
@@ -21,6 +22,7 @@ const RULENAME = 'variable-name';
 /**
  * 匹配变量名字的正则
  *
+ * @const
  * @type {RegExp}
  */
 const VARIABLE_NAME_REG = /^@([a-z0-9\-]+)$/;
@@ -28,6 +30,7 @@ const VARIABLE_NAME_REG = /^@([a-z0-9\-]+)$/;
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'Variable name must be like this `@foo-bar or @foobar`';
@@ -40,16 +43,16 @@ const MSG = 'Variable name must be like this `@foo-bar or @foobar`';
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
 
-        css.walkDecls((decl) => {
-            const lineNum = decl.source.start.line;
+        css.walkDecls(decl => {
+            const {source, prop} = decl;
+            const lineNum = source.start.line;
             const lineContent = getLineContent(lineNum, opts.fileContent);
-            const prop = decl.prop;
 
             if (prop.startsWith('@')
                 && !VARIABLE_NAME_REG.test(prop)
@@ -58,20 +61,16 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     node: decl,
                     ruleName: RULENAME,
                     line: lineNum,
-                    col: decl.source.start.column,
+                    col: source.start.column,
                     message: '`' + lineContent + '` ' + MSG,
                     colorMessage: '`' + lineContent.replace(
                             prop,
-                            ($1) => {
-                                return chalk.magenta($1);
-                            }
+                            $1 => chalk.magenta($1)
                         )
                         + '` '
                         + chalk.grey(MSG)
                 });
             }
         });
-    };
-});
-
-export {check};
+    }
+);

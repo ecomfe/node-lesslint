@@ -14,6 +14,7 @@ import {getLineContent, changeColorByStartAndEndIndex} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'hex-color';
@@ -21,6 +22,7 @@ const RULENAME = 'hex-color';
 /**
  * 判断颜色值是否可以缩写
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_COLOR = /#([\da-f])\1([\da-f])\2([\da-f])\3/i;
@@ -28,6 +30,7 @@ const PATTERN_COLOR = /#([\da-f])\1([\da-f])\2([\da-f])\3/i;
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'Color value can be abbreviated, must use the abbreviation form';
@@ -45,8 +48,8 @@ let lineCache = 0;
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         const ruleVal = opts.ruleVal;
         const realRuleVal = [];
 
@@ -57,10 +60,10 @@ const check = postcss.plugin(RULENAME, (opts) => {
         }
 
         lineCache = 0;
-        
+
         if (realRuleVal.indexOf('color') > -1) {
 
-            css.walkDecls((decl) => {
+            css.walkDecls(decl => {
                 const {value, source} = decl;
                 const parts = postcss.list.space(value);
                 for (let i = 0, len = parts.length; i < len; i++) {
@@ -88,10 +91,8 @@ const check = postcss.plugin(RULENAME, (opts) => {
                                 + chalk.grey(MSG)
                         });
                     }
-                } 
+                }
             });
         }
-    };
-});
-
-export {check};
+    }
+);

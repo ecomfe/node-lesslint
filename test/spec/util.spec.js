@@ -10,12 +10,12 @@ import fs from 'fs';
 import path from 'path';
 
 let util = require(path.join(__dirname, '../../src', 'util'));
-let config = require(path.join(__dirname, '../../src', 'config'));
 
 const expect = chai.expect;
 
 /* globals describe, it */
 
+/* eslint-disable max-nested-callbacks */
 describe('util test suite\n', () => {
     describe('formatMsg: ', () => {
         it('should return right message', () => {
@@ -45,10 +45,10 @@ describe('util test suite\n', () => {
                     uniqueFlag: '111',
                     ruleName: 'hex-color',
                     line: 1,
-                    message: '' 
+                    message: ''
                         + '`@color1: green;` Color value must use the hexadecimal mark forms '
                         + 'such as `#RRGGBB`. Don\'t use RGB、HSL expression',
-                    colorMessage: '' 
+                    colorMessage: ''
                         + '`@color1\u001b[35m: green\u001b[39m;` \u001b[90mColor value must use '
                         + 'the hexadecimal mark forms such as `#RRGGBB`. Don\'t use RGB、HSL '
                         + 'expression\u001b[39m'
@@ -117,3 +117,4 @@ describe('util test suite\n', () => {
         });
     });
 });
+/* eslint-enable max-nested-callbacks */

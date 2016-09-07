@@ -14,6 +14,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'require-newline';
@@ -22,6 +23,7 @@ const RULENAME = 'require-newline';
  * 判断逗号后面没有跟着换行符的正则
  * 如果未匹配，则说明逗号后面有换行符
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_NOTLF = /(,(?!\s*\n))/;
@@ -29,6 +31,7 @@ const PATTERN_NOTLF = /(,(?!\s*\n))/;
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'When multiple selectors share a statement block, each selector statement must be per line';
@@ -41,8 +44,8 @@ const MSG = 'When multiple selectors share a statement block, each selector stat
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         const ruleVal = opts.ruleVal;
         const realRuleVal = [];
 
@@ -53,7 +56,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
         }
 
         if (realRuleVal.indexOf('selector') > -1) {
-            css.walkRules((rule) => {
+            css.walkRules(rule => {
                 const selector = rule.selector;
                 if (PATTERN_NOTLF.test(selector)) {
                     const source = rule.source;
@@ -77,7 +80,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 }
             });
         }
-    };
-});
-
-export {check};
+    }
+);

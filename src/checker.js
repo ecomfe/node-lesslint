@@ -25,7 +25,7 @@ const ruleDir = join(__dirname, './rule');
  *
  * @param {string} fileContent 文件内容
  * @param {string} filePath 文件路径，根据这个参数来设置 less 编译时的 paths
- * @param {Object=} rcConfig 检测规则的配置，可选
+ * @param {Object=} realConfig 检测规则的配置，可选
  *
  * @return {Promise} Promise 对象
  */
@@ -67,8 +67,8 @@ export function checkString(fileContent, filePath, realConfig) {
     const checkPromise = new Promise((resolve, reject) => {
         postcss(plugins).process(fileContent, {
             syntax: postcssLess
-        }).then((result) => {
-            result.warnings().forEach((data) => {
+        }).then(result => {
+            result.warnings().forEach(data => {
                 invalid.messages.push({
                     ruleName: data.ruleName,
                     line: data.line,
@@ -87,7 +87,7 @@ export function checkString(fileContent, filePath, realConfig) {
             const parserRet = safeStringify(result.root.toResult().root, null, 4);
             const outputFile = join(__dirname, '../ast.json');
             writeFileSync(outputFile, parserRet);
-        }).catch((e) => {
+        }).catch(e => {
             // 这里 catch 的是代码中的错误
             const str = e.toString();
             invalid.messages.push({
@@ -107,7 +107,7 @@ export function checkString(fileContent, filePath, realConfig) {
     });
 
     return checkPromise;
-}; 
+}
 
 /**
  * 校验文件
@@ -115,6 +115,8 @@ export function checkString(fileContent, filePath, realConfig) {
  * @param {Object} file 包含 path 和 content 键的对象
  * @param {Array} errors 本分类的错误信息数组
  * @param {Function} done 校验完成的通知回调
+ *
+ * @return {Function} checkString 方法
  */
 export function check(file, errors, done) {
     if (isIgnored(file.path, '.lesslintignore')) {
@@ -129,9 +131,9 @@ export function check(file, errors, done) {
      *
      * @param {Array.<Object>} invalidList 错误信息集合
      */
-    const callback = (invalidList) => {
+    const callback = invalidList => {
         if (invalidList.length) {
-            invalidList.forEach((invalid) => {
+            invalidList.forEach(invalid => {
                 errors.push({
                     path: invalid.path,
                     messages: invalid.messages

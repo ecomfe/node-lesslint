@@ -10,12 +10,12 @@ import fs from 'fs';
 import path from 'path';
 
 let checker = require(path.join(__dirname, '../../src', 'checker'));
-let config = require(path.join(__dirname, '../../src', 'config'));
 
 const expect = chai.expect;
 
 /* globals describe, it */
 
+/* eslint-disable max-nested-callbacks */
 describe('rule test suite\n', () => {
     describe('block-indent: ', () => {
         it('should return right message length', () => {
@@ -52,7 +52,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(1);
+                expect(errors[0].messages.length).to.equal(10);
             });
         });
     });
@@ -132,7 +132,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(1);
+                expect(errors[0].messages.length).to.equal(8);
             });
         });
     });
@@ -216,7 +216,7 @@ describe('rule test suite\n', () => {
             });
         });
     });
-    
+
     describe('single-comment: ', () => {
         it('should return right message length', () => {
             const filePath = path.join(__dirname, '../fixture/single-comment.less');
@@ -236,7 +236,7 @@ describe('rule test suite\n', () => {
             });
         });
     });
-    
+
     describe('variable-name: ', () => {
         it('should return right message length', () => {
             const filePath = path.join(__dirname, '../fixture/variable-name.less');
@@ -277,3 +277,4 @@ describe('rule test suite\n', () => {
         });
     });
 });
+/* eslint-enable max-nested-callbacks */

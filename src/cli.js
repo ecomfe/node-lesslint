@@ -7,7 +7,7 @@ import {createReadStream} from 'fs';
 import chalk from 'chalk';
 import {log} from 'edp-core';
 import sys from '../package';
-import {formatMsg, getCandidates, uniqueMsg} from './util';
+import {formatMsg, getCandidates} from './util';
 import {check} from './checker';
 
 'use strict';
@@ -29,14 +29,14 @@ const showDefaultInfo = () => {
  * @inner
  * @param {Object} errors 按文件类型为 key，值为对应的校验错误信息列表的对象
  */
-const report = (errors) => {
+const report = errors => {
     let t12 = true;
 
     if (errors.length) {
-        errors.forEach((error) => {
+        errors.forEach(error => {
             log.info(error.path);
             // error.messages = uniqueMsg(error.messages);
-            error.messages.forEach((message) => {
+            error.messages.forEach(message => {
                 const ruleName = message.ruleName || '';
                 let msg = '→ ' + (ruleName ? chalk.bold(ruleName) + ': ' : '');
                 // 全局性的错误可能没有位置信息
@@ -69,7 +69,7 @@ const report = (errors) => {
  *
  * @param {Array} args 参数列表
  */
-const parse = (args) => {
+export function parse(args) {
     args = args.slice(2);
 
     // 不带参数时，默认检测当前目录下所有的 less 文件
@@ -111,21 +111,19 @@ const parse = (args) => {
     };
 
     // 遍历每个需要检测的 less 文件
-    candidates.forEach((candidate) => {
+    candidates.forEach(candidate => {
         const readable = createReadStream(candidate, {
             encoding: 'utf8'
         });
-        readable.on('data', (chunk) => {
+        readable.on('data', chunk => {
             const file = {
                 content: chunk,
                 path: candidate
             };
             check(file, errors, callback);
         });
-        readable.on('error', (err) => {
+        readable.on('error', err => {
             throw err;
         });
     });
 }
-
-export {parse};

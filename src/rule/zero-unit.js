@@ -14,6 +14,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'zero-unit';
@@ -22,6 +23,7 @@ const RULENAME = 'zero-unit';
  * css 长度单位集合
  * https://developer.mozilla.org/en-US/docs/Web/CSS/length
  *
+ * @const
  * @type {Array}
  */
 const LENGTH_UNITS = [
@@ -36,6 +38,7 @@ const LENGTH_UNITS = [
 /**
  * 数字正则
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_NUMERIC = /\d+[\.\d]*/;
@@ -43,6 +46,7 @@ const PATTERN_NUMERIC = /\d+[\.\d]*/;
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'Values of 0 shouldn\'t have units specified';
@@ -62,15 +66,15 @@ let lineCache = 0;
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
 
         lineCache = 0;
 
-        css.walkDecls((decl) => {
+        css.walkDecls(decl => {
             const parts = postcss.list.space(decl.value);
             for (let i = 0, len = parts.length; i < len; i++) {
                 const part = parts[i];
@@ -102,7 +106,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 }
             }
         });
-    };
-});
-
-export {check};
+    }
+);

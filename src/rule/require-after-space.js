@@ -21,6 +21,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'require-after-space';
@@ -28,6 +29,7 @@ const RULENAME = 'require-after-space';
 /**
  * 冒号
  *
+ * @const
  * @type {string}
  */
 const COLON = ':';
@@ -35,6 +37,7 @@ const COLON = ':';
 /**
  * 逗号
  *
+ * @const
  * @type {string}
  */
 const COMMA = ',';
@@ -42,6 +45,7 @@ const COMMA = ',';
 /**
  * 匹配 css 属性值的 url(...);
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_URI = /url\(["']?([^\)"']+)["']?\)/i;
@@ -49,6 +53,7 @@ const PATTERN_URI = /url\(["']?([^\)"']+)["']?\)/i;
 /**
  * 冒号的错误信息
  *
+ * @const
  * @type {string}
  */
 const COLON_MSG = ''
@@ -58,6 +63,7 @@ const COLON_MSG = ''
 /**
  * 逗号的错误信息
  *
+ * @const
  * @type {string}
  */
 const COMMA_MSG = 'Must contain spaces after `,` in `attr-value`';
@@ -70,8 +76,8 @@ const COMMA_MSG = 'Must contain spaces after `,` in `attr-value`';
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         const ruleVal = opts.ruleVal;
         const realRuleVal = [];
         Array.prototype.push[Array.isArray(ruleVal) ? 'apply' : 'call'](realRuleVal, ruleVal);
@@ -142,7 +148,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
 
             });
         }
-    };
-});
-
-export {check};
+    }
+);

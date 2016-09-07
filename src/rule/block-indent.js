@@ -14,6 +14,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'block-indent';
@@ -26,14 +27,12 @@ const RULENAME = 'block-indent';
  *
  * @return {string} 错误信息
  */
-const getMsg = (curIndentStr, neededIndentStr) => {
-    return ''
-        + 'Bad indentation, Expected `'
-        + (neededIndentStr.length)
-        + '` but saw `'
-        + (curIndentStr.length)
-        + '`';
-};
+const getMsg = (curIndentStr, neededIndentStr) => ''
+    + 'Bad indentation, Expected `'
+    + (neededIndentStr.length)
+    + '` but saw `'
+    + (curIndentStr.length)
+    + '`';
 
 /**
  * 行号的缓存，防止同一行多次报错
@@ -86,7 +85,7 @@ const addWarn = (node, result, msg, hackPrefixChar) => {
                 + chalk.grey(msg)
         });
     }
-}
+};
 
 /**
  * 对 atRuleList 的处理，上下文是 atRuleList
@@ -149,13 +148,14 @@ const atRuleListIterator = (atRuleList, result, rule, indentStr, startPos) => {
 
     // 对 atRule 处理
     atRuleList.forEach((ar, index) => {
-        let arBefore = ar.raws.before;
+        const {raws, source} = ar;
+        let arBefore = raws.before;
         // 兼容 background-position-x: 170px;; 属性后有多个分号的情况
         arBefore = arBefore.replace(/^[^\n]*/, '');
         // 把 arBefore 里面的多个空行换成一个，便于之后的计算
         arBefore = arBefore.replace(/\n*/, '\n');
 
-        const startCol = ar.source.start.column;
+        const startCol = source.start.column;
 
         // 判断第一行，只需要看开头的 col 是否等于 startPos
         if (index === 0) {
@@ -227,7 +227,7 @@ const atRuleListIterator = (atRuleList, result, rule, indentStr, startPos) => {
             });
         }
     });
-}
+};
 
 /**
  * 具体的检测逻辑
@@ -237,8 +237,8 @@ const atRuleListIterator = (atRuleList, result, rule, indentStr, startPos) => {
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
@@ -265,8 +265,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
 
             atRuleListIterator(atRuleList, result, rule, indentStr, startPos);
         });
-
-    };
-});
-
-export {check};
+    }
+);

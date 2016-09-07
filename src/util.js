@@ -36,9 +36,8 @@ function times(n, iterator, context) {
  *
  * @return {string} 格式化后的信息
  */
-export function formatMsg(msg, spaceCount) {
+export function formatMsg(msg, spaceCount = 0) {
     let space = '';
-    spaceCount = spaceCount || 0;
     times(spaceCount, () => {
         space += ' ';
     });
@@ -82,9 +81,7 @@ export function uniqueMsg(msg) {
 export function getCandidates(args, patterns) {
     let candidates = [];
 
-    args = args.filter((item) => {
-        return item !== '.';
-    });
+    args = args.filter(item => item !== '.');
 
     if (!args.length) {
         candidates = glob.sync(patterns);
@@ -130,9 +127,7 @@ export function getIgnorePatterns(file) {
     }
 
     let patterns = readFileSync(file, 'utf-8').split(/\r?\n/g);
-    return patterns.filter((item) => {
-        return item.trim().length > 0 && item[0] !== '#';
-    });
+    return patterns.filter(item => item.trim().length > 0 && item[0] !== '#');
 }
 
 const _IGNORE_CACHE = {};
@@ -144,10 +139,9 @@ const _IGNORE_CACHE = {};
  * @param {string=} name ignore文件的名称.
  * @return {boolean}
  */
-export function isIgnored(file, name) {
+export function isIgnored(file, name = '.jshintignore') {
     let ignorePatterns = null;
 
-    name = name || '.jshintignore';
     file = edpPath.resolve(file);
 
     let key = name + '@'  + edpPath.dirname(file);
@@ -157,9 +151,9 @@ export function isIgnored(file, name) {
     else {
         let options = {
             name: name,
-            factory: (item) => {
+            factory(item) {
                 let config = {};
-                getIgnorePatterns(item).forEach((line) => {
+                getIgnorePatterns(item).forEach(line => {
                     config[line] = true;
                 });
                 return config;
@@ -213,7 +207,7 @@ export function getConfig(configName, file, defaultConfig) {
     const options = {
         name: configName,
         defaultConfig: defaultConfig,
-        factory: function (item) {
+        factory(item) {
             /* istanbul ignore if */
             if (!existsSync(item)) {
                 return null;
@@ -280,7 +274,7 @@ export function changeColorByIndex(source, startIndex, colorStr) {
  *
  * @return {string} 改变颜色后的字符串
  */
-export function changeColorByStartAndEndIndex(source, startIndex, endIndex) {
+export function changeColorByStartAndEndIndex(source, startIndex = 0, endIndex = 0) {
     if (!source) {
         return '';
     }

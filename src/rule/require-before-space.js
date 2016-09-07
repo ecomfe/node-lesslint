@@ -13,6 +13,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'require-before-space';
@@ -20,6 +21,7 @@ const RULENAME = 'require-before-space';
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'Must contain spaces before the `{`';
@@ -32,8 +34,8 @@ const MSG = 'Must contain spaces before the `{`';
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         const ruleVal = opts.ruleVal;
         const realRuleVal = [];
         Array.prototype.push[Array.isArray(ruleVal) ? 'apply' : 'call'](realRuleVal, ruleVal);
@@ -62,9 +64,6 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     });
                 }
             });
-            
         }
-    };
-});
-
-export {check};
+    }
+);

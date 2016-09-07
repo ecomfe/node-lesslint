@@ -14,6 +14,7 @@ import {getLineContent, changeColorByStartAndEndIndex} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'hex-color';
@@ -21,6 +22,7 @@ const RULENAME = 'hex-color';
 /**
  * 匹配 rgb, hsl 颜色表达式的正则
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_COLOR_EXP = /(\brgb\b|\bhsl\b)/gi;
@@ -28,6 +30,7 @@ const PATTERN_COLOR_EXP = /(\brgb\b|\bhsl\b)/gi;
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = ''
@@ -42,13 +45,13 @@ const MSG = ''
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
 
-        css.walkDecls((decl) => {
+        css.walkDecls(decl => {
             let match = null;
             /* eslint-disable no-extra-boolean-cast */
             while (!!(match = PATTERN_COLOR_EXP.exec(decl.value))) {
@@ -60,7 +63,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     node: decl,
                     ruleName: RULENAME,
                     line: line,
-                    col: e.column,
+                    col: col,
                     message: MSG,
                     colorMessage: '`'
                         + changeColorByStartAndEndIndex(
@@ -72,7 +75,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
             }
             /* eslint-enable no-extra-boolean-cast */
         });
-    };
-});
-
-export {check};
+    }
+);

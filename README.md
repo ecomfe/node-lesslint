@@ -9,6 +9,8 @@ Lesslint
 
 Lesslint 是一个基于 NodeJS 以及 EDP 的一个 lint 工具，使用它可以 `lint` 你的 less code，目前的 lint 规则是基于 ecomfe 的[Less编码规范 [1.0]](https://github.com/ecomfe/spec/blob/master/less-code-style.md)。
 
+经过了一段时间的重构，终于来到这个全新的版本。在这个版本中，`less` 解析器切换成 [postcss](https://github.com/postcss/postcss) 以及一个 [less 的解析插件](https://github.com/webschik/postcss-less)。这个版本里，改变了实现方式，没有依赖 Less 本身的 parser 以及 visitor 来进行解析，因此性能较以前的版本有比较大的提升。(这是个重构版本，因此并未对功能上做扩充，下个版本会对功能上做一些扩充，尽请期待~)
+
 具体的配置参见 [config](https://github.com/ecomfe/node-lesslint/blob/master/lib/config.js)
 
 已经实现的 lint 规则：

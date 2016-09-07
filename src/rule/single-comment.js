@@ -14,6 +14,7 @@ import {getLineContent} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'single-comment';
@@ -26,22 +27,22 @@ const RULENAME = 'single-comment';
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
 
-        css.walkComments((comment) => {
-
+        css.walkComments(comment => {
             // 排除单行注释
             if (comment.inline) {
                 return;
             }
 
-            const startLine = comment.source.start.line;
-            const endLine = comment.source.end.line;
+            const {source} = comment;
+
+            const startLine = source.start.line;
+            const endLine = source.end.line;
             if (startLine === endLine) {
                 const lineContent = getLineContent(startLine, opts.fileContent);
 
@@ -49,21 +50,17 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     node: comment,
                     ruleName: RULENAME,
                     line: startLine,
-                    col: comment.source.start.column,
+                    col: source.start.column,
                     message: `\`${lineContent}\` Single Comment should be use \`//\``,
                     colorMessage: '`'
                         + lineContent.replace(
                             lineContent,
-                            ($1) => {
-                                return chalk.magenta($1);
-                            }
+                            $1 => chalk.magenta($1)
                         )
                         + '` '
                         + chalk.grey('Single Comment should be use `//`')
                 });
             }
         });
-    };
-});
-
-export {check};
+    }
+);

@@ -16,6 +16,7 @@ import {getLineContent, changeColorByStartAndEndIndex} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'require-around-space';
@@ -23,6 +24,7 @@ const RULENAME = 'require-around-space';
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = '`+`、`-`、`*`、`/` four operators on both sides must keep a space';
@@ -35,14 +37,14 @@ const MSG = '`+`、`-`、`*`、`/` four operators on both sides must keep a spac
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
 
         /* jshint maxcomplexity:false */
-        css.walkDecls((decl) => {
+        css.walkDecls(decl => {
             const valueAst = parser(decl.value).parse();
 
             valueAst.walk(child => {
@@ -50,14 +52,16 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     return;
                 }
 
+                const {parent} = child;
+
                 // 当前 child 的索引
-                const index = child.parent.index(child);
+                const index = parent.index(child);
 
                 // child 的后一个元素
-                const nextElem = child.parent.nodes[index + 1];
+                const nextElem = parent.nodes[index + 1];
 
                 // child 的前一个元素
-                const prevElem = child.parent.nodes[index - 1];
+                const prevElem = parent.nodes[index - 1];
 
                 // 忽略负数 -1
                 if (child.value === '-'
@@ -100,7 +104,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     const col = 0
                         + source.start.column + prop.length + raws.between.length + problemElem.source.start.column
                         - 1
-                        - (isBeforeValid ? child.value.length: 0);
+                        - (isBeforeValid ? child.value.length : 0);
 
                     result.warn(RULENAME, {
                         node: decl,
@@ -116,7 +120,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 }
             });
         });
-    };
-});
-
-export {check};
+    }
+);

@@ -15,6 +15,7 @@ const expect = chai.expect;
 
 /* globals describe, it */
 
+/* eslint-disable max-nested-callbacks */
 describe('checker test suite\n', () => {
     describe('checkString: \n', () => {
         it('should be return right result', () => {
@@ -63,3 +64,4 @@ describe('checker test suite\n', () => {
         });
     });
 });
+/* eslint-enable max-nested-callbacks */

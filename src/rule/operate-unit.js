@@ -16,6 +16,7 @@ import {getLineContent, changeColorByStartAndEndIndex} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'operate-unit';
@@ -23,6 +24,7 @@ const RULENAME = 'operate-unit';
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = ''
@@ -37,8 +39,8 @@ const MSG = ''
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
@@ -48,7 +50,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
         // `@a : 1 + 2;` is walkAtRules 这种情况还未处理
 
         /* jshint maxcomplexity:false */
-        css.walkDecls((decl) => {
+        css.walkDecls(decl => {
             const valueAst = parser(decl.value).parse();
 
             valueAst.walk(child => {
@@ -56,14 +58,16 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     return;
                 }
 
+                const {parent} = child;
+
                 // 当前 child 的索引
-                const index = child.parent.index(child);
+                const index = parent.index(child);
 
                 // child 的后一个元素
-                const nextElem = child.parent.nodes[index + 1];
+                const nextElem = parent.nodes[index + 1];
 
                 // child 的前一个元素
-                const prevElem = child.parent.nodes[index - 1];
+                const prevElem = parent.nodes[index - 1];
 
                 let problemElem = null;
 
@@ -85,8 +89,8 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     const {source, prop, raws} = decl;
                     const line = source.start.line;
                     const lineContent = getLineContent(line, source.input.css, true);
-                    const col =
-                        source.start.column + prop.length + raws.between.length + problemElem.source.start.column - 1;
+                    const col
+                        = source.start.column + prop.length + raws.between.length + problemElem.source.start.column - 1;
 
                     result.warn(RULENAME, {
                         node: decl,
@@ -102,7 +106,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 }
             });
         });
-    };
-});
-
-export {check};
+    }
+);

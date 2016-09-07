@@ -23,7 +23,7 @@ const JSON_YAML_REG = /.+\.(json|yml)$/i;
  *
  * @return {Object} merge 后的配置对象
  */
-const loadConfig = (filePath, refresh) => {
+export function loadConfig(filePath, refresh) {
     if (refresh && STORAGE) {
         return STORAGE;
     }
@@ -34,7 +34,7 @@ const loadConfig = (filePath, refresh) => {
             'config.yml',
             'config.json'
         ],
-        loader: function (content, filePath) {
+        loader(content, filePath) {
             if (!content) {
                 return '';
             }
@@ -62,5 +62,3 @@ const loadConfig = (filePath, refresh) => {
 
     return STORAGE;
 }
-
-export {loadConfig};

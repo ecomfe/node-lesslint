@@ -14,6 +14,7 @@ import {getLineContent, changeColorByIndex} from '../util';
 /**
  * 规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'leading-zero';
@@ -21,6 +22,7 @@ const RULENAME = 'leading-zero';
 /**
  * 错误信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'When value is between 0 - 1 decimal, omitting the integer part of the `0`';
@@ -33,13 +35,13 @@ const MSG = 'When value is between 0 - 1 decimal, omitting the integer part of t
  * @param {string} opts.fileContent 文件内容
  * @param {string} opts.filePath 文件路径
  */
-const check = postcss.plugin(RULENAME, (opts) => {
-    return (css, result) => {
+export const check = postcss.plugin(RULENAME, opts =>
+    (css, result) => {
         if (!opts.ruleVal) {
             return;
         }
 
-        css.walkDecls((decl) => {
+        css.walkDecls(decl => {
             const parts = postcss.list.space(decl.value);
             const source = decl.source;
             const lineNum = source.start.line;
@@ -64,7 +66,5 @@ const check = postcss.plugin(RULENAME, (opts) => {
                 }
             }
         });
-    };
-});
-
-export {check};
+    }
+);
