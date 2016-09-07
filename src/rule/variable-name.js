@@ -53,8 +53,7 @@ export const check = postcss.plugin(RULENAME, opts =>
             const {source, prop} = decl;
             const lineNum = source.start.line;
             const lineContent = getLineContent(lineNum, opts.fileContent);
-
-            if (prop.startsWith('@')
+            if (/^@/.test(prop)
                 && !VARIABLE_NAME_REG.test(prop)
             ) {
                 result.warn(RULENAME, {

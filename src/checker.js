@@ -4,8 +4,8 @@
  */
 
 import {join} from 'path';
-import {writeFileSync, existsSync} from 'fs';
-import safeStringify from 'json-stringify-safe';
+import {/*writeFileSync,*/ existsSync} from 'fs';
+// import safeStringify from 'json-stringify-safe';
 import chalk from 'chalk';
 import postcssLess from 'postcss-less';
 import postcss from 'postcss';
@@ -84,9 +84,9 @@ export function checkString(fileContent, filePath, realConfig) {
             });
             resolve(invalidList);
 
-            const parserRet = safeStringify(result.root.toResult().root, null, 4);
-            const outputFile = join(__dirname, '../ast.json');
-            writeFileSync(outputFile, parserRet);
+            // const parserRet = safeStringify(result.root.toResult().root, null, 4);
+            // const outputFile = join(__dirname, '../ast.json');
+            // writeFileSync(outputFile, parserRet);
         }).catch(e => {
             // 这里 catch 的是代码中的错误
             const str = e.toString();
