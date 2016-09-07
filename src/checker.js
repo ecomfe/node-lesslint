@@ -29,7 +29,7 @@ const ruleDir = join(__dirname, './rule');
  *
  * @return {Promise} Promise 对象
  */
-const checkString = (fileContent, filePath, realConfig) => {
+export function checkString(fileContent, filePath, realConfig) {
     // 这里把文件内容的 \r\n 统一替换成 \n，便于之后获取行号
     fileContent = fileContent.replace(/\r\n?/g, '\n');
 
@@ -91,6 +91,9 @@ const checkString = (fileContent, filePath, realConfig) => {
             // 这里 catch 的是代码中的错误
             const str = e.toString();
             invalid.messages.push({
+                ruleName: 'CssSyntaxError',
+                line: e.line,
+                col: e.column,
                 message: str,
                 colorMessage: chalk.red(str)
             });
@@ -104,7 +107,7 @@ const checkString = (fileContent, filePath, realConfig) => {
     });
 
     return checkPromise;
-};
+}; 
 
 /**
  * 校验文件
@@ -113,12 +116,11 @@ const checkString = (fileContent, filePath, realConfig) => {
  * @param {Array} errors 本分类的错误信息数组
  * @param {Function} done 校验完成的通知回调
  */
-const check = (file, errors, done) => {
+export function check(file, errors, done) {
     if (isIgnored(file.path, '.lesslintignore')) {
         done();
         return;
     }
-
 
     /**
      * checkString 的 promise 的 reject 和 resolve 的返回值的结构以及处理方式都是一样的
@@ -139,7 +141,5 @@ const check = (file, errors, done) => {
         done();
     };
 
-    checkString(file.content, file.path, loadConfig(file.path, true)).then(callback).catch(callback);
-};
-
-export {check, checkString};
+    return checkString(file.content, file.path, loadConfig(file.path, true)).then(callback).catch(callback);
+}

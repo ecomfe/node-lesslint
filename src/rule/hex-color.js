@@ -60,7 +60,7 @@ const check = postcss.plugin(RULENAME, (opts) => {
                     node: decl,
                     ruleName: RULENAME,
                     line: line,
-                    col: col,
+                    col: e.column,
                     message: MSG,
                     colorMessage: '`'
                         + changeColorByStartAndEndIndex(
