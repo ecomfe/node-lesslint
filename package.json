@@ -34,7 +34,7 @@
     "mocha": "^2.5.3"
   },
   "scripts": {
-    "lint": "fecs lib test/**/*.spec.js --type=js",
+    "lint": "fecs src test/**/*.spec.js --type=js",
     "compile": "rm -rf lib && ./node_modules/.bin/babel src -d lib --source-maps inline --copy-files",
     "start": "npm run compile && node lib/index.js",
     "debug": "npm run compile && ./node_modules/.bin/babel-node-debug lib/index.js",
