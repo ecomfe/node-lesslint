@@ -4,8 +4,7 @@
  */
 
 import {join} from 'path';
-import {/*writeFileSync,*/ existsSync} from 'fs';
-// import safeStringify from 'json-stringify-safe';
+import {existsSync} from 'fs';
 import chalk from 'chalk';
 import postcssLess from 'postcss-less';
 import postcss from 'postcss';
