@@ -182,49 +182,6 @@ export function isIgnored(file, name = '.jshintignore') {
 }
 
 /**
- * 目录配置信息的缓存数据
- * @ignore
- */
-const _CONFIG_CACHE = {};
-
-/**
- * 读取默认的配置信息，可以缓存一下.
- *
- * @param {string} configName 配置文件的名称.
- * @param {string} file 文件名称.
- * @param {Object=} defaultConfig 默认的配置信息.
- *
- * @return {Object} 配置信息
- */
-export function getConfig(configName, file, defaultConfig) {
-    const dir = edpPath.dirname(edpPath.resolve(file));
-    const key = configName + '@' + dir;
-
-    if (_CONFIG_CACHE[key]) {
-        return _CONFIG_CACHE[key];
-    }
-
-    const options = {
-        name: configName,
-        defaultConfig: defaultConfig,
-        factory(item) {
-            /* istanbul ignore if */
-            if (!existsSync(item)) {
-                return null;
-            }
-
-            return JSON.parse(readFileSync(item, 'utf-8'));
-        }
-    };
-
-    const value = edpUtil.getConfig(dir, options);
-
-    _CONFIG_CACHE[key] = value;
-
-    return value;
-}
-
-/**
  * 根据行号获取当前行的内容
  *
  * @param {number} line 行号

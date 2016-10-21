@@ -35,7 +35,9 @@ const report = errors => {
     if (errors.length) {
         errors.forEach(error => {
             log.info(error.path);
-            // error.messages = uniqueMsg(error.messages);
+            error.messages.sort((left, right) => {
+                return left.line - right.line;
+            });
             error.messages.forEach(message => {
                 const ruleName = message.ruleName || '';
                 let msg = '→ ' + (ruleName ? chalk.bold(ruleName) + ': ' : '');

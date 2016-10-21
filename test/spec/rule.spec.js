@@ -32,7 +32,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(12);
+                expect(errors[0].messages.length).to.equal(8);
             });
         });
     });
@@ -72,7 +72,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(5);
+                expect(errors[0].messages.length).to.equal(6);
             });
         });
     });
@@ -92,7 +92,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(11);
+                expect(errors[0].messages.length).to.equal(10);
             });
         });
     });
@@ -172,7 +172,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(11);
+                expect(errors[0].messages.length).to.equal(9);
             });
         });
     });
@@ -192,7 +192,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(10);
+                expect(errors[0].messages.length).to.equal(7);
             });
         });
     });
@@ -212,7 +212,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(3);
+                expect(errors[0].messages.length).to.equal(4);
             });
         });
     });
@@ -232,7 +232,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(8);
+                expect(errors[0].messages.length).to.equal(9);
             });
         });
     });
@@ -272,7 +272,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(13);
+                expect(errors[0].messages.length).to.equal(7);
             });
         });
     });

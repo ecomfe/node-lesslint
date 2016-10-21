@@ -66,7 +66,6 @@ describe('util test suite\n', () => {
                         + 'expression\u001b[39m'
                 },
                 {
-                    uniqueFlag: '222',
                     ruleName: 'hex-color',
                     line: 2,
                     message: ''
@@ -100,6 +99,14 @@ describe('util test suite\n', () => {
             ];
             const candidates1 = util.getCandidates([], patterns1);
             expect(candidates1.length).to.equal(17);
+
+            process.chdir(__dirname);
+            const patterns2 = [
+                '**/*.js',
+                '!**/{output,node_modules,asset,dist,release,doc,dep,report,*.bak}/**'
+            ];
+            const candidates2 = util.getCandidates(['rule.spec.js', '.'], patterns2);
+            expect(candidates2[0]).to.equal('rule.spec.js');
         });
     });
 
@@ -108,7 +115,7 @@ describe('util test suite\n', () => {
         it('should return right result', () => {
             expect(
                 util.getIgnorePatterns(path.join(__dirname, '../', 'fixture/block-indent.less')).length
-            ).to.equal(28);
+            ).to.equal(63);
         });
         it('should return right result', () => {
             expect(

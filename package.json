@@ -1,7 +1,7 @@
 {
   "name": "lesslint",
   "description": "lint your less code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -38,7 +38,9 @@
     "compile": "rm -rf lib && ./node_modules/.bin/babel src -d lib --source-maps inline --copy-files",
     "debug": "npm run compile && ./node_modules/.bin/babel-node-debug lib/index.js",
     "test": "npm run compile && ./node_modules/.bin/_mocha --compilers js:babel-core/register --recursive",
+    "test-single": "npm run compile && ./node_modules/.bin/babel-node ./node_modules/.bin/_mocha 'test/spec/util.spec.@(js|es|es6)'",
     "coverage": "npm run compile && ./node_modules/.bin/babel-node ./node_modules/.bin/babel-istanbul cover _mocha 'test/**/*.spec.@(js|es|es6)'",
+    "coverage-single": "npm run compile && ./node_modules/.bin/babel-node ./node_modules/.bin/babel-istanbul cover _mocha 'test/spec/util.spec.@(js|es|es6)'",
     "coverage1": "npm run compile && ./node_modules/.bin/babel-node ./node_modules/.bin/babel-istanbul cover _mocha -- --recursive",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "sourcemap": "./node_modules/.bin/babel src -d lib -s",

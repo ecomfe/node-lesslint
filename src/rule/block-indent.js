@@ -20,21 +20,6 @@ import {getLineContent} from '../util';
 const RULENAME = 'block-indent';
 
 /**
- * 获取错误信息
- *
- * @param {string} curIndentStr 当前的缩进的字符串（错误的）
- * @param {string} neededIndentStr 期望的的缩进的字符串（正确的）
- *
- * @return {string} 错误信息
- */
-const getMsg = (curIndentStr, neededIndentStr) => ''
-    + 'Bad indentation, Expected `'
-    + (neededIndentStr.length)
-    + '` but saw `'
-    + (curIndentStr.length)
-    + '`';
-
-/**
  * 行号的缓存，防止同一行多次报错
  *
  * @type {number}
@@ -42,21 +27,36 @@ const getMsg = (curIndentStr, neededIndentStr) => ''
 let lineCache = 0;
 
 /**
- * 对 decl 的处理
+ * 获取错误信息
+ *
+ * @param {string} curIndent 当前的缩进（错误的）
+ * @param {string} neededIndent 期望的的缩进（正确的）
+ *
+ * @return {string} 错误信息
+ */
+const getMsg = (curIndent, neededIndent) => ''
+    + 'Bad indentation, Expected `'
+    + (neededIndent)
+    + '` but saw `'
+    + (curIndent)
+    + '`';
+
+/**
+ * 添加报错信息
  *
  * @param {Object} node node 对象，可能是 decl 也可能是 rule
  * @param {Object} result postcss 转换的结果对象
  * @param {string} msg 错误信息
  * @param {string} hackPrefixChar 属性 hack 的前缀，`_` 或者 `*`
  */
-const addWarn = (node, result, msg, hackPrefixChar) => {
+const addWarn = (node, result, msg, hackPrefixChar = '') => {
     const source = node.source;
     const line = source.start.line;
     if (lineCache !== line) {
         lineCache = line;
         const col = source.start.column;
 
-        const lineContent = getLineContent(line, source.input.css) || '';
+        let lineContent = getLineContent(line, source.input.css) || '';
         let colorStr = '';
 
         if (node.selector) {
@@ -66,7 +66,7 @@ const addWarn = (node, result, msg, hackPrefixChar) => {
             colorStr = lineContent;
         }
         else {
-            colorStr = (hackPrefixChar || '') + node.prop + node.raws.between + node.value;
+            colorStr = hackPrefixChar + node.prop + node.raws.between + node.value;
             colorStr = colorStr.replace(/\n/g, '');
         }
 
@@ -88,141 +88,27 @@ const addWarn = (node, result, msg, hackPrefixChar) => {
 };
 
 /**
- * 对 atRuleList 的处理，上下文是 atRuleList
+ * 遍历 ruleList，为了分析 decl
  *
- * @param {Array} atRuleList atRuleList
- * @param {Object} result postcss result 对象
- * @param {Object} rule css.walkRules 里的 rule 对象
- * @param {string} indentStr 缩进的字符串
- * @param {number} startPos 开始计算缩进的偏移量，相当于这一行的 column，和 indentStr 没有关系
+ * @param {Array} ruleList rule 集合
+ * @param {Object} result postcss 转换的结果对象
  */
-const atRuleListIterator = (atRuleList, result, rule, indentStr, startPos) => {
-    // 说明当前这个选择器没有 atRule
-    if (!atRuleList.length) {
-        const ruleStartCol = rule.source.start.column;
-        if (ruleStartCol - 1 !== startPos) {
-            addWarn(rule, result, getMsg(rule.raws.before.replace(/\n/g, ''), ''));
-        }
-
-        // 选择器中的属性默认的缩进层级为 1
-        const indentLevel = 1;
-        rule.walkDecls(decl => {
-            let ruleBefore = rule.raws.before;
-
-            // 加上 \s，是为了防止如下情况
-            // div {
-            //     color: #fff;
-            // }
-            // span {
-            //     color: #000;
-            // }
-            // 当 div 的 } 符号后有一个空格的时候，会导致 span 的第一条非注释属性报 block-indent 的错误
-            // \s\s\s\n\n\s\s\s 要去掉 \n 前面的 \s，\n 后面的 \s 需要计算为下一行的开头位置，所以不能去掉
-            ruleBefore = ruleBefore.replace(/\s*\n+/, '');
-
-            // 正确的缩进字符串
-            let shouldIndentStr = ruleBefore;
-            for (let j = 0; j < indentLevel; j++) {
-                shouldIndentStr += indentStr;
-            }
-
-            let declBefore = decl.raws.before;
-            // 兼容 background-position-x: 170px;; 属性后有多个分号的情况
-            declBefore = declBefore.replace(/^[^\n]*/, '');
-            // 把 before 里面的多个空行换成一个，便于之后的计算
-            declBefore = declBefore.replace(/\n*/, '\n');
-
-            const length = declBefore.length;
-            const hackPrefixChar = declBefore[length - 1];
-            if (hackPrefixChar === '_' || hackPrefixChar === '*') {
-                shouldIndentStr += hackPrefixChar;
-            }
-
-            if (declBefore !== '\n' + shouldIndentStr) {
-                addWarn(decl, result,
-                    getMsg(declBefore.replace(/\n/g, '').slice(0, -1), shouldIndentStr.slice(0, -1))
-                );
-            }
-        });
-    }
-
-    // 对 atRule 处理
-    atRuleList.forEach((ar, index) => {
-        const {raws, source} = ar;
-        let arBefore = raws.before;
-        // 兼容 background-position-x: 170px;; 属性后有多个分号的情况
-        arBefore = arBefore.replace(/^[^\n]*/, '');
-        // 把 arBefore 里面的多个空行换成一个，便于之后的计算
-        arBefore = arBefore.replace(/\n*/, '\n');
-
-        const startCol = source.start.column;
-
-        // 判断第一行，只需要看开头的 col 是否等于 startPos
-        if (index === 0) {
-            if (startCol - 1 !== startPos) {
-                addWarn(ar, result, getMsg(arBefore.replace(/\n/g, ''), ''));
-            }
-        }
-        // 非第一行的 @ 选择器，那么开头就必须有缩进，缩进根据 indentStr 来计算
-        else {
-            // 正确的缩进字符串
-            let shouldIndentStr = '';
-            for (let i = 0; i < index; i++) {
-                shouldIndentStr += indentStr;
-            }
-
-            if (arBefore !== '\n' + shouldIndentStr) {
-                addWarn(ar, result,
-                    getMsg(arBefore.replace(/\n/g, '').slice(0, -1), shouldIndentStr.slice(0, -1))
-                );
-            }
-        }
-
-        // 最后一个 @ 选择器，在这里处理 atRule 里的 decl 以及 atRule 里的 rule
-        if (index === atRuleList.length - 1) {
-            let ruleBefore = rule.raws.before;
-            // 兼容 background-position-x: 170px;; 属性后有多个分号的情况
-            ruleBefore = ruleBefore.replace(/^[^\n]*/, '');
-            // 把 ruleBefore 里面的多个空行换成一个，便于之后的计算
-            ruleBefore = ruleBefore.replace(/\n*/, '\n');
-
-            // 正确的缩进字符串
-            let ruleShouldIndentStr = '';
-            for (let q = 0; q <= index; q++) {
-                ruleShouldIndentStr += indentStr;
-            }
-
-            if (ruleBefore !== '\n' + ruleShouldIndentStr) {
-                addWarn(rule, result,
-                    getMsg(ruleBefore.replace(/\n/g, '').slice(0, -1), ruleShouldIndentStr.slice(0, -1))
-                );
-            }
-
-            // 处理 atRule 里面的 decl，其实这里用 rule.walkDecls 也可以
-            ar.walkDecls(decl => {
-                let before = decl.raws.before;
-                // 兼容 background-position-x: 170px;; 属性后有多个分号的情况
-                before = before.replace(/^[^\n]*/, '');
-                // 把 before 里面的多个空行换成一个，便于之后的计算
-                before = before.replace(/\n*/, '\n');
-
-                // 正确的缩进字符串
-                let shouldIndentStr = '';
-                // 属性时 index 要加 1，因为这个 index 是 rule 的 index，而属性和 rule 之间要有一个缩进
-                for (let i = 0; i <= index + 1; i++) {
-                    shouldIndentStr += indentStr;
+const ruleListIterator = (ruleList, result) => {
+    ruleList.forEach(r => {
+        const rule = r.node;
+        let indentStr = r.indentStr;
+        if (rule.nodes && rule.nodes.length) {
+            // 属性要比它所属的选择器多一层缩进
+            indentStr += '    ';
+            rule.nodes.forEach(childNode => {
+                if (childNode.type !== 'decl') {
+                    return;
                 }
 
-                const length = before.length;
-                const hackPrefixChar = before[length - 1];
-                if (hackPrefixChar === '_' || hackPrefixChar === '*') {
-                    shouldIndentStr += hackPrefixChar;
-                }
-
-                if (before !== '\n' + shouldIndentStr) {
-                    addWarn(decl, result,
-                        getMsg(before.replace(/\n/g, '').slice(0, -1), shouldIndentStr.slice(0, -1))
-                    );
+                const curIndent = childNode.raws.before.replace(/\n*/, '').length;
+                const neededIndent = indentStr.length;
+                if (curIndent !== neededIndent) {
+                    addWarn(childNode, result, getMsg(curIndent + 1, neededIndent + 1));
                 }
             });
         }
@@ -245,25 +131,50 @@ export const check = postcss.plugin(RULENAME, opts =>
 
         lineCache = 0;
 
-        // 缩进的字符串
-        const indentStr = '    ';
+        // 收集顶层变量定义
+        css.walkDecls(decl => {
+            if (decl.parent.type === 'root') {
+                let curIndent = decl.raws.before.replace(/\n*/, '').length;
+                const neededIndent = 0;
+                if (curIndent !== neededIndent) {
+                    addWarn(decl, result, getMsg(curIndent + 1, neededIndent + 1));
+                }
+            }
+        });
 
-        // 开始计算缩进的偏移量，相当于这一行的 column，和 opts.ruleVal[0] 没有关系
-        const startPos = 0;
+        const ruleList = [];
 
-        css.walkRules(rule => {
-
-            // 这里用 atRuleList 对 atRule 做一下处理是因为 postcss 默认是从 decl -> atrule -> rule -> root
-            // 即从里向外的顺序处理的，但是我们这里需要知道由里向外的层级，我们需要知道层级的开始以及结束点
-            // 因此 atRuleList.unshift 这样倒序过来
-            const atRuleList = [];
-            let parentRule = rule.parent;
-            while (parentRule.type === 'atrule') {
-                atRuleList.unshift(parentRule);
-                parentRule = parentRule.parent;
+        const analyzeIndent = (rule, indentStr) => {
+            if (rule.type !== 'rule') {
+                return;
             }
 
-            atRuleListIterator(atRuleList, result, rule, indentStr, startPos);
+            let curIndent = rule.raws.before.replace(/\n*/, '').length;
+            const neededIndent = indentStr.length;
+            if (curIndent !== neededIndent) {
+                addWarn(rule, result, getMsg(curIndent + 1, neededIndent + 1));
+            }
+
+            ruleList.push({
+                node: rule,
+                indentStr: indentStr
+            });
+
+            if (rule.nodes && rule.nodes.length) {
+                rule.nodes.forEach(r => {
+                    analyzeIndent(r, indentStr + '    ');
+                });
+            }
+        };
+
+        // 收集顶层选择器
+        css.walkRules(rule => {
+            if (rule.parent.type === 'root') {
+                analyzeIndent(rule, '');
+            }
         });
+
+        ruleListIterator(ruleList, result);
+
     }
 );

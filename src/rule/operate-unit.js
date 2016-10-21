@@ -67,7 +67,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                 const nextElem = parent.nodes[index + 1];
 
                 // child 的前一个元素
-                const prevElem = parent.nodes[index - 1];
+                const prevElem = parent.nodes[index - 1] || {};
 
                 let problemElem = null;
 

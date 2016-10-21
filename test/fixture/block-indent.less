@@ -17,9 +17,9 @@ body {
     color: #fff;
 }
 
- div,
+div,
  a {
-        width: 0;
+    width: 0;
 }
 
 
@@ -27,9 +27,51 @@ body {
 
 body {
     margin: @zero;
-     padding: @zero;
+    padding: @zero;
 
-      a {
-         color: red;
+    a {
+        color: red;
      }
+}
+
+.foo {
+    margin: -10px;
+    color: red;
+}
+
+.foo {
+    color: red;
+    width: 10px;
+}
+
+.foo {
+    color: red;
+    .bar {
+        margin: -10px;
+        .cc {
+           width: 100px;
+            .dd {
+                height: 200px;
+            }
+        }
+    }
+}
+
+.cc {
+
+}
+
+body {
+    div ~ .c,
+    .qqq {
+        padding: 1;
+        span {
+            margin: 2;
+        }
+    }
+}
+
+div,
+    a {
+        width: 0;
 }

@@ -7,6 +7,7 @@
 
 import chalk from 'chalk';
 import postcss from 'postcss';
+import less from 'less';
 import {getLineContent, changeColorByStartAndEndIndex} from '../util';
 
 'use strict';
@@ -18,6 +19,38 @@ import {getLineContent, changeColorByStartAndEndIndex} from '../util';
  * @type {string}
  */
 const RULENAME = 'hex-color';
+
+/**
+ * Less 中的所有颜色值
+ *
+ * @const
+ * @type {Object}
+ */
+const LESS_COLORS = less.data.colors;
+
+/**
+ * 对 Less 中的所有颜色值做处理，便于之后正则
+ *
+ * @const
+ * @return {string} 字符串
+ */
+// const namedColors = (function () {
+//     let ret = '';
+//     for (let key of Object.keys(LESS_COLORS)) {
+//         ret += key + '|';
+//     }
+//     return ret.slice(0, -1); // 去掉最后一个 |
+// })();
+
+/**
+ * 匹配颜色名的正则
+ *
+ * @const
+ * @type {RegExp}
+ */
+// const PATTERN_NAMED_COLOR_EXP = new RegExp('\\b\\s?:\\s*(' + namedColors + ')', 'g');
+// console.log(PATTERN_NAMED_COLOR_EXP);
+// console.log();
 
 /**
  * 匹配 rgb, hsl 颜色表达式的正则
@@ -38,6 +71,32 @@ const MSG = ''
     + ' Don\'t use RGB、HSL expression';
 
 /**
+ * 添加报错信息
+ *
+ * @param {Object} node decl 对象
+ * @param {Object} result postcss 转换的结果对象
+ */
+const addWarn = (decl, result) => {
+    const {source, prop, raws} = decl;
+    const line = source.start.line;
+    const lineContent = getLineContent(line, source.input.css, true);
+    const col = source.start.column + prop.length + raws.between.length;
+    result.warn(RULENAME, {
+        node: decl,
+        ruleName: RULENAME,
+        line: line,
+        col: col,
+        message: MSG,
+        colorMessage: '`'
+            + changeColorByStartAndEndIndex(
+                lineContent, col, source.end.column
+            )
+            + '` '
+            + chalk.grey(MSG)
+    });
+};
+
+/**
  * 具体的检测逻辑
  *
  * @param {Object} opts 参数
@@ -52,28 +111,18 @@ export const check = postcss.plugin(RULENAME, opts =>
         }
 
         css.walkDecls(decl => {
-            let match = null;
-            /* eslint-disable no-extra-boolean-cast */
-            while (!!(match = PATTERN_COLOR_EXP.exec(decl.value))) {
-                const source = decl.source;
-                const line = source.start.line;
-                const lineContent = getLineContent(line, source.input.css, true);
-                const col = source.start.column + decl.prop.length + decl.raws.between.length + match.index;
-                result.warn(RULENAME, {
-                    node: decl,
-                    ruleName: RULENAME,
-                    line: line,
-                    col: col,
-                    message: MSG,
-                    colorMessage: '`'
-                        + changeColorByStartAndEndIndex(
-                            lineContent, col, source.end.column
-                        )
-                        + '` '
-                        + chalk.grey(MSG)
-                });
+            const value = decl.value;
+            if (LESS_COLORS[value]) {
+                addWarn(decl, result);
             }
-            /* eslint-enable no-extra-boolean-cast */
+            else {
+                let match = null;
+                /* eslint-disable no-extra-boolean-cast */
+                while (!!(match = PATTERN_COLOR_EXP.exec(value))) {
+                    addWarn(decl, result);
+                }
+                /* eslint-enable no-extra-boolean-cast */
+            }
         });
     }
 );
