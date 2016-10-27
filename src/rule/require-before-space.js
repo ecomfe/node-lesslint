@@ -43,7 +43,10 @@ export const check = postcss.plugin(RULENAME, opts =>
         if (realRuleVal.length) {
             css.walkRules(rule => {
                 // 只有 { 时，才能用 between 处理，其他符号的 require-before-space 规则还未实现
-                if (rule.raws.between === '' && realRuleVal.indexOf('{') !== -1) {
+                if (
+                    !rule.ruleWithoutBody // 排除 mixin 调用
+                        && rule.raws.between === '' && realRuleVal.indexOf('{') !== -1
+                    ) {
                     const source = rule.source;
                     const line = source.start.line;
                     const col = source.start.column + rule.selector.length;

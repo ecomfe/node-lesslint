@@ -10,6 +10,7 @@ import fs from 'fs';
 import path from 'path';
 
 let checker = require(path.join(__dirname, '../../src', 'checker'));
+let config = require(path.join(__dirname, '../../src', 'config'));
 
 const expect = chai.expect;
 
@@ -52,13 +53,18 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(10);
+                expect(errors[0].messages.length).to.equal(9);
             });
         });
     });
 
     describe('import: ', () => {
         it('should return right message length', () => {
+            // 清空 config storage，设置成默认的 config
+            // 因为 fixture 目录下的 .lesslintrc 中配置了 import: false
+            config.clearStorage();
+            config.loadConfig('.', true);
+
             const filePath = path.join(__dirname, '../fixture/import.less');
             const fileContent = fs.readFileSync(
                 path.join(__dirname, '../fixture/import.less'),

@@ -4,15 +4,12 @@
  */
 
 import Manis from 'manis';
-import {join, basename} from 'path';
-import stripJSONComments from 'strip-json-comments';
+import {join} from 'path';
 import yaml from 'js-yaml';
 
 'use strict';
 
 let STORAGE = null;
-
-const JSON_YAML_REG = /.+\.(json|yml)$/i;
 
 /**
  * 获取 merge 后的配置文件
@@ -30,29 +27,18 @@ export function loadConfig(filePath, refresh) {
 
     let manis = new Manis({
         files: [
-            '.lesslintrc',
-            'config.yml',
-            'config.json'
+            '.lesslintrc'
         ],
-        loader(content, filePath) {
+        loader(content) {
             if (!content) {
                 return '';
             }
-
-            if (basename(filePath) === '.lesslintrc') {
-                return JSON.parse(stripJSONComments(content));
+            let ret;
+            try {
+                ret = yaml.load(content);
             }
-
-            let match = filePath.match(JSON_YAML_REG);
-            if (match) {
-                let suffix = match[1];
-                if (suffix === 'json') {
-                    return JSON.parse(stripJSONComments(content));
-                }
-                else if (suffix === 'yml') {
-                    return yaml.load(content);
-                }
-            }
+            catch (e) {}
+            return ret;
         }
     });
 
@@ -61,4 +47,11 @@ export function loadConfig(filePath, refresh) {
     STORAGE = manis.from(filePath);
 
     return STORAGE;
+}
+
+/**
+ * 清空 STORAGE
+ */
+export function clearStorage() {
+    STORAGE = null;
 }

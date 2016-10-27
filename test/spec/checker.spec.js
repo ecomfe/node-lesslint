@@ -21,7 +21,7 @@ describe('checker test suite\n', () => {
         it('should be return right result', () => {
             const filePath = 'path/to/file.css';
             const fileContent = '\np {\n    height: 0px;}\n\n';
-            return checker.checkString(fileContent, filePath, config.loadConfig(filePath, true)).then(invalidList => {
+            return checker.checkString(fileContent, filePath, config.loadConfig(filePath, false)).then(invalidList => {
                 expect(invalidList[0].messages.length).to.equal(1);
             });
         });
@@ -29,7 +29,7 @@ describe('checker test suite\n', () => {
         it('should catch error with line', () => {
             const filePath = 'path/to/file.css';
             const fileContent = '\np {\nheight: 0px\n\n';
-            return checker.checkString(fileContent, filePath, config.loadConfig(filePath, true)).then(() => {
+            return checker.checkString(fileContent, filePath, config.loadConfig(filePath, false)).then(() => {
             }).catch(invalidList => {
                 const messages = invalidList[0].messages;
                 expect(messages[0].line).to.equal(2);
@@ -57,6 +57,7 @@ describe('checker test suite\n', () => {
                 content: '\np {\n height: 0px\ncolor: ccc;\n\n'
             };
             return checker.check(file, errors, () => {}).then(() => {
+                config.clearStorage();
                 const messages = errors[0].messages;
                 expect(messages[0].line).to.equal(3);
                 expect(messages[0].ruleName).to.equal('CssSyntaxError');

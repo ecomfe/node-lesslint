@@ -58,7 +58,10 @@ export const check = postcss.plugin(RULENAME, opts =>
         if (realRuleVal.indexOf('selector') > -1) {
             css.walkRules(rule => {
                 const selector = rule.selector;
-                if (PATTERN_NOTLF.test(selector)) {
+                if (
+                    !rule.ruleWithoutBody // 排除 mixin 调用
+                    && PATTERN_NOTLF.test(selector)
+                ) {
                     const source = rule.source;
                     const line = source.start.line;
                     const lineContent = getLineContent(line, source.input.css);

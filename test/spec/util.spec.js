@@ -107,6 +107,20 @@ describe('util test suite\n', () => {
             ];
             const candidates2 = util.getCandidates(['rule.spec.js', '.'], patterns2);
             expect(candidates2[0]).to.equal('rule.spec.js');
+
+            const patterns3 = [
+                '**/*.js',
+                '!**/{output,node_modules,asset,dist,release,doc,dep,report,*.bak}/**'
+            ];
+            const candidates3 = util.getCandidates(['not-exist.js', '.'], patterns3);
+            expect(candidates3.length).to.equal(0);
+
+            const patterns4 = [
+                '**/*.js',
+                '!**/{output,node_modules,asset,dist,release,doc,dep,report,*.bak}/**'
+            ];
+            const candidates4 = util.getCandidates(['aaa', '.'], patterns4);
+            expect(candidates4.length).to.equal(0);
         });
     });
 
