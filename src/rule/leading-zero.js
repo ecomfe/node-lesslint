@@ -48,8 +48,8 @@ export const check = postcss.plugin(RULENAME, opts =>
             for (let i = 0, len = parts.length; i < len; i++) {
                 const part = parts[i];
                 const numericVal = parseFloat(part);
-                if (numericVal < 1 && numericVal > 0) {
-                    if (part.slice(0, 2) === '0.') {
+                if (numericVal < 1 && numericVal > 0 || numericVal < 0 && numericVal > -1) {
+                    if (part.slice(0, 2) === '0.' || part.slice(0, 3) === '-0.') {
                         const lineContent = getLineContent(lineNum, source.input.css, true);
                         result.warn(RULENAME, {
                             node: decl,
