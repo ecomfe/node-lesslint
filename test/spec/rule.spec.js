@@ -98,7 +98,7 @@ describe('rule test suite\n', () => {
 
             const errors = [];
             return checker.check(file, errors, () => {}).then(() => {
-                expect(errors[0].messages.length).to.equal(11);
+                expect(errors[0].messages.length).to.equal(14);
             });
         });
     });
