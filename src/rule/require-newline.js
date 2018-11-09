@@ -60,6 +60,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                 const selector = rule.selector;
                 if (
                     !rule.ruleWithoutBody // 排除 mixin 调用
+                    && !rule.params // 排除 mixin 定义
                     && PATTERN_NOTLF.test(selector)
                 ) {
                     const source = rule.source;

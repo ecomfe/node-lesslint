@@ -43,3 +43,31 @@ i,.cc {
     .size(30px, 20px);
     .clearfix();
 }
+
+.textOverflowMulti(@line: 3, @bg: #fff) {
+    position: relative;
+    overflow: hidden;
+    max-height: @line * 1.5em;
+    margin-right: -1em;
+    padding-right: 1em;
+    line-height: 1.5em;
+    text-align: justify;
+    &:before {
+        content: "...";
+        position: absolute;
+        right: 14px;
+        bottom: 0;
+        padding: 0 1px;
+        background: @bg;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        right: 14px;
+        width: 1em;
+        height: 1em;
+        margin-top: .2em;
+        background: #fff;
+    }
+}
+
