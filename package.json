@@ -1,7 +1,7 @@
 {
   "name": "lesslint",
   "description": "lint your less code",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -29,7 +29,7 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.12",
     "debug": "^2.2.0",
-    "fecs": "^0.7.30",
+    "fecs": "stable",
     "json-stringify-safe": "^5.0.1",
     "mocha": "^2.5.3"
   },
